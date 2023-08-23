@@ -1,7 +1,7 @@
 <template>
   <div
     id="landing"
-    class="bg-cover bg-center w-full text-white py-20 lg:py-24 h-full flex justify-center items-center"
+    class="bg-cover bg-center w-full text-black py-20 lg:py-24 h-full flex justify-center items-center"
   >
     <div class="px-4 sm:px-8">
       <div class="max-w-screen-2xl mx-auto px-6">
@@ -12,7 +12,7 @@
               <h2 class="text-4xl md:text-5xl font-display font-bold mb-8">
                 From resource to trust
               </h2>
-              <p class="font-light text-lg">
+              <p class="font-medium text-lg">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                 Ipsum has been the industry's standard dummy text ever since the 1500s, when an
                 unknown printer took a galley of type and scrambled it to make a type specimen book.
