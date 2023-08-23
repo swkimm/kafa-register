@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "tfstate" {
-  bucket = "ht-official-page-tfstate"
+  bucket = "kafa-register-page-tfstate"
 }
 
 resource "aws_s3_bucket_versioning" "tfstate" {
@@ -10,7 +10,7 @@ resource "aws_s3_bucket_versioning" "tfstate" {
 }
 
 resource "aws_dynamodb_table" "tfstate" {
-  name         = "ht-official-page-tfstate-lock"
+  name         = "kafa-register-page-tfstate-lock"
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "LockID"
 

@@ -1,5 +1,5 @@
 resource "aws_cloudfront_origin_access_control" "main" {
-  name                              = "ht-cloudfront-s3-oai"
+  name                              = "kafa-register-s3-oai"
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
   signing_protocol                  = "sigv4"
@@ -13,10 +13,10 @@ resource "aws_cloudfront_distribution" "main" {
   }
 
   enabled             = true
-  comment             = "HumanTrust CloudFront"
+  comment             = "KAFA Register CloudFront"
   default_root_object = "index.html"
 
-  aliases = ["humantrust.one"]
+  aliases = ["register.playprove.one"]
 
   default_cache_behavior {
     allowed_methods        = ["GET", "HEAD", "OPTIONS"]
@@ -40,7 +40,7 @@ resource "aws_cloudfront_distribution" "main" {
   }
 
   viewer_certificate {
-    acm_certificate_arn = aws_acm_certificate_validation.main.certificate_arn
+    acm_certificate_arn = data.aws_acm_certificate.main.arn
     ssl_support_method  = "sni-only"
   }
 

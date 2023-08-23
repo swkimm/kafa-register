@@ -1,6 +1,6 @@
 variable "s3_bucket" {
   type    = string
-  default = "ht-official-page"
+  default = "register.playprove.one"
 }
 
 variable "region" {

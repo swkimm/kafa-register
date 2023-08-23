@@ -7,17 +7,14 @@ terraform {
   }
 
   backend "s3" {
-    bucket         = "ht-official-page-tfstate"
+    bucket         = "kafa-register-page-tfstate"
     key            = "terraform/IAM/terraform.tfstate"
     region         = "ap-northeast-2"
     encrypt        = true
-    dynamodb_table = "ht-official-page-tfstate-lock"
+    dynamodb_table = "kafa-register-page-tfstate-lock"
   }
 }
 
 module "infra" {
   source = "./modules"
-
-  region    = var.region
-  s3_bucket = var.s3_bucket
 }

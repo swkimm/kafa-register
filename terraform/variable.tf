@@ -7,5 +7,3 @@ variable "region" {
   type    = string
   default = "ap-northeast-2"
 }
-
-variable "s3_bucket" {}
