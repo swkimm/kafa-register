@@ -13,6 +13,7 @@ resource "aws_s3_object" "frontend" {
   key          = each.value
   source       = "../dist/${each.value}"
   content_type = lookup(jsondecode(file("${path.module}/mime.json")), regex("\\.[^.]+$", each.key), null)
+  etag         = filemd5("../dist/${each.value}")
 }
 
 resource "aws_s3_bucket_website_configuration" "frontend" {
