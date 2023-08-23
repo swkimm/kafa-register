@@ -1,0 +1,27 @@
+{
+  "name": "human-trust-devcontainer",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "app",
+  "runServices": ["app"],
+  "workspaceFolder": "/workspace",
+  "postCreateCommand": ".devcontainer/setup-devcontainer.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "bradlc.vscode-tailwindcss",
+        "csstools.postcss",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "Vue.volar",
+        "Vue.vscode-typescript-vue-plugin",
+        "hashicorp.terraform"
+      ]
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers-contrib/features/pnpm:2": {},
+    "ghcr.io/devcontainers/features/terraform:1": {}
+  },
+  "mounts": ["source=${localEnv:HOME}/.aws,target=/home/node/.aws,type=bind,consistency=cached"],
+  "remoteUser": "node"
+}

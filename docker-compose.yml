@@ -1,0 +1,15 @@
+version: '3'
+services:
+  app:
+    profiles: ['devcontainer']
+    container_name: kafa-register-dev
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - .:/workspace:cached
+    command: sleep infinity
+    stdin_open: true
+    tty: true
+    environment:
+      DEVCONTAINER: 1
