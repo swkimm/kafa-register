@@ -22,11 +22,13 @@
               <div
                 class="flex flex-col md:flex-row flex-wrap justify-start items-start gap-4 mt-8 mb-16"
               >
-                <button
-                  class="whitespace-nowrap bg-transparent ring-1 text-teal-300 ring-teal-400 hover:ring-2 hover:bg-neutral-800 hover:ring-teal-500 hover:text-teal-400 uppercase font-sans active:brightness-95 font-semibold hover:subpixel-antialiased ring-inset px-12 py-4 text-xl rounded-lg gap-4"
-                >
-                  출전 등록
-                </button>
+                <a href="https://www.naver.com" target="_blank">
+                  <button
+                    class="whitespace-nowrap bg-transparent ring-1 text-teal-300 ring-teal-400 hover:ring-2 hover:bg-neutral-800 hover:ring-teal-500 hover:text-teal-400 uppercase font-sans active:brightness-95 font-semibold hover:subpixel-antialiased ring-inset px-12 py-4 text-xl rounded-lg gap-4"
+                  >
+                    출전 등록
+                  </button>
+                </a>
               </div>
             </div>
           </div>
@@ -36,8 +38,4 @@
   </div>
 </template>
 <script lang="ts" setup></script>
-<style scoped>
-#landing {
-  background-image: url('/background/people.webp');
-}
-</style>
+<style scoped></style>

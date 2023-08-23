@@ -7,13 +7,13 @@
       class="w-full hidden flex-row text-sm lg:flex lg:gap-6 justify-center lg:items-center lg:w-auto"
     >
       <a
-        @click="router.push('/')"
+        @click="router.push('/notice')"
         class="text-center block mt-4 lg:inline-block lg:mt-0 text-teal-400 hover:text-white px-2"
       >
         대회 요강
       </a>
       <a
-        @click="router.push('/')"
+        @click="router.push('/schedule')"
         class="text-center block mt-4 lg:inline-block lg:mt-0 text-teal-400 hover:text-white px-2"
       >
         대회 일정
@@ -26,7 +26,8 @@
       <div class="flex items-center flex-nowrap text-teal-400 lg:mr-6">
         <span class="font-bold text-sm tracking-tight">등록 하기</span>
       </div>
-      <button
+    </div>
+    <!-- <button
         class="flex items-center px-3 py-2 border rounded text-teal-100 border-teal-400 hover:text-white hover:border-white"
         @click="togleOpen"
       >
@@ -34,9 +35,8 @@
           <title>Menu</title>
           <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
         </svg>
-      </button>
-    </div>
-    <div
+      </button> -->
+    <!-- <div
       :class="{ hidden: !isOpen }"
       class="absolute right-5 z-10 origin-top-right rounded-md bg-neutral-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none lg:hidden fixed-element"
       role="menu"
@@ -55,7 +55,7 @@
         <hr />
         <a href="#" class="block px-4 py-2" role="menuitem" tabindex="-1" id="menu-item-2">About</a>
       </div>
-    </div>
+    </div> -->
   </nav>
 </template>
 
@@ -66,7 +66,7 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 const isOpen = ref(false)
-const togleOpen = () => (isOpen.value = !isOpen.value)
+// const togleOpen = () => (isOpen.value = !isOpen.value)
 </script>
 
 <style scoped>
