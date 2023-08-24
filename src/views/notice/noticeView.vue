@@ -1,8 +1,8 @@
 <template>
   <BannerItem></BannerItem>
-  <div class="my-14 max-w-screen-md px-5 mx-auto">
+  <div class="my-20 max-w-screen-md px-5 mx-auto">
     <div class="px-4 sm:px-0">
-      <h3 class="text-2xl font-bold leading-7 text-gray-900">
+      <h3 class="text-2xl sm:text-3xl font-bold leading-7 text-gray-900">
         대회 요강 <span class="text-sm mx-1 text-gray-600">Tournament Outline</span>
       </h3>
       <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">

@@ -1,21 +1,21 @@
 <template>
-  <div class="flex flex-col sm:flex-row font-sans rounded-lg bg-slate-100 drop-shadow-lg">
+  <div class="flex flex-col sm:flex-row font-sans rounded-lg bg-black drop-shadow-xl">
     <div class="flex flex-col relative items-center justify-center">
       <img src="/images/playprove.png" alt="" class="w-full h-full" loading="lazy" />
     </div>
     <form @submit.prevent="openDetail" class="flex-auto p-6">
       <div class="flex flex-wrap">
-        <h1 class="flex-auto text-lg font-semibold text-slate-900">성균관대학교 로얄스</h1>
-        <div class="w-full flex-none text-sm font-medium text-slate-700 mt-2">SKKU ROYALS</div>
+        <h1 class="flex-auto text-lg font-bold text-white">성균관대학교 로얄스</h1>
+        <div class="w-full flex-none text-sm font-semibold text-gray-200 mt-2">SKKU ROYALS</div>
       </div>
-      <div class="flex my-6 text-sm font-medium">
+      <div class="flex my-6 text-sm font-bold">
         <div class="mx-auto">
-          <button class="h-10 px-6 font-semibold rounded-md bg-black text-white">
+          <button class="h-10 px-6 font-semibold rounded-md bg-white text-black">
             자세히 보기
           </button>
         </div>
       </div>
-      <p class="text-sm text-slate-700">서울미식축구협회 소속</p>
+      <p class="text-sm text-white">서울미식축구협회 소속</p>
     </form>
   </div>
 

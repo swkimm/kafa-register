@@ -5,15 +5,15 @@
   >
     <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
       <p class="text-sm leading-6 text-white">
-        <strong class="font-semibold">2023 서울/경기강원추계 대학미식축구 선수권전</strong
+        <strong class="font-semibold">2023 서울/경기강원 추계 대학미식축구 선수권전</strong
         ><svg viewBox="0 0 2 2" class="mx-2 inline h-0.5 w-0.5 fill-current" aria-hidden="true">
           <circle cx="1" cy="1" r="1" /></svg
         >현재 출전 팀 등록이 진행중입니다
       </p>
       <a
-        href="#"
+        href="https://forms.gle/HxFxoZPkzak7QX3C9"
         class="flex-none rounded-full bg-gray-900 px-3.5 py-1 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
-        >출전 팀 등록<span aria-hidden="true">&rarr;</span></a
+        >출전 팀 등록 <span aria-hidden="true">&rarr;</span></a
       >
     </div>
     <div class="flex flex-1 justify-end">
