@@ -1,14 +1,12 @@
 <template>
   <div
-    class="bg-cover bg-center text-black py-10 px-8 w-full h-full flex flex-col justify-center items-center"
+    class="bg-cover bg-center text-black py-10 px-8 w-full h-full flex flex-col justify-center items-center text-center"
   >
-    <div class="max-w-screen-lg mt-10">
-      <h1 class="mb-24"><strong>대회 요강</strong></h1>
-      <section class="my-5">
+    <div class="max-w-screen-md mt-10">
+      <h1 class="mb-24 font-extrabold font-mono text-4xl">대회 요강</h1>
+      <section class="my-5 text-start">
         <div>
-          <h2>
-            <strong>1. {{ content[0] }}</strong>
-          </h2>
+          <h2 class="font-bold text-xl mb-2">1. {{ content[0] }}</h2>
           <p>가. 대회명 : {{ leagueInfo.name }}</p>
           <p>나. 일 시 : {{ leagueInfo.date }}</p>
           <p>다. 장 소 : {{ leagueInfo.location }}</p>
@@ -16,11 +14,9 @@
         </div>
       </section>
       <br />
-      <section class="my-5">
+      <section class="my-5 text-start">
         <div>
-          <h2>
-            <strong>2. {{ content[1] }}</strong>
-          </h2>
+          <h2 class="font-bold text-xl mb-2">2. {{ content[1] }}</h2>
           <p>가. 참가 자격 : {{ leagueManageInfo.qualification }}</p>
           <div style="margin-left: 10px">
             <ul>
@@ -59,6 +55,8 @@
               <li class="tab">- 투표 방식은 추후 공지</li>
             </ul>
           </div>
+          <br />
+
           <p>
             마. 신청 서류 :참가신청서 (양식1), 서약서 (양식 2), 등록 선수 명단 (양식 3), 신분증 및
             재적 관련 증명서 (재학/휴학/졸업) 사본을 2023년 8월 25일 오후 6시까지
@@ -74,6 +72,7 @@
             </ul>
           </div>
           <br />
+
           <p>바. 선수 자격 :</p>
           <div style="margin-left: 10px">
             <ul>
@@ -190,11 +189,9 @@
       </section>
       <br />
 
-      <section class="my-5">
+      <section class="my-5 text-start">
         <div>
-          <h2>
-            <strong>3. {{ content[2] }}</strong>
-          </h2>
+          <h2 class="font-bold text-xl mb-2">3. {{ content[2] }}</h2>
           <p>가. 경기장 대관 일정에 따라 대회 기간 및 세부 일정은 일부 조정될 수 있음</p>
           <br />
           <p>
@@ -315,23 +312,4 @@ const leagueManageInfo = {
 }
 </script>
 
-<style scoped>
-h1 {
-  font-size: 30px;
-  text-align: center;
-}
-h2 {
-  font-size: 20px;
-  margin-bottom: 5px;
-}
-p {
-  margin-left: 10px;
-}
-
-ul {
-  margin-left: 10px;
-}
-.tab {
-  margin-left: 20px;
-}
-</style>
+<style scoped></style>

@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col flex-1">
     <NavBar />
-    <main class="flex flex-col flex-1">
+    <main class="flex flex-col flex-1 bg-slate-100">
       <RouterView />
     </main>
     <Footer />

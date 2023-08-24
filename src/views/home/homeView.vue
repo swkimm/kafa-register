@@ -8,11 +8,15 @@
         <div class="grid">
           <div class="grid grid-cols-12">
             <div class="col-span-12 md:col-span-10 lg:col-span-8 xl:col-span-6">
-              <h3 class="text-xl text-teal-400 mb-4 font-bold">2023 대학 추계 미식축구 선수권전</h3>
-              <h2 class="text-4xl md:text-5xl font-display font-bold mb-8">
+              <h3 class="text-xl text-teal-400 mb-4 font-bold">
+                2023 서울경기강원 대학 추계 미식축구 선수권전
+              </h3>
+              <h2
+                class="text-4xl md:text-5xl font-display font-extrabold mb-8 font-mono text-white"
+              >
                 From resource to trust
               </h2>
-              <p class="font-medium text-lg">
+              <p class="font-medium text-lg text-white">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                 Ipsum has been the industry's standard dummy text ever since the 1500s, when an
                 unknown printer took a galley of type and scrambled it to make a type specimen book.
@@ -22,11 +26,11 @@
               <div
                 class="flex flex-col md:flex-row flex-wrap justify-start items-start gap-4 mt-8 mb-16"
               >
-                <a href="https://www.naver.com" target="_blank">
+                <a href="https://forms.gle/HxFxoZPkzak7QX3C9" target="_blank">
                   <button
-                    class="whitespace-nowrap bg-transparent ring-1 text-teal-300 ring-teal-400 hover:ring-2 hover:bg-neutral-800 hover:ring-teal-500 hover:text-teal-400 uppercase font-sans active:brightness-95 font-semibold hover:subpixel-antialiased ring-inset px-12 py-4 text-xl rounded-lg gap-4"
+                    class="whitespace-nowrap bg-transparent ring-1 text-teal-300 ring-teal-400 hover:ring-2 hover:bg-gray-100 hover:ring-teal-500 hover:text-teal-400 uppercase font-sans active:brightness-95 font-semibold hover:subpixel-antialiased ring-inset px-12 py-4 text-xl rounded-lg gap-4"
                   >
-                    출전 등록
+                    출전 팀 등록
                   </button>
                 </a>
               </div>
@@ -38,4 +42,8 @@
   </div>
 </template>
 <script lang="ts" setup></script>
-<style scoped></style>
+<style scoped>
+#landing {
+  background-image: url('/images/background.webp');
+}
+</style>

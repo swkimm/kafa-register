@@ -3,6 +3,7 @@ import DefaultLayout from '@/layouts/defaultLayout.vue'
 import HomeView from '@/views/home/homeView.vue'
 import NoticeView from '@/views/notice/noticeView.vue'
 import ScheduleView from '@/views/schedule/scheduleView.vue'
+import TeamListView from '@/views/teams/teamListView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -25,6 +26,11 @@ const router = createRouter({
           path: '/schedule',
           name: 'schedule',
           component: ScheduleView
+        },
+        {
+          path: '/team',
+          name: 'team',
+          component: TeamListView
         }
       ]
     }
