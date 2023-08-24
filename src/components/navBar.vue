@@ -7,7 +7,7 @@
     </div>
     <Popover class="relative">
       <PopoverButton
-        class="inline-flex items-center gap-x-1 text-xl font-semibold leading-6 text-gray-900"
+        class="inline-flex items-center gap-x-1 text-base font-semibold leading-6 text-gray-900"
       >
         <span>Menu</span>
         <Bars3Icon class="h-5 w-5" aria-hidden="true" />
@@ -81,19 +81,19 @@ import { BookOpenIcon, CalendarDaysIcon, UsersIcon } from '@heroicons/vue/24/out
 const solutions = [
   {
     name: '대회요강',
-    description: '대회요강 페이지로 이동합니다',
+    description: '대회요강 페이지로 이동',
     href: '/notice',
     icon: BookOpenIcon
   },
   {
     name: '대회일정',
-    description: '대회 일정 페이지로 이동합니다',
+    description: '대회 일정 페이지로 이동',
     href: '/schedule',
     icon: CalendarDaysIcon
   },
   {
     name: '참가팀 명단',
-    description: '참가팀 명단 페이지로 이동합니다',
+    description: '참가팀 명단 페이지로 이동',
     href: '/team',
     icon: UsersIcon
   }
