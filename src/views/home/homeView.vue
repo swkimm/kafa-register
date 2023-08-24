@@ -4,7 +4,7 @@
       id="landing"
       class="bg-cover bg-center w-full text-black py-20 lg:py-24 flex justify-center items-center"
     >
-      <div class="py-20 text-start max-w-screen-xl px-4 md:px-20 w-full">
+      <div class="py-10 sm:py-20 text-start max-w-screen-xl px-4 md:px-20 w-full">
         <h3 class="text-lg md:text-2xl text-teal-300 mb-2 font-bold">
           2023 홍천군수배 서울/경기·강원
         </h3>
@@ -16,8 +16,8 @@
           장소: 홍천 종합 운동장, 서울대학교 운동장<br />
           주최: 대한 미식축구협회, 서울 미식축구협회, 경기강원 미식축구협회<br />
           신청마감: 2023년 8월 25일 오후 6시<br />
-          참가자격: 2023년 8월 기준 서울미식축구협회 등록 대학 미식축구팀 또는 <br />
-          경기강원미식축구협회 등록 대학 미식축구팀
+          참가자격: 2023년 8월 기준 서울 미식축구협회 등록 대학 미식축구팀 또는 경기강원
+          미식축구협회 등록 대학 미식축구팀
         </p>
         <div class="flex flex-col md:flex-row flex-wrap justify-start items-start gap-4 mt-8">
           <a href="https://forms.gle/HxFxoZPkzak7QX3C9" target="_blank">
@@ -73,7 +73,7 @@
                 <img
                   src="/images/stadium.jpg"
                   alt="Product screenshot"
-                  class="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0"
+                  class="w-full sm:w-[57rem] max-w-sm sm:max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 md:-ml-4 lg:-ml-0"
                   width="2432"
                   height="1442"
                 />

@@ -1,21 +1,23 @@
 <template>
   <div class="flex flex-col sm:flex-row font-sans rounded-lg bg-black drop-shadow-xl">
     <div class="flex flex-col relative items-center justify-center">
-      <img src="/images/playprove.png" alt="" class="w-full h-full" loading="lazy" />
+      <img :src="teamImgUrl" alt="" class="w-full h-full" loading="lazy" />
     </div>
-    <form @submit.prevent="openDetail" class="flex-auto p-6">
+    <form @submit.prevent="openDetail" class="flex-auto p-5 sm:w-56">
       <div class="flex flex-wrap">
-        <h1 class="flex-auto text-lg font-bold text-white">성균관대학교 로얄스</h1>
-        <div class="w-full flex-none text-sm font-semibold text-gray-200 mt-2">SKKU ROYALS</div>
+        <h1 class="flex-auto text-lg font-extrabold text-white">{{ teamName }}</h1>
+        <div class="w-full flex-none text-sm font-bold text-gray-400 mt-2">
+          {{ teamSubName }}
+        </div>
       </div>
       <div class="flex my-6 text-sm font-bold">
         <div class="mx-auto">
           <button class="h-10 px-6 font-semibold rounded-md bg-white text-black">
-            자세히 보기
+            팀 소개 보기
           </button>
         </div>
       </div>
-      <p class="text-sm text-white">서울미식축구협회 소속</p>
+      <p class="text-sm text-white">{{ teamAssociation }}</p>
     </form>
   </div>
 
@@ -57,19 +59,11 @@
                     <InformationCircleIcon class="h-6 w-6 text-green-600" aria-hidden="true" />
                   </div>
                   <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-                    <DialogTitle as="h3" class="text-base font-semibold leading-6 text-gray-900"
-                      >성균관대학교 로얄스</DialogTitle
-                    >
+                    <DialogTitle as="h3" class="text-base font-semibold leading-6 text-gray-900">{{
+                      teamName
+                    }}</DialogTitle>
                     <div class="mt-2">
-                      <p class="text-sm text-gray-500">
-                        1957년 창단한 성균관대학교 미식축구부는 대한민국에 현존하는 최고령 팀으로서
-                        한국 미식축구 역사에 숱한 족적을 남겨왔습니다.<br />
-                        성균관대 최고 전성기는 70~80년대로 1978년부터 1982년까지 4년간 상대팀에게 총
-                        4개의 퍼스트다운과 1개의 터치다운만을 허용할 정도로 막강한 전력을
-                        과시했습니다. 당시 성균관대는 일본 유수의 대학팀들과 선발전을 펼치는 등
-                        활약했으나, 80년대 중반부터 부산세에 밀리기 시작 96,97년에는 2부에서
-                        활동하는 시련을 겪기도 했습니다.
-                      </p>
+                      <p class="text-sm text-gray-500">{{ teamHistory }}</p>
                     </div>
                   </div>
                 </div>
@@ -91,9 +85,34 @@
   </TransitionRoot>
 </template>
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, toRefs, type PropType } from 'vue'
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { InformationCircleIcon } from '@heroicons/vue/24/outline'
+
+const props = defineProps({
+  teamImgUrl: {
+    type: String as PropType<string>,
+    required: true
+  },
+  teamName: {
+    type: String as PropType<string>,
+    required: true
+  },
+  teamSubName: {
+    type: String as PropType<string>,
+    required: true
+  },
+  teamAssociation: {
+    type: String as PropType<string>,
+    required: true
+  },
+  teamHistory: {
+    type: String as PropType<string>,
+    required: true
+  }
+})
+
+const { teamImgUrl, teamName, teamSubName, teamAssociation, teamHistory } = toRefs(props)
 
 function openDetail() {
   open.value = true
