@@ -1,3 +1,4 @@
+<!-- TODO: 템플릿으로 사용하기 위해 추후 수정할 예정. Add. swkim. 20230824.  -->
 <template>
   <BannerItem></BannerItem>
   <div class="my-20 max-w-screen-md px-5 mx-auto">
