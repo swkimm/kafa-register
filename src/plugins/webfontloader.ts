@@ -3,7 +3,7 @@ export async function loadFonts() {
 
   webFontLoader.load({
     custom: {
-      families: ['SpoqaHanSansNeo', 'NanumSquareNeo'],
+      families: ['NanumSquareNeo'],
       urls: ['/styles/font.css']
     }
   })

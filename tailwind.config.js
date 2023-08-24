@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['SpoqaHanSansNeo'],
+        sans: ['NanumSquareNeo'],
         mono: ['NanumSquareNeo']
       }
     }
