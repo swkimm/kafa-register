@@ -6,18 +6,18 @@
     >
       <div class="py-10 sm:py-20 text-start max-w-screen-xl px-4 md:px-20 w-full">
         <h3 class="text-lg md:text-2xl text-teal-300 mb-2 font-bold">
-          2023 홍천군수배 서울/경기·강원
+          2023 홍천군체육회장배 서울/경기·강원
         </h3>
         <h2 class="text-3xl md:text-5xl font-display font-extrabold mb-6 font-mono text-white">
           추계 대학미식축구 선수권전
         </h2>
         <p class="text-sm md:text-base text-white font-thin">
-          대회명: 2023 홍천군수배 서울/경기강원 추계 대학미식축구 선수권전<br />
-          장소: 홍천 종합 운동장, 서울대학교 운동장<br />
-          주최: 대한 미식축구협회, 서울 미식축구협회, 중부 미식축구협회<br />
+          대회명: 2023 홍천군체육회장배 서울/경기강원 추계 대학미식축구 선수권전<br />
+          장소: 홍천 종합운동장<br />
+          주최: 대한 미식축구협회, 서울 미식축구협회, 경기강원 미식축구협회<br />
           신청마감: 2023년 8월 25일 오후 6시<br />
-          참가자격: 2023년 8월 기준 서울 미식축구협회 등록 대학 미식축구팀 또는 중부 미식축구협회
-          등록 대학 미식축구팀
+          참가자격: 2023년 8월 기준 서울 미식축구협회 등록 대학 미식축구팀 또는 경기강원
+          미식축구협회 등록 대학 미식축구팀
         </p>
         <div class="flex flex-col md:flex-row flex-wrap justify-start items-start gap-4 mt-8">
           <a href="https://forms.gle/HxFxoZPkzak7QX3C9" target="_blank">
@@ -45,7 +45,7 @@
                       Hongcheon Stadium
                     </h2>
                     <p class="mt-2 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
-                      홍천종합운동장
+                      홍천 종합운동장
                     </p>
                     <p class="mt-6 text-base leading-8 text-gray-600">
                       홍천종합운동장(洪川綜合運動場, Hongcheon Stadium)은 대한민국 강원특별자치도
@@ -194,7 +194,7 @@ const features = [
 ]
 
 const stats = [
-  { id: 1, name: '전체', value: '20' },
+  { id: 1, name: '합계', value: '20' },
   { id: 2, name: '서울 미식축구협회', value: '14' },
   { id: 3, name: '경기강원 미식축구협회', value: '6' }
 ]

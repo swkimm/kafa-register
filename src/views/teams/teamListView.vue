@@ -13,7 +13,7 @@
         />
       </div>
     </div>
-    <div class="max-w-screen-md font-extrabold text-3xl mb-10 mt-20">경기강원 협회 등록 팀</div>
+    <div class="max-w-screen-md font-extrabold text-3xl mb-10 mt-20">중부 협회 등록 팀</div>
     <div class="max-w-screen-xl grid grid-cols-1 md:grid-cols-2 gap-8 px-8 md:px-20">
       <div v-for="team in ggTeams" :key="team.id">
         <TeamItem
