@@ -14,10 +14,10 @@
         <p class="text-sm md:text-base text-white font-thin">
           대회명: 2023 홍천군수배 서울/경기강원 추계 대학미식축구 선수권전<br />
           장소: 홍천 종합 운동장, 서울대학교 운동장<br />
-          주최: 대한 미식축구협회, 서울 미식축구협회, 경기강원 미식축구협회<br />
+          주최: 대한 미식축구협회, 서울 미식축구협회, 중부 미식축구협회<br />
           신청마감: 2023년 8월 25일 오후 6시<br />
-          참가자격: 2023년 8월 기준 서울 미식축구협회 등록 대학 미식축구팀 또는 경기강원
-          미식축구협회 등록 대학 미식축구팀
+          참가자격: 2023년 8월 기준 서울 미식축구협회 등록 대학 미식축구팀 또는 중부 미식축구협회
+          등록 대학 미식축구팀
         </p>
         <div class="flex flex-col md:flex-row flex-wrap justify-start items-start gap-4 mt-8">
           <a href="https://forms.gle/HxFxoZPkzak7QX3C9" target="_blank">
@@ -31,10 +31,10 @@
       </div>
     </div>
     <div class="w-full text-center">
-      <div class="flex flex-col bg-white justify-center items-center">
+      <div class="flex flex-col justify-center items-center">
         <div class="py-20 text-start max-w-screen-xl px-4 md:px-20">
           <h1 class="text-3xl font-extrabold text-center">경기장 정보</h1>
-          <div class="overflow-hidden bg-white py-20">
+          <div class="overflow-hidden py-20">
             <div class="mx-auto max-w-7xl">
               <div
                 class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2"
@@ -82,7 +82,7 @@
           </div>
         </div>
       </div>
-      <div class="flex flex-col">
+      <div class="flex flex-col bg-white">
         <div class="py-24">
           <h1 class="text-3xl font-extrabold mb-14">협회 등록 팀 현황</h1>
           <div class="mx-auto max-w-screen-xl px-6 lg:px-8">
@@ -106,55 +106,65 @@
         </div>
       </div>
       <div class="flex flex-col">
-        <div class="bg-white py-24">
-          <h1 class="text-3xl font-extrabold">주관/주최</h1>
+        <div class="py-24">
+          <h1 class="text-3xl font-extrabold">주관</h1>
           <div class="mx-auto max-w-screen-sm px-20 md:px-4">
             <div
-              class="mx-auto mt-14 grid grid-cols-1 text-2xl font-bold items-center gap-x-5 gap-y-10 sm:gap-x-10 lg:mx-0 lg:grid-cols-2"
+              class="mx-auto mt-14 grid grid-cols-1 items-center gap-x-2 gap-y-10 sm:gap-x-4 lg:mx-0 lg:grid-cols-2"
             >
-              <div
-                class="col-span-2 max-h-20 max-h lg:col-span-1 bg-gray-50 flex justify-center rounded-xl drop-shadow-xl"
-              >
-                <div class="p-5">SAFA</div>
-              </div>
-              <div
-                class="col-span-2 max-h-20 max-h lg:col-span-1 bg-gray-50 flex justify-center rounded-xl drop-shadow-xl"
-              >
-                <div class="p-5">GGAFA</div>
-              </div>
+              <img
+                class="col-span-2 max-h-24 w-full object-contain lg:col-span-1"
+                src="/images/safa.png"
+                alt="SAFA"
+                width="200"
+                height="80"
+              />
+              <img
+                class="col-span-2 max-h-28 w-full object-contain lg:col-span-1"
+                src="/images/ggafa.png"
+                alt="GGAFA"
+                width="200"
+                height="80"
+              />
             </div>
           </div>
         </div>
       </div>
-      <div class="flex flex-col">
+      <div class="flex flex-col bg-white">
         <div class="py-24">
           <h1 class="text-3xl font-extrabold">후원</h1>
           <div class="mx-auto max-w-screen-sm px-20 md:px-4">
             <div
-              class="mx-auto mt-14 grid grid-cols-1 items-center gap-x-5 gap-y-10 sm:gap-x-10 lg:mx-0 lg:grid-cols-2"
+              class="mx-auto mt-14 grid grid-cols-1 items-center gap-x-5 gap-y-10 sm:gap-x-10 lg:mx-0 lg:grid-cols-4"
             >
-              <div
-                class="col-span-2 max-h-20 max-h lg:col-span-1 bg-white flex justify-center rounded-xl drop-shadow-xl"
-              >
-                <img
-                  class="p-2"
-                  src="/images/hongcheon.jpeg"
-                  alt="홍천군"
-                  width="200"
-                  height="80"
-                />
-              </div>
-              <div
-                class="col-span-2 max-h-20 max-h lg:col-span-1 bg-white flex justify-center rounded-xl drop-shadow-xl"
-              >
-                <img
-                  class="p-4"
-                  src="/images/playprove.png"
-                  alt="Play Prove"
-                  width="200"
-                  height="80"
-                />
-              </div>
+              <img
+                class="col-span-2 max-h-14 w-full object-contain lg:col-span-1"
+                src="/images/hongcheon.jpeg"
+                alt="홍천군"
+                width="300"
+                height="80"
+              />
+              <img
+                class="col-span-2 max-h-16 w-full object-contain lg:col-span-1"
+                src="/images/hongcheonSports.png"
+                alt="홍천군체육회"
+                width="300"
+                height="140"
+              />
+              <img
+                class="col-span-2 max-h-14 w-full object-contain lg:col-span-1"
+                src="/images/logo.jpg"
+                alt="KAFA"
+                width="300"
+                height="80"
+              />
+              <img
+                class="col-span-2 max-h-14 w-full object-contain lg:col-span-1"
+                src="/images/playprove.png"
+                alt="Play Prove"
+                width="300"
+                height="80"
+              />
             </div>
           </div>
         </div>

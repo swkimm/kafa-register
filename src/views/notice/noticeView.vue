@@ -156,12 +156,12 @@
                   <PaperClipIcon class="h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
                   <div class="ml-4 flex min-w-0 flex-1 gap-2">
                     <span class="truncate font-medium">대회 요강</span>
-                    <span class="flex-shrink-0 text-gray-400">2.4mb</span>
+                    <span class="flex-shrink-0 text-gray-400">122kb</span>
                   </div>
                 </div>
                 <div class="ml-4 flex-shrink-0">
                   <a
-                    href="/docs/출전_선수_명단(예시).docx"
+                    href="/docs/대회요강.pdf"
                     class="font-medium text-teal-500 hover:text-teal-400"
                     target="_blank"
                     >Download</a
@@ -173,12 +173,12 @@
                   <PaperClipIcon class="h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
                   <div class="ml-4 flex min-w-0 flex-1 gap-2">
                     <span class="truncate font-medium">출전 선수 명단</span>
-                    <span class="flex-shrink-0 text-gray-400">4.5mb</span>
+                    <span class="flex-shrink-0 text-gray-400">13.3kb</span>
                   </div>
                 </div>
                 <div class="ml-4 flex-shrink-0">
                   <a
-                    href="/docs/출전_선수_명단(예시).docx"
+                    href="/docs/출전선수명단.xlsx"
                     class="font-medium text-teal-500 hover:text-teal-400"
                     target="_blank"
                     >Download</a
@@ -190,12 +190,12 @@
                   <PaperClipIcon class="h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
                   <div class="ml-4 flex min-w-0 flex-1 gap-2">
                     <span class="truncate font-medium">출전 서약서</span>
-                    <span class="flex-shrink-0 text-gray-400">3.1mb</span>
+                    <span class="flex-shrink-0 text-gray-400">144kb</span>
                   </div>
                 </div>
                 <div class="ml-4 flex-shrink-0">
                   <a
-                    href="/docs/출전_서약서(예시).docx"
+                    href="/docs/출전서약서.docx"
                     class="font-medium text-teal-500 hover:text-teal-400"
                     target="_blank"
                     >Download</a
@@ -207,12 +207,12 @@
                   <PaperClipIcon class="h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
                   <div class="ml-4 flex min-w-0 flex-1 gap-2">
                     <span class="truncate font-medium">출전 신청서</span>
-                    <span class="flex-shrink-0 text-gray-400">0.5mb</span>
+                    <span class="flex-shrink-0 text-gray-400">143kb</span>
                   </div>
                 </div>
                 <div class="ml-4 flex-shrink-0">
                   <a
-                    href="/docs/출전_신청서(예시).docx"
+                    href="/docs/출전신청서.docx"
                     class="font-medium text-teal-500 hover:text-teal-400"
                     target="_blank"
                     >Download</a
