@@ -188,7 +188,7 @@ const ggTeams = ref([
     teamName: '인하대학교',
     teamSubName: 'TEAL DRAGONS',
     teamAssociation: '경기강원미식축구협회',
-    teamHistory: '1957년 창단한 성균관대학교 ...'
+    teamHistory: '...'
   },
   {
     id: 5,
@@ -205,7 +205,7 @@ const ggTeams = ref([
     teamName: '한신대학교',
     teamSubName: 'KILLER WHALES',
     teamAssociation: '경기강원미식축구협회',
-    teamHistory: '1957년 창단한 성균관대학교 ...'
+    teamHistory: '...'
   }
 ])
 </script>
