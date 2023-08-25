@@ -107,7 +107,7 @@
       </div>
       <div class="flex flex-col">
         <div class="py-24">
-          <h1 class="text-3xl font-extrabold">주관</h1>
+          <h1 class="text-3xl font-extrabold">주관 및 주최</h1>
           <div class="mx-auto max-w-screen-sm px-20 md:px-4">
             <div
               class="mx-auto mt-14 grid grid-cols-1 items-center gap-x-2 gap-y-10 sm:gap-x-4 lg:mx-0 lg:grid-cols-2"
