@@ -141,7 +141,7 @@
             </div>
             <div class="py-6">
               <a
-                href="#"
+                href="https://forms.gle/HxFxoZPkzak7QX3C9"
                 class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-teal-500 hover:bg-gray-200"
                 >출전 팀 등록하기</a
               >
