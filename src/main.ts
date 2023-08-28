@@ -17,20 +17,25 @@ import {
   faTwitter
 } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { createHead } from '@vueuse/head'
 
 const app = createApp(App)
+const head = createHead()
 
-library.add(faGithub)
-library.add(faTwitter)
-library.add(faFacebook)
-library.add(faInstagram)
-library.add(faDiscord)
-
+// configure font-awesome
+library.add(faGithub, faTwitter, faFacebook, faInstagram, faDiscord)
 app.component('font-awesome-icon', FontAwesomeIcon)
 
+// configure web font
 loadFonts()
 
+// configure pinia
 app.use(createPinia())
+
+// configure router
 app.use(router)
+
+// configure header
+app.use(head)
 
 app.mount('#app')

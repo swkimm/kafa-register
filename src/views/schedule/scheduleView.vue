@@ -1023,7 +1023,24 @@
 import BannerItem from '@/components/bannerItem.vue'
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { ExclamationTriangleIcon } from '@heroicons/vue/24/outline'
+import { useHead } from '@vueuse/head'
 import { ref } from 'vue'
+
+useHead({
+  title: '대한미식축구협회-대회 일정',
+  meta: [
+    { name: 'description', content: '2023 서울경기강원 추계대회 일정' },
+    {
+      property: 'og:url',
+      content: 'https://register.kafa.one/schedule'
+    },
+    { property: 'og:title', content: '대한미식축구협회-대회 일정' },
+    { property: 'og:description', content: '2023 서울경기강원 추계대회 일정' },
+    { property: 'og:image', content: 'https://register.kafa.one/images/ogtag.png' },
+    { property: 'og:image:height', content: '400' },
+    { property: 'og:image:width', content: '800' }
+  ]
+})
 
 const open = ref(true)
 </script>

@@ -5,10 +5,10 @@
       aria-label="Global"
     >
       <div class="flex lg:flex-1">
-        <a href="/" class="-m-1.5 p-1.5">
+        <router-link to="/" class="-m-1.5 p-1.5">
           <span class="sr-only">KAFA</span>
           <img class="h-12 w-auto" src="/images/logo.jpg" alt="KAFA" />
-        </a>
+        </router-link>
       </div>
       <div class="flex lg:hidden">
         <button
@@ -56,20 +56,25 @@
                     />
                   </div>
                   <div class="flex-auto">
-                    <a :href="item.href" class="block font-semibold text-gray-900">
+                    <router-link
+                      :to="item.href"
+                      class="block font-semibold text-gray-900"
+                      active-class="text-teal-500"
+                    >
                       {{ item.name }}
                       <span class="absolute inset-0" />
-                    </a>
+                    </router-link>
                     <p class="mt-1 text-gray-600">{{ item.description }}</p>
                   </div>
                 </div>
               </div>
               <div class="grid grid-cols-1 divide-gray-900/5 bg-gray-50">
-                <a
+                <router-link
                   v-for="item in callsToAction"
                   :key="item.name"
-                  :href="item.href"
+                  :to="item.href"
                   class="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-teal-500 hover:text-white"
+                  active-class="text-teal-500"
                 >
                   <component
                     :is="item.icon"
@@ -77,21 +82,33 @@
                     aria-hidden="true"
                   />
                   {{ item.name }}
-                </a>
+                </router-link>
               </div>
             </PopoverPanel>
           </transition>
         </Popover>
 
-        <a href="/notice" class="text-base font-bold leading-6 text-gray-900 hover:text-teal-500"
-          >대회 요강</a
+        <router-link
+          to="/notice"
+          class="text-base font-bold leading-6 text-gray-900 hover:text-teal-500"
+          active-class="text-teal-500"
         >
-        <a href="/schedule" class="text-base font-bold leading-6 text-gray-900 hover:text-teal-500"
-          >대회 일정</a
+          대회 요강
+        </router-link>
+        <router-link
+          to="/schedule"
+          class="text-base font-bold leading-6 text-gray-900 hover:text-teal-500"
+          active-class="text-teal-500"
         >
-        <a href="/team" class="text-base font-bold leading-6 text-gray-900 hover:text-teal-500"
-          >협회 팀 명단</a
+          대회 일정
+        </router-link>
+        <router-link
+          to="/team"
+          class="text-base font-bold leading-6 text-gray-900 hover:text-teal-500"
+          active-class="text-teal-500"
         >
+          협회 팀 명단
+        </router-link>
       </PopoverGroup>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
         <a
@@ -123,21 +140,27 @@
         <div class="mt-6 flow-root">
           <div class="-my-6 divide-y divide-gray-500/10">
             <div class="space-y-2 py-6">
-              <a
-                href="/notice"
+              <router-link
+                to="/notice"
                 class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-200"
-                >대회 요강</a
+                active-class="text-teal-500"
               >
-              <a
-                href="/schedule"
+                대회 요강
+              </router-link>
+              <router-link
+                to="/schedule"
                 class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-200"
-                >대회 일정</a
+                active-class="text-teal-500"
               >
-              <a
-                href="/team"
+                대회 일정
+              </router-link>
+              <router-link
+                to="/team"
                 class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-200"
-                >협회 팀 명단</a
+                active-class="text-teal-500"
               >
+                협회 팀 명단
+              </router-link>
             </div>
             <div class="py-6">
               <a
@@ -175,19 +198,19 @@ import { ChevronDownIcon, PlayCircleIcon } from '@heroicons/vue/20/solid'
 const products = [
   {
     name: '대회 요강',
-    description: '대회 요강 페이지로 이동',
+    description: '대회 요강을 확인할 수 있습니다',
     href: '/notice',
     icon: BookOpenIcon
   },
   {
     name: '대회 일정',
-    description: '대회 일정 페이지로 이동',
+    description: '대회 일정을 확인할 수 있습니다',
     href: '/schedule',
     icon: CalendarDaysIcon
   },
   {
     name: '협회 팀 명단',
-    description: '협회 팀 명단 페이지로 이동',
+    description: '협회에 등록되어 있는 팀들을 확인합니다',
     href: '/team',
     icon: UsersIcon
   }
