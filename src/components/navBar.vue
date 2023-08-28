@@ -144,6 +144,7 @@
                 to="/notice"
                 class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-200"
                 active-class="text-teal-500"
+                @click="mobileMenuOpen = false"
               >
                 대회 요강
               </router-link>
@@ -151,6 +152,7 @@
                 to="/schedule"
                 class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-200"
                 active-class="text-teal-500"
+                @click="mobileMenuOpen = false"
               >
                 대회 일정
               </router-link>
@@ -158,6 +160,7 @@
                 to="/team"
                 class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-200"
                 active-class="text-teal-500"
+                @click="mobileMenuOpen = false"
               >
                 협회 팀 명단
               </router-link>
