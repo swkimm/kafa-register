@@ -819,13 +819,13 @@
                 <td class="text-xs sm:text-base pl-2 py-3">
                   <div class="flex items-center mr-2">
                     <div class="flex flex-col">
-                      <div class="hidden sm:block w-auto">7위</div>
+                      <div>7위</div>
                     </div>
                   </div>
                 </td>
                 <td class="text-xs sm:text-base pl-2 py-3">
                   <div class="flex items-center mr-2">
-                    <div class="hidden sm:block w-auto">8위</div>
+                    <div>8위</div>
                   </div>
                 </td>
                 <td class="text-xs sm:text-base pl-2 py-3">10:00</td>
@@ -837,12 +837,12 @@
               <tr class="bg-[#F7F7F4]">
                 <td class="text-xs sm:text-base pl-2 py-3">
                   <div class="flex items-center mr-2">
-                    <div class="hidden sm:block w-28">팀1</div>
+                    <div>팀1</div>
                   </div>
                 </td>
                 <td class="text-xs sm:text-base pl-2 py-3">
                   <div class="flex items-center mr-2">
-                    <div class="hidden sm:block w-28">팀2</div>
+                    <div>팀2</div>
                   </div>
                 </td>
                 <td class="text-xs sm:text-base pl-2 py-3">13:00</td>
@@ -855,13 +855,13 @@
                 <td class="text-xs sm:text-base pl-2 py-3">
                   <div class="flex items-center mr-2">
                     <div class="flex flex-col">
-                      <div class="hidden sm:block w-auto">팀1</div>
+                      <div>팀1</div>
                     </div>
                   </div>
                 </td>
                 <td class="text-xs sm:text-base pl-2 py-3">
                   <div class="flex items-center mr-2">
-                    <div class="hidden sm:block w-auto">팀2</div>
+                    <div>팀2</div>
                   </div>
                 </td>
                 <td class="text-xs sm:text-base pl-2 py-3">16:00</td>
@@ -891,12 +891,12 @@
               <tr class="bg-white">
                 <td class="text-xs sm:text-base pl-2 py-3">
                   <div class="flex items-center mr-2">
-                    <div class="hidden sm:block w-28">팀1</div>
+                    <div>팀1</div>
                   </div>
                 </td>
                 <td class="text-xs sm:text-base pl-2 py-3">
                   <div class="flex items-center mr-2">
-                    <div class="hidden sm:block w-28">팀2</div>
+                    <div>팀2</div>
                   </div>
                 </td>
                 <td class="text-xs sm:text-base pl-2 py-3">10:00</td>
@@ -908,12 +908,12 @@
               <tr class="bg-[#F7F7F4]">
                 <td class="text-xs sm:text-base pl-2 py-3">
                   <div class="flex items-center mr-2">
-                    <div class="hidden sm:block w-28">팀1</div>
+                    <div>팀1</div>
                   </div>
                 </td>
                 <td class="text-xs sm:text-base pl-2 py-3">
                   <div class="flex items-center mr-2">
-                    <div class="hidden sm:block w-28">팀2</div>
+                    <div>팀2</div>
                   </div>
                 </td>
                 <td class="text-xs sm:text-base pl-2 py-3">10:00</td>
