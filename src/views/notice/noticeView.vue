@@ -14,7 +14,7 @@
         <div class="px-4 py-6 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-0">
           <dt class="text-sm font-semibold leading-6 text-gray-900">1. 대회명</dt>
           <dd class="mt-1 text-xs sm:text-sm leading-6 text-gray-700 sm:col-span-3 sm:mt-0">
-            2023 홍천군체육회장배 서울경기인천강원 추계 대학미식축구 선수권전
+            2023 홍천군수배 서울경기강원 추계 대학미식축구 선수권전
           </dd>
         </div>
         <div class="px-4 py-6 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-0">
@@ -26,13 +26,13 @@
         <div class="px-4 py-6 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-0">
           <dt class="text-sm font-semibold leading-6 text-gray-900">3. 주관 및 주최</dt>
           <dd class="mt-1 text-xs sm:text-sm leading-6 text-gray-700 sm:col-span-3 sm:mt-0">
-            대한미식축구협회, 서울경기강원미식축구협회
+            서울미식축구협회, 경기강원미식축구협회
           </dd>
         </div>
         <div class="px-4 py-6 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-0">
           <dt class="text-sm font-semibold leading-6 text-gray-900">4. 후원</dt>
           <dd class="mt-1 text-xs sm:text-sm leading-6 text-gray-700 sm:col-span-3 sm:mt-0">
-            홍천군, 홍천군체육회, 대한미식축구협회, PLAY PROVE
+            대한미식축구협회, 홍천군, 홍천군체육회, PLAY PROVE
           </dd>
         </div>
         <div class="px-4 py-6 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-0">
@@ -219,44 +219,6 @@
               </li>
             </ul>
             <br />
-            <p>차. 초상권</p>
-            <ul class="list-disc ml-4">
-              <li>
-                본 대회 참가선수들은 대회를 신청함으로써 서울경기강원협회의 대회와 관련한 선수이름,
-                목소리, 사진, 동영상 및 각종 기록물들에 대하여 방송, 전시 등 대회 홍보를 목적으로
-                대회기간은 물론 향후에도 사용할 수 있는 권리가 있다는 것에 동의하며 또한 대회
-                공식미디어의 인터뷰 요청 이나 본 대회와 관련된 공식행사 참석 요청 시 협조하여야
-                한다.
-              </li>
-              <li>
-                9월 2일 프로필 촬영일정
-                <ul class="list-disc ml-4">
-                  <li>9:30-10:00 1경기 성균관대,연세대</li>
-                  <li>12:00-12:30 2경기 서울대, 한양대</li>
-                </ul>
-              </li>
-              <li>
-                9월 3일 프로필 촬영일정
-                <ul class="list-disc ml-4">
-                  <li>9:15-9:45 1경기 한국외국어대, 서울시립대</li>
-                  <li>12:00-12:30 2경기 고려대, 동국대</li>
-                  <li>14:00-14:30 3경기 건국대, 서강대</li>
-                </ul>
-              </li>
-              <li>
-                9월 10일 프로필 촬영일정
-                <ul class="list-disc ml-4">
-                  <li>12:15-12:30 2경기 국민대</li>
-                  <li>14:00-14:30 3경기 숭실대, 홍익대</li>
-                </ul>
-              </li>
-              <li>
-                9월 23일 프로필 촬영일정
-                <ul class="list-disc ml-4">
-                  <li>9:30-9:45 1경기 중앙대</li>
-                </ul>
-              </li>
-            </ul>
           </dd>
         </div>
         <div class="px-4 py-6 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-0">
@@ -363,6 +325,25 @@
                 <div class="ml-4 flex-shrink-0">
                   <a
                     href="/docs/출전신청서.docx"
+                    class="font-medium text-teal-500 hover:text-teal-400"
+                    target="_blank"
+                    >다운로드</a
+                  >
+                </div>
+              </li>
+              <li
+                class="flex items-center justify-between py-4 pl-4 pr-5 text-xs sm:text-sm leading-6"
+              >
+                <div class="flex w-0 flex-1 items-center">
+                  <PaperClipIcon class="h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
+                  <div class="ml-4 flex min-w-0 flex-1 gap-2">
+                    <span class="truncate font-medium">초상권 동의서.docx</span>
+                    <span class="flex-shrink-0 text-gray-400">21kb</span>
+                  </div>
+                </div>
+                <div class="ml-4 flex-shrink-0">
+                  <a
+                    href="/docs/초상권동의서.docx"
                     class="font-medium text-teal-500 hover:text-teal-400"
                     target="_blank"
                     >다운로드</a
