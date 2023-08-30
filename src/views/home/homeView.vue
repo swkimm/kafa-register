@@ -6,13 +6,13 @@
     >
       <div class="py-10 sm:py-20 text-start max-w-screen-xl px-4 md:px-20 w-full">
         <h3 class="text-lg md:text-2xl text-teal-300 mb-2 font-bold">
-          2023 홍천군체육회장배 서울/경기·강원
+          2023 홍천군수배 서울/경기·강원
         </h3>
         <h2 class="text-3xl md:text-5xl font-display font-extrabold mb-6 font-mono text-white">
           추계 대학미식축구 선수권전
         </h2>
         <p class="text-sm md:text-base text-white font-thin">
-          대회명: 2023 홍천군체육회장배 서울경기강원 추계 대학미식축구 선수권전<br />
+          대회명: 2023 홍천군수배 서울경기강원 추계 대학미식축구 선수권전<br />
           장소: 홍천 종합운동장<br />
           주최: 대한 미식축구협회, 서울 미식축구협회, 경기강원 미식축구협회<br />
           신청마감: 2023년 8월 31일 20시<br />
