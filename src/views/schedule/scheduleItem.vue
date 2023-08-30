@@ -64,7 +64,7 @@ interface Game {
 
 interface OrganizedMatch {
   week: number
-  games: Game[] // Add the games property here
+  games: Game[]
 }
 const props = defineProps({
   weekMatch: {
