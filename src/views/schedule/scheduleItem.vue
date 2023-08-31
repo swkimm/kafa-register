@@ -18,22 +18,26 @@
         :class="index % 2 === 0 ? 'bg-white' : 'bg-[#F7F7F4]'"
       >
         <td class="text-xs sm:text-base pl-2 py-3">
-          <div v-if="game.homeTeamLogo" class="flex items-center mr-2">
-            <img :src="game.homeTeamLogo" class="h-9 w-9 mr-2" />
-            <div class="hidden sm:block w-28">{{ game.homeTeamName }}</div>
-          </div>
-          <div v-else class="flex items-center mr-2">
-            <div class="w-28">{{ game.homeTeamName }}</div>
-          </div>
+          <a href="/team/teamDetail">
+            <div v-if="game.homeTeamLogo" class="flex items-center mr-2">
+              <img :src="game.homeTeamLogo" class="h-9 w-9 mr-2" />
+              <div class="hidden sm:block w-28">{{ game.homeTeamName }}</div>
+            </div>
+            <div v-else class="flex items-center mr-2">
+              <div class="w-28">{{ game.homeTeamName }}</div>
+            </div>
+          </a>
         </td>
         <td class="text-xs sm:text-base pl-2 py-3">
-          <div v-if="game.awayTeamLogo" class="flex items-center mr-2">
-            <img :src="game.awayTeamLogo" class="h-9 w-9 mr-2" />
-            <div class="hidden sm:block w-28">{{ game.awayTeamName }}</div>
-          </div>
-          <div v-else class="flex items-center mr-2">
-            <div class="w-28">{{ game.awayTeamName }}</div>
-          </div>
+          <a href="/team/teamDetail">
+            <div v-if="game.awayTeamLogo" class="flex items-center mr-2">
+              <img :src="game.awayTeamLogo" class="h-9 w-9 mr-2" />
+              <div class="hidden sm:block w-28">{{ game.awayTeamName }}</div>
+            </div>
+            <div v-else class="flex items-center mr-2">
+              <div class="w-28">{{ game.awayTeamName }}</div>
+            </div>
+          </a>
         </td>
         <td class="text-xs sm:text-base pl-2 py-3">{{ game.matchTime }}:00</td>
         <td class="text-xs sm:text-base pl-2 py-3">{{ game.division }}</td>

@@ -96,7 +96,7 @@
 
 <script lang="ts" setup>
 import BannerItem from '@/components/bannerItem.vue'
-import ScheduleItem from '@/views/schedule/scheduleItem.vue' // Import the ScheduleItem component
+import ScheduleItem from '@/views/schedule/scheduleItem.vue'
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { ExclamationTriangleIcon } from '@heroicons/vue/24/outline'
 import { useHead } from '@vueuse/head'
@@ -204,7 +204,7 @@ const match: Game[] = [
     id: 6,
     week: 2,
     matchDate: '2023-09-09',
-    matchTime: 16,
+    matchTime: 10,
     homeTeamLogo: '/images/seoulTeamLogo/DonggukSeoul.webp',
     homeTeamName: '동국대학교',
     awayTeamLogo: '/images/seoulTeamLogo/HankukUnivOfForeignStudies.webp',
@@ -216,7 +216,7 @@ const match: Game[] = [
     id: 7,
     week: 2,
     matchDate: '2023-09-09',
-    matchTime: 16,
+    matchTime: 13,
     homeTeamLogo: '/images/ggTeamLogo/Dankook.webp',
     homeTeamName: '단국대학교',
     awayTeamLogo: '/images/ggTeamLogo/Hallym.webp',
