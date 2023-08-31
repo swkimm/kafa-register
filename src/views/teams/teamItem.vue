@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col sm:flex-row font-sans rounded-lg bg-black drop-shadow-xl">
-    <div class="flex flex-col relative items-center justify-center">
-      <img :src="teamImgUrl" alt="" class="w-full h-full" loading="lazy" />
+    <div class="flex flex-col relative items-center justify-center px-10">
+      <img :src="teamImgUrl" alt="" class="w-40 h-40" loading="lazy" />
     </div>
     <form @submit.prevent="openDetail" class="flex-auto p-5 sm:w-56">
       <div class="flex flex-wrap">

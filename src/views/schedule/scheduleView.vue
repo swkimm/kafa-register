@@ -399,7 +399,7 @@ const match: Game[] = [
     matchTime: 13,
     homeTeamLogo: '/images/ggTeamLogo/Kangwon.webp',
     homeTeamName: '강원대학교',
-    awayTeamLogo: '/images/ggTeamLogo/Yongin.jpeg',
+    awayTeamLogo: '/images/ggTeamLogo/Yongin.png',
     awayTeamName: '용인대학교',
     division: '중부 2조',
     broadcastLink: '중계링크'
@@ -481,7 +481,7 @@ const match: Game[] = [
     week: 5,
     matchDate: '2023-10-03',
     matchTime: 16,
-    homeTeamLogo: '/images/ggTeamLogo/Yongin.jpeg',
+    homeTeamLogo: '/images/ggTeamLogo/Yongin.png',
     homeTeamName: '용인대학교',
     awayTeamLogo: '/images/ggTeamLogo/Inha.webp',
     awayTeamName: '인하대학교',

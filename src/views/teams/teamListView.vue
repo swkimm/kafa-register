@@ -52,7 +52,7 @@ useHead({
 const seoulTeams = ref([
   {
     id: 1,
-    imageUrl: '/images/playprove.png',
+    imageUrl: '/images/seoulTeamLogo/Konkuk.webp',
     teamName: '건국대학교',
     teamSubName: 'RAGING BULLS',
     teamAssociation: '서울미식축구협회',
@@ -61,7 +61,7 @@ const seoulTeams = ref([
   },
   {
     id: 2,
-    imageUrl: '/images/playprove.png',
+    imageUrl: '/images/seoulTeamLogo/Korea.webp',
     teamName: '고려대학교',
     teamSubName: 'TIGERS',
     teamAssociation: '서울미식축구협회',
@@ -70,7 +70,7 @@ const seoulTeams = ref([
   },
   {
     id: 3,
-    imageUrl: '/images/playprove.png',
+    imageUrl: '/images/seoulTeamLogo/Kookmin.webp',
     teamName: '국민대학교',
     teamSubName: 'RAZORBACKS',
     teamAssociation: '서울미식축구협회',
@@ -78,7 +78,7 @@ const seoulTeams = ref([
   },
   {
     id: 4,
-    imageUrl: '/images/playprove.png',
+    imageUrl: '/images/seoulTeamLogo/DonggukSeoul.webp',
     teamName: '동국대학교(서울)',
     teamSubName: 'TUSKERS',
     teamAssociation: '서울미식축구협회',
@@ -86,7 +86,7 @@ const seoulTeams = ref([
   },
   {
     id: 5,
-    imageUrl: '/images/playprove.png',
+    imageUrl: '/images/seoulTeamLogo/Sogang.webp',
     teamName: '서강대학교',
     teamSubName: 'ALBATROSS',
     teamAssociation: '서울미식축구협회',
@@ -95,7 +95,7 @@ const seoulTeams = ref([
   },
   {
     id: 6,
-    imageUrl: '/images/playprove.png',
+    imageUrl: '/images/seoulTeamLogo/Seoul.webp',
     teamName: '서울대학교',
     teamSubName: 'GREEN TERRORS',
     teamAssociation: '서울미식축구협회',
@@ -104,7 +104,7 @@ const seoulTeams = ref([
   },
   {
     id: 7,
-    imageUrl: '/images/playprove.png',
+    imageUrl: '/images/seoulTeamLogo/SeoulCity.webp',
     teamName: '서울시립대학교',
     teamSubName: 'CITY HAWKS',
     teamAssociation: '서울미식축구협회',
@@ -113,7 +113,7 @@ const seoulTeams = ref([
   },
   {
     id: 8,
-    imageUrl: '/images/playprove.png',
+    imageUrl: '/images/seoulTeamLogo/Syungkyunkwan.webp',
     teamName: '성균관대학교',
     teamSubName: 'ROYALS',
     teamAssociation: '서울미식축구협회',
@@ -122,7 +122,7 @@ const seoulTeams = ref([
   },
   {
     id: 9,
-    imageUrl: '/images/playprove.png',
+    imageUrl: '/images/seoulTeamLogo/Soongsil.jpeg',
     teamName: '숭실대학교',
     teamSubName: 'CRUSADERS',
     teamAssociation: '서울미식축구협회',
@@ -130,7 +130,7 @@ const seoulTeams = ref([
   },
   {
     id: 10,
-    imageUrl: '/images/playprove.png',
+    imageUrl: '/images/seoulTeamLogo/Yonsei.webp',
     teamName: '연세대학교',
     teamSubName: 'EAGLES',
     teamAssociation: '서울미식축구협회',
@@ -138,7 +138,7 @@ const seoulTeams = ref([
   },
   {
     id: 11,
-    imageUrl: '/images/playprove.png',
+    imageUrl: '/images/seoulTeamLogo/Chungang.webp',
     teamName: '중앙대학교',
     teamSubName: 'BLUE DRAGONS',
     teamAssociation: '서울미식축구협회',
@@ -147,7 +147,7 @@ const seoulTeams = ref([
   },
   {
     id: 12,
-    imageUrl: '/images/playprove.png',
+    imageUrl: '/images/seoulTeamLogo/HankukUnivOfForeignStudies.webp',
     teamName: '한국외국어대학교',
     teamSubName: 'BLACK KNIGHTS',
     teamAssociation: '서울미식축구협회',
@@ -156,7 +156,7 @@ const seoulTeams = ref([
   },
   {
     id: 13,
-    imageUrl: '/images/playprove.png',
+    imageUrl: '/images/seoulTeamLogo/Hanyang.webp',
     teamName: '한양대학교',
     teamSubName: 'LIONS',
     teamAssociation: '서울미식축구협회',
@@ -165,7 +165,7 @@ const seoulTeams = ref([
   },
   {
     id: 14,
-    imageUrl: '/images/playprove.png',
+    imageUrl: '/images/seoulTeamLogo/Hongik.webp',
     teamName: '홍익대학교',
     teamSubName: 'COWBOYS',
     teamAssociation: '서울미식축구협회',
@@ -176,7 +176,7 @@ const seoulTeams = ref([
 const ggTeams = ref([
   {
     id: 1,
-    imageUrl: '/images/playprove.png',
+    imageUrl: '/images/ggTeamLogo/Kangwon.webp',
     teamName: '강원대학교',
     teamSubName: 'CAPRA',
     teamAssociation: '경기강원미식축구협회',
@@ -184,7 +184,7 @@ const ggTeams = ref([
   },
   {
     id: 2,
-    imageUrl: '/images/playprove.png',
+    imageUrl: '/images/ggTeamLogo/Dankook.webp',
     teamName: '단국대학교',
     teamSubName: 'KODIAK BEARS',
     teamAssociation: '경기강원미식축구협회',
@@ -192,7 +192,7 @@ const ggTeams = ref([
   },
   {
     id: 3,
-    imageUrl: '/images/playprove.png',
+    imageUrl: '/images/ggTeamLogo/Yongin.png',
     teamName: '용인대학교',
     teamSubName: 'WHITE TIGERS',
     teamAssociation: '경기강원미식축구협회',
@@ -201,7 +201,7 @@ const ggTeams = ref([
   },
   {
     id: 4,
-    imageUrl: '/images/playprove.png',
+    imageUrl: '/images/ggTeamLogo/Inha.webp',
     teamName: '인하대학교',
     teamSubName: 'TEAL DRAGONS',
     teamAssociation: '경기강원미식축구협회',
@@ -209,7 +209,7 @@ const ggTeams = ref([
   },
   {
     id: 5,
-    imageUrl: '/images/playprove.png',
+    imageUrl: '/images/ggTeamLogo/Hallym.webp',
     teamName: '한림대학교',
     teamSubName: 'PHOENIX',
     teamAssociation: '경기강원미식축구협회',
@@ -218,7 +218,7 @@ const ggTeams = ref([
   },
   {
     id: 6,
-    imageUrl: '/images/playprove.png',
+    imageUrl: '/images/ggTeamLogo/Hanshin.webp',
     teamName: '한신대학교',
     teamSubName: 'KILLER WHALES',
     teamAssociation: '경기강원미식축구협회',

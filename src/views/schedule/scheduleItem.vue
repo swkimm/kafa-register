@@ -18,26 +18,26 @@
         :class="index % 2 === 0 ? 'bg-white' : 'bg-[#F7F7F4]'"
       >
         <td class="text-xs sm:text-base pl-2 py-3">
-          <a href="/team/teamDetail">
-            <div v-if="game.homeTeamLogo" class="flex items-center mr-2">
-              <img :src="game.homeTeamLogo" class="h-9 w-9 mr-2" />
-              <div class="hidden sm:block w-28">{{ game.homeTeamName }}</div>
-            </div>
-            <div v-else class="flex items-center mr-2">
-              <div class="w-28">{{ game.homeTeamName }}</div>
-            </div>
-          </a>
+          <div v-if="game.homeTeamLogo" class="flex items-center mr-2">
+            <a href="/team/teamDetail"><img :src="game.homeTeamLogo" class="h-9 w-9 mr-2" /></a>
+            <a href="/team/teamDetail"
+              ><div class="hidden sm:block w-28 text-[#06c]">{{ game.homeTeamName }}</div>
+            </a>
+          </div>
+          <div v-else class="flex items-center mr-2">
+            <div class="w-28">{{ game.homeTeamName }}</div>
+          </div>
         </td>
         <td class="text-xs sm:text-base pl-2 py-3">
-          <a href="/team/teamDetail">
-            <div v-if="game.awayTeamLogo" class="flex items-center mr-2">
-              <img :src="game.awayTeamLogo" class="h-9 w-9 mr-2" />
-              <div class="hidden sm:block w-28">{{ game.awayTeamName }}</div>
-            </div>
-            <div v-else class="flex items-center mr-2">
-              <div class="w-28">{{ game.awayTeamName }}</div>
-            </div>
-          </a>
+          <div v-if="game.awayTeamLogo" class="flex items-center mr-2">
+            <a href="/team/teamDetail"> <img :src="game.awayTeamLogo" class="h-9 w-9 mr-2" /></a>
+            <a href="/team/teamDetail">
+              <div class="hidden sm:block w-28 text-[#06c]">{{ game.awayTeamName }}</div>
+            </a>
+          </div>
+          <div v-else class="flex items-center mr-2">
+            <div class="w-28">{{ game.awayTeamName }}</div>
+          </div>
         </td>
         <td class="text-xs sm:text-base pl-2 py-3">{{ game.matchTime }}:00</td>
         <td class="text-xs sm:text-base pl-2 py-3">{{ game.division }}</td>
