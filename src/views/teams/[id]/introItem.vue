@@ -1,8 +1,18 @@
 <template>
-  <h1 class="mb-5 font-extrabold font-mono text-2xl text-left">팀명 소개</h1>
-  <p>
-    {{ teamDetail.message }}
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam ex assumenda veniam, quae
+  <h1
+    v-if="intro?.name === null || intro?.name === undefined"
+    class="mb-5 font-extrabold font-mono text-2xl text-left"
+  >
+    팀명 Intro
+  </h1>
+  <h1 v-else class="mb-5 font-extrabold font-mono text-2xl text-left">
+    {{ getRemainingWords(intro?.name) }} Intro
+  </h1>
+  <p v-if="intro?.name === null || intro?.name === undefined">
+    {{ intro?.message }}
+  </p>
+  <p v-else>
+    {{ 'No message available' }}
   </p>
 </template>
 <script lang="ts" setup>
@@ -13,7 +23,7 @@ interface TeamDetail {
   name: string
   profileImgUrl: string
   association: string
-  message: string
+  message: string | null | undefined
   workoutId: number
   workout: {
     id: number
@@ -22,13 +32,22 @@ interface TeamDetail {
 }
 
 const props = defineProps({
-  teamDetail: {
-    type: Object as PropType<TeamDetail>,
+  intro: {
+    type: Object as PropType<TeamDetail | null | undefined>,
     required: true
   }
 })
+// const getFirstWord = (str: string) => {
+//   const firstSpaceIndex = str.indexOf(' ')
+//   return firstSpaceIndex !== -1 ? str.substring(0, firstSpaceIndex) : str
+// }
 
-const { teamDetail } = toRefs(props)
+const getRemainingWords = (str: string) => {
+  const firstSpaceIndex = str.indexOf(' ')
+  return firstSpaceIndex !== -1 ? str.substring(firstSpaceIndex + 1) : ''
+}
+
+const { intro } = toRefs(props)
 </script>
 
 <style></style>

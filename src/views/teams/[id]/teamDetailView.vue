@@ -1,11 +1,11 @@
 <template>
   <BannerItem></BannerItem>
   <div class="bg-cover bg-center text-black py-10 w-full h-full">
-    <h1 class="mb-16 font-extrabold font-mono text-4xl text-center">팀 상세 정보</h1>
+    <h1 class="mb-16 font-extrabold font-mono text-4xl text-center">상세 정보</h1>
     <div class="mx-20">
-      <!-- <IntroItem/> -->
+      <IntroItem :intro="teamDetail" />
       <br />
-      <RoasterItem />
+      <RoasterItem :roaster="teamDetail" />
       <br />
     </div>
   </div>
@@ -31,7 +31,7 @@ interface TeamDetail {
   }
 }
 
-const teamDetail = ref<TeamDetail | undefined>()
+const teamDetail = ref<TeamDetail | null | undefined>(null)
 
 const teamId = useRoute().params.id
 

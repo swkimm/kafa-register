@@ -16,17 +16,8 @@
 import BannerItem from '@/components/bannerItem.vue'
 import TeamItem from '@/views/teams/teamItem.vue'
 import { useHead } from '@vueuse/head'
-<<<<<<< Updated upstream
-import { onMounted, ref } from 'vue'
-import axios from 'axios'
-=======
-<<<<<<< Updated upstream
-import { ref } from 'vue'
-=======
 import { onMounted, ref } from 'vue'
 import { axiosInstance } from '@/common/auth/store'
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 
 useHead({
   title: '대한미식축구협회-등록 팀 명단',
@@ -51,69 +42,6 @@ interface Team {
   profileImgUrl: string
 }
 
-<<<<<<< Updated upstream
-// 미식축구 Id === 1
-const workoutId = ref(1)
-const teamList = ref<Team[]>([])
-
-const getTeamList = () => {
-  axios
-    .get('https://dev.playprove.one/team/list', {
-=======
-<<<<<<< Updated upstream
-const ggTeams = ref([
-  {
-    id: 1,
-    imageUrl: '/images/playprove.png',
-    teamName: '강원대학교',
-    teamSubName: 'CAPRA',
-    teamAssociation: '경기강원미식축구협회',
-    teamHistory: '...'
-  },
-  {
-    id: 2,
-    imageUrl: '/images/playprove.png',
-    teamName: '단국대학교',
-    teamSubName: 'KODIAK BEARS',
-    teamAssociation: '경기강원미식축구협회',
-    teamHistory: '...'
-  },
-  {
-    id: 3,
-    imageUrl: '/images/playprove.png',
-    teamName: '용인대학교',
-    teamSubName: 'WHITE TIGERS',
-    teamAssociation: '경기강원미식축구협회',
-    teamHistory:
-      '용인대학교 미식추구부 화이트타이거스의 창단은 1992년의 일이었다. 초창기 열악한 환경에도 불구하고 미식축구에 대한 열정 하나 만으로 꾸준히 대회에 참가했다. 2000년도 서울지역 춘계리그에서 대망의 우승을 차지함으로써 미식축구 신흥강호로 군림하고 있다. 앞으로도 항상 멋진 승부를 위해 최선을 다하는 용인대학교 미식축구부가 될 것이다.'
-  },
-  {
-    id: 4,
-    imageUrl: '/images/playprove.png',
-    teamName: '인하대학교',
-    teamSubName: 'TEAL DRAGONS',
-    teamAssociation: '경기강원미식축구협회',
-    teamHistory: '...'
-  },
-  {
-    id: 5,
-    imageUrl: '/images/playprove.png',
-    teamName: '한림대학교',
-    teamSubName: 'PHOENIX',
-    teamAssociation: '경기강원미식축구협회',
-    teamHistory:
-      '저희 한림대학교 미식축구부는 1993년 개척 희생 협동의 3대 정신을 기본으로하여 창단 하였습니다. 어느팀이나 마찬가지이듯 90년대 초반에는 많은 어려움이 있었으나 지금은 명실상부한 강팀의 면모를 지니고 있으며 2000 서울 추계 미식축구 대회에서는 우승을 하는 결실을 거두었습니다. 저희는 "우리는 강하다!" 라는 자심감으로 매 경기 최선을 다하며 우리의 목표인 전국제패가 이루어 질때까지는 우리의 땀과 노력이 계속 될것입니다. 지켜 봐 주시기 바랍니다.'
-  },
-  {
-    id: 6,
-    imageUrl: '/images/playprove.png',
-    teamName: '한신대학교',
-    teamSubName: 'KILLER WHALES',
-    teamAssociation: '경기강원미식축구협회',
-    teamHistory: '...'
-  }
-])
-=======
 // 미식축구 Id === 1
 const workoutId = ref(1)
 const teamList = ref<Team[]>()
@@ -121,7 +49,6 @@ const teamList = ref<Team[]>()
 const getTeamList = () => {
   axiosInstance
     .get('/team/list', {
->>>>>>> Stashed changes
       params: {
         workoutId: workoutId.value
       }
@@ -317,8 +244,4 @@ const getTeamList = () => {
 onMounted(() => {
   getTeamList()
 })
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 </script>

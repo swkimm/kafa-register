@@ -3,15 +3,7 @@ import HomeView from '@/views/home/homeView.vue'
 import NoticeView from '@/views/notice/noticeView.vue'
 // import ResultView from '@/views/result/resultView.vue'
 import ScheduleView from '@/views/schedule/scheduleView.vue'
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-=======
 import TeamDetailView from '@/views/teams/[id]/teamDetailView.vue'
->>>>>>> Stashed changes
-import TeamListView from '@/views/teams/teamListView.vue'
->>>>>>> Stashed changes
-import TeamDetailView from '@/views/teamDetail/teamDetailView.vue'
 import TeamListView from '@/views/teams/teamListView.vue'
 
 import { createRouter, createWebHistory } from 'vue-router'
