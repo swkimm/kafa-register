@@ -16,23 +16,23 @@
         <th class="text-xs sm:text-base pl-2 py-2"></th>
         <th class="text-xs sm:text-base pl-2 py-2">Name</th>
         <th class="text-xs sm:text-base pl-2 py-2">Number</th>
-        <th class="text-xs sm:text-base pl-2 py-2">Height</th>
-        <th class="text-xs sm:text-base pl-2 py-2">Weight</th>
+        <th class="hidden sm:table-cell text-xs sm:text-base pl-2 py-2">Height</th>
+        <th class="hidden sm:table-cell text-xs sm:text-base pl-2 py-2">Weight</th>
         <th class="text-xs sm:text-base pl-2 py-2">Position</th>
-        <th class="text-xs sm:text-base pl-2 py-2">Exprience</th>
+        <th class="hidden sm:table-cell text-xs sm:text-base pl-2 py-2">Exprience</th>
       </tr>
     </thead>
     <tbody>
       <tr v-for="index in 10" :key="index" :class="index % 2 === 0 ? 'bg-white' : 'bg-[#F7F7F4]'">
-        <td class="text-xs sm:text-base pl-2 py-3">
-          <img :src="roaster?.profileImgUrl" class="h-20 w-20 mr-1" />
+        <td class="text-xs pl-2 py-3">
+          <img :src="roaster?.profileImgUrl" class="h-20 w-20 sm:h-15 sm:w-15 mr-1" />
         </td>
         <td class="text-xs sm:text-base pl-2 py-3">{{ index }}</td>
         <td class="text-xs sm:text-base pl-2 py-3">{{ index }}</td>
+        <td class="hidden sm:table-cell text-xs pl-2 py-3">{{ index }}</td>
+        <td class="hidden sm:table-cell text-xs pl-2 py-3">{{ index }}</td>
         <td class="text-xs sm:text-base pl-2 py-3">{{ index }}</td>
-        <td class="text-xs sm:text-base pl-2 py-3">{{ index }}</td>
-        <td class="text-xs sm:text-base pl-2 py-3">{{ index }}</td>
-        <td class="text-xs sm:text-base pl-2 py-3">{{ index }}</td>
+        <td class="hidden sm:table-cell text-xs sm:text-base pl-2 py-3">{{ index }}</td>
       </tr>
     </tbody>
   </table>
