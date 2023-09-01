@@ -79,8 +79,6 @@ const props = defineProps({
 
 const { weekMatch } = toRefs(props)
 
-console.log(weekMatch.value.games)
-
 const formatDate = (matchDate: string): string => {
   const months = [
     '1월',

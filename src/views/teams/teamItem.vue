@@ -1,13 +1,18 @@
 <template>
   <div class="flex flex-col sm:flex-row font-sans rounded-lg bg-black drop-shadow-xl">
-    <div class="flex flex-col relative items-center justify-center px-10">
-      <img :src="teamImgUrl" alt="" class="w-40 h-40" loading="lazy" />
-    </div>
+    <router-link :to="{ name: 'teamDetail', params: { id: team.id } }">
+      <div class="flex flex-col relative items-center justify-center px-10">
+        <img :src="team.profileImgUrl" alt="" class="mt-5 w-40 h-40" loading="lazy" />
+      </div>
+    </router-link>
+
     <form @submit.prevent="openDetail" class="flex-auto p-5 sm:w-56">
       <div class="flex flex-wrap">
-        <h1 class="flex-auto text-lg font-extrabold text-white">{{ teamName }}</h1>
+        <h1 class="flex-auto text-lg font-extrabold text-white">
+          {{ getFirstWord(team.name) }}
+        </h1>
         <div class="w-full flex-none text-sm font-bold text-gray-400 mt-2">
-          {{ teamSubName }}
+          {{ getRemainingWords(team.name) }}
         </div>
       </div>
       <div class="flex my-6 text-sm font-bold">
@@ -17,7 +22,7 @@
           </button>
         </div>
       </div>
-      <p class="text-sm text-white">{{ teamAssociation }}</p>
+      <p class="text-sm text-white">{{ team.association }}</p>
     </form>
   </div>
 
@@ -60,10 +65,10 @@
                   </div>
                   <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                     <DialogTitle as="h3" class="text-base font-semibold leading-6 text-gray-900">{{
-                      teamName
+                      team.name
                     }}</DialogTitle>
                     <div class="mt-2">
-                      <p class="text-sm text-gray-500">{{ teamHistory }}</p>
+                      <!-- <p class="text-sm text-gray-500">{{ teamHistory }}</p> -->
                     </div>
                   </div>
                 </div>
@@ -85,34 +90,34 @@
   </TransitionRoot>
 </template>
 <script lang="ts" setup>
-import { ref, toRefs, type PropType } from 'vue'
+import { ref, type PropType, toRefs } from 'vue'
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { InformationCircleIcon } from '@heroicons/vue/24/outline'
 
+interface Team {
+  id: number
+  association: string
+  name: string
+  profileImgUrl: string
+}
+
 const props = defineProps({
-  teamImgUrl: {
-    type: String as PropType<string>,
-    required: true
-  },
-  teamName: {
-    type: String as PropType<string>,
-    required: true
-  },
-  teamSubName: {
-    type: String as PropType<string>,
-    required: true
-  },
-  teamAssociation: {
-    type: String as PropType<string>,
-    required: true
-  },
-  teamHistory: {
-    type: String as PropType<string>,
+  team: {
+    type: Object as PropType<Team>,
     required: true
   }
 })
 
-const { teamImgUrl, teamName, teamSubName, teamAssociation, teamHistory } = toRefs(props)
+const getFirstWord = (str: string) => {
+  const firstSpaceIndex = str.indexOf(' ')
+  return firstSpaceIndex !== -1 ? str.substring(0, firstSpaceIndex) : str
+}
+
+const getRemainingWords = (str: string) => {
+  const firstSpaceIndex = str.indexOf(' ')
+  return firstSpaceIndex !== -1 ? str.substring(firstSpaceIndex + 1) : ''
+}
+const { team } = toRefs(props)
 
 function openDetail() {
   open.value = true

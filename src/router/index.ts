@@ -36,11 +36,6 @@ const router = createRouter({
           component: TeamListView
         },
         {
-          path: '/team/teamDetail',
-          name: 'teamDetail',
-          component: TeamDetailView
-        },
-        {
           path: '/team/:id',
           name: 'teamDetail',
           component: TeamDetailView
