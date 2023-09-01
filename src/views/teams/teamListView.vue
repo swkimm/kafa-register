@@ -37,7 +37,10 @@ useHead({
 
 interface Team {
   id: number
-  association: string
+  association: {
+    id: number
+    name: string
+  }
   name: string
   profileImgUrl: string
 }

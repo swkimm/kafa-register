@@ -23,7 +23,7 @@
           </router-link>
         </div>
       </div>
-      <p class="text-sm text-white">{{ team.association }}</p>
+      <p class="text-sm text-white">{{ team.association.name }}</p>
     </form>
   </div>
 
@@ -97,7 +97,10 @@ import { InformationCircleIcon } from '@heroicons/vue/24/outline'
 
 interface Team {
   id: number
-  association: string
+  association: {
+    id: number
+    name: string
+  }
   name: string
   profileImgUrl: string
 }
