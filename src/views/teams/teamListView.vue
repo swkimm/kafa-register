@@ -17,6 +17,7 @@ import TeamItem from '@/views/teams/teamItem.vue'
 import { useHead } from '@vueuse/head'
 import { onMounted, ref } from 'vue'
 import { axiosInstance } from '@/common/auth/store'
+import type { Team } from './interface/team.interface'
 
 useHead({
   title: '대한미식축구협회-등록 팀 명단',
@@ -33,16 +34,6 @@ useHead({
     { property: 'og:image:width', content: '800' }
   ]
 })
-
-interface Team {
-  id: number
-  workoutId: number
-  name: string
-  message?: string
-  profileImgUrl: string
-  associationId: number
-  createdAt: Date
-}
 
 const associationId = ref(1)
 const teamList = ref<Team[]>()

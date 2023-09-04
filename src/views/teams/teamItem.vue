@@ -29,16 +29,7 @@
 </template>
 <script lang="ts" setup>
 import { ref, type PropType, toRefs } from 'vue'
-
-interface Team {
-  id: number
-  workoutId: number
-  name: string
-  message?: string
-  profileImgUrl: string
-  associationId: number
-  createdAt: string
-}
+import type { Team } from './interface/team.interface'
 
 const props = defineProps({
   team: {
