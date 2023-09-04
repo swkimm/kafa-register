@@ -25,7 +25,7 @@
           <PopoverButton
             class="flex items-center gap-x-1 text-base font-bold leading-6 text-gray-900"
           >
-            메뉴 목록
+            대회 일정
             <ChevronDownIcon class="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
           </PopoverButton>
 
@@ -96,18 +96,11 @@
           대회 요강
         </router-link>
         <router-link
-          to="/schedule"
-          class="text-base font-bold leading-6 text-gray-900 hover:text-teal-500"
-          active-class="text-teal-500"
-        >
-          대회 일정
-        </router-link>
-        <router-link
           to="/team"
           class="text-base font-bold leading-6 text-gray-900 hover:text-teal-500"
           active-class="text-teal-500"
         >
-          협회 팀 명단
+          등록 팀 명단
         </router-link>
       </PopoverGroup>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -189,32 +182,20 @@ import {
   PopoverGroup,
   PopoverPanel
 } from '@headlessui/vue'
-import {
-  Bars3Icon,
-  BookOpenIcon,
-  CalendarDaysIcon,
-  UsersIcon,
-  XMarkIcon
-} from '@heroicons/vue/24/outline'
+import { Bars3Icon, CalendarDaysIcon, UsersIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 import { ChevronDownIcon, PlayCircleIcon } from '@heroicons/vue/20/solid'
 
 const products = [
   {
-    name: '대회 요강',
-    description: '대회 요강을 확인할 수 있습니다',
-    href: '/notice',
-    icon: BookOpenIcon
-  },
-  {
-    name: '대회 일정',
-    description: '대회 일정을 확인할 수 있습니다',
-    href: '/schedule',
+    name: '조별 리그 일정',
+    description: '조별 리그 일정을 확인할 수 있습니다',
+    href: '/schedule/group-stage',
     icon: CalendarDaysIcon
   },
   {
-    name: '협회 팀 명단',
-    description: '협회에 등록되어 있는 팀들을 확인합니다',
-    href: '/team',
+    name: '토너먼트 일정',
+    description: '토너먼트 일정을 확인할 수 있습니다',
+    href: '/schedule/tournament',
     icon: UsersIcon
   }
 ]

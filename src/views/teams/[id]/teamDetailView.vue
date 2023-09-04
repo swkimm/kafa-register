@@ -35,7 +35,7 @@ const teamDetail = ref<TeamDetail | null | undefined>(null)
 
 const teamId = useRoute().params.id
 
-const getTeamDetail = () => {
+const getTeamDetail = async () => {
   axiosInstance
     .get(`/team/${teamId}`)
     .then((response) => {
