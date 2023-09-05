@@ -86,3 +86,4 @@ onMounted(async () => {
 
 const enable = ref(true)
 </script>
+<style scoped></style>

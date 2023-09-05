@@ -44,10 +44,14 @@ interface TeamDetail {
   id: number
   name: string
   profileImgUrl: string
-  association: string
   message: string | null | undefined
+  teamColor: string
   workoutId: number
   workout: {
+    id: number
+    name: string
+  }
+  association: {
     id: number
     name: string
   }

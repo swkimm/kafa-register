@@ -1,18 +1,31 @@
 <template>
-  <BannerItem></BannerItem>
-  <div class="bg-cover bg-center text-black py-10 w-full h-full">
-    <h1 class="mb-16 font-extrabold font-mono text-4xl text-center">상세 정보</h1>
-    <div class="mx-10 sm:mx-20">
-      <IntroItem :intro="teamDetail" />
+  <div class="max-w-screen-xl px-5 mx-auto bg-cover bg-center text-black w-full h-full">
+    <TeamBannerItem v-if="teamDetail" :banner="teamDetail" />
+    <br />
+    <div class="items-center text-center">
+      <button class="mr-10" @click="toggleInfo">Info</button>
+      <button class="mr-10" @click="toggleRoaster">Roaster</button>
+      <button class="mr-10">Stat</button>
       <br />
-      <RoasterItem :roaster="teamDetail" />
+    </div>
+
+    <div class="mx-10 sm:mx-20">
+      <div v-if="infoVisible && teamDetail">
+        <ContentItem v-if="teamDetail" :content="teamDetail" />
+        <br />
+        <IntroItem v-if="teamDetail" :intro="teamDetail" />
+      </div>
+      <br />
+      <RoasterItem v-if="roasterVisible && teamDetail" :roaster="teamDetail" />
       <br />
     </div>
   </div>
 </template>
 <script lang="ts" setup>
-import BannerItem from '@/components/bannerItem.vue'
 import RoasterItem from './roasterItem.vue'
+import ContentItem from './contentItem.vue'
+import TeamBannerItem from './teamBannerItem.vue'
+
 import IntroItem from './introItem.vue'
 import { axiosInstance } from '@/common/auth/store'
 import { onMounted, ref } from 'vue'
@@ -22,16 +35,32 @@ interface TeamDetail {
   id: number
   name: string
   profileImgUrl: string
-  association: string
-  message: string
+  message: string | null | undefined
+  teamColor: string
   workoutId: number
   workout: {
     id: number
     name: string
   }
+  association: {
+    id: number
+    name: string
+  }
+}
+const infoVisible = ref(true)
+const roasterVisible = ref(false)
+
+const toggleRoaster = () => {
+  infoVisible.value = false
+  roasterVisible.value = true
 }
 
-const teamDetail = ref<TeamDetail | null | undefined>(null)
+const toggleInfo = () => {
+  roasterVisible.value = false
+  infoVisible.value = true
+}
+
+const teamDetail = ref<TeamDetail | null | undefined>()
 
 const teamId = useRoute().params.id
 
