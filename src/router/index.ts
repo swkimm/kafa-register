@@ -7,6 +7,7 @@ import TournamentScheduleVue from '@/views/schedule/tournament/tournamentSchedul
 import TeamDetailView from '@/views/teams/[id]/teamDetailView.vue'
 import TeamListView from '@/views/teams/teamListView.vue'
 import TeamRegisterView from '@/views/temp/uploadTeamProfile.vue'
+import TeamMemberRegisterView from '@/views/temp/uploadTeamMemberProfile.vue'
 
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -51,6 +52,11 @@ const router = createRouter({
           path: '/register/team',
           name: 'register team',
           component: TeamRegisterView
+        },
+        {
+          path: '/register/member',
+          name: 'register member',
+          component: TeamMemberRegisterView
         }
         // {
         //   path: '/result',

@@ -141,6 +141,7 @@ import {
 } from '@headlessui/vue'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/vue/20/solid'
 import { axiosInstance } from '@/common/auth/store'
+import { PhotoIcon } from '@heroicons/vue/24/solid'
 
 interface Team {
   associationId: number
@@ -197,21 +198,21 @@ const uploadFile = async () => {
   formData.append('file', selectedFile.value)
 
   try {
-    const response = await axiosInstance.put(`/team/${selected.value.id}/profile-img`, formData, {
+    await axiosInstance.put(`/team/${selected.value.id}/profile-img`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
     })
-    alert('업로드 성공!')
+    alert('업로드 성공')
     selectedFile.value = null
     imagePreviewUrl.value = null
-    // DOM 상태 초기화
+
     const fileInput = document.getElementById('file-upload') as HTMLInputElement
     if (fileInput) {
       fileInput.value = ''
     }
   } catch (error) {
-    alert('업로드 실패!')
+    alert('업로드 실패')
   }
 }
 
@@ -222,7 +223,7 @@ const selected: Ref<Team> = ref({
   createdAt: '123213',
   id: 0,
   message: 'hello',
-  name: '팀을 선택',
+  name: '팀 선택',
   profileImgUrl: 'aaaa',
   workOutId: 0
 })
