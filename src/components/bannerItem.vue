@@ -84,9 +84,5 @@ onMounted(async () => {
   await getUpcomingGames()
 })
 
-function click() {
-  enable.value = false
-}
-
 const enable = ref(true)
 </script>
