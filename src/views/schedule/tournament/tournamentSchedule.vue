@@ -26,14 +26,12 @@
       </div>
     </div>
   </div>
-  <AlertModal></AlertModal>
 </template>
 
 <script lang="ts" setup>
 import ScheduleItem from '@/views/schedule/scheduleItem.vue'
 import { useHead } from '@vueuse/head'
 import { computed } from 'vue'
-import AlertModal from '@/modal/alertModal.vue'
 
 useHead({
   title: '대한미식축구협회-대회 일정',

@@ -61,8 +61,10 @@
                       class="block font-semibold text-gray-900"
                       active-class="text-teal-500"
                     >
-                      {{ item.name }}
-                      <span class="absolute inset-0" />
+                      <PopoverButton>
+                        {{ item.name }}
+                        <span class="absolute inset-0" />
+                      </PopoverButton>
                     </router-link>
                     <p class="mt-1 text-gray-600">{{ item.description }}</p>
                   </div>
@@ -107,7 +109,8 @@
         <a
           href="https://forms.gle/HxFxoZPkzak7QX3C9"
           class="text-base font-bold leading-6 text-teal-500"
-          >출전 팀 등록하기 <span aria-hidden="true">&rarr;</span></a
+        >
+          출전 팀 등록하기 <span aria-hidden="true">&rarr;</span></a
         >
       </div>
     </nav>
@@ -119,7 +122,7 @@
         <div class="flex items-center justify-between">
           <a href="/" class="-m-1.5 p-1.5">
             <span class="sr-only">KAFA</span>
-            <img class="h-10 w-auto" src="/images/logo.jpg" alt="KAFA" />
+            <img class="h-12 w-auto" src="/images/logo.jpg" alt="KAFA" />
           </a>
           <button
             type="button"
@@ -133,6 +136,30 @@
         <div class="mt-6 flow-root">
           <div class="-my-6 divide-y divide-gray-500/10">
             <div class="space-y-2 py-6">
+              <Disclosure as="div" class="-mx-3" v-slot="{ open }">
+                <DisclosureButton
+                  class="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  대회 일정
+                  <ChevronDownIcon
+                    :class="[open ? 'rotate-180' : '', 'h-5 w-5 flex-none']"
+                    aria-hidden="true"
+                  />
+                </DisclosureButton>
+                <DisclosurePanel class="mt-2 space-y-2">
+                  <router-link
+                    v-for="item in [...products]"
+                    :key="item.name"
+                    as="a"
+                    @click="mobileMenuOpen = false"
+                    active-class="text-teal-500"
+                    class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    :to="item.href"
+                  >
+                    <DisclosureButton>{{ item.name }}</DisclosureButton>
+                  </router-link>
+                </DisclosurePanel>
+              </Disclosure>
               <router-link
                 to="/notice"
                 class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-200"
@@ -140,14 +167,6 @@
                 @click="mobileMenuOpen = false"
               >
                 대회 요강
-              </router-link>
-              <router-link
-                to="/schedule"
-                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-200"
-                active-class="text-teal-500"
-                @click="mobileMenuOpen = false"
-              >
-                대회 일정
               </router-link>
               <router-link
                 to="/team"
@@ -177,28 +196,32 @@ import { ref } from 'vue'
 import {
   Dialog,
   DialogPanel,
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
   Popover,
   PopoverButton,
   PopoverGroup,
   PopoverPanel
 } from '@headlessui/vue'
-import { Bars3Icon, CalendarDaysIcon, UsersIcon, XMarkIcon } from '@heroicons/vue/24/outline'
+import { Bars3Icon, CalendarDaysIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 import { ChevronDownIcon, PlayCircleIcon } from '@heroicons/vue/20/solid'
 
 const products = [
   {
-    name: '조별 리그 일정',
-    description: '조별 리그 일정을 확인할 수 있습니다',
+    name: '서울 지역 일정',
+    description: '서울 지역 일정을 확인할 수 있습니다',
     href: '/schedule/group-stage',
     icon: CalendarDaysIcon
   },
   {
-    name: '토너먼트 일정',
-    description: '토너먼트 일정을 확인할 수 있습니다',
+    name: '경기강원 지역 일정',
+    description: '경기강원 지역 일정을 확인할 수 있습니다',
     href: '/schedule/tournament',
-    icon: UsersIcon
+    icon: CalendarDaysIcon
   }
 ]
+
 const callsToAction = [
   { name: '출전 팀 등록하기', href: 'https://forms.gle/HxFxoZPkzak7QX3C9', icon: PlayCircleIcon }
 ]
