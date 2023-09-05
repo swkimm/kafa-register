@@ -1,19 +1,24 @@
 <template>
-  <div
-    v-if="enable"
-    class="relative isolate flex items-center gap-x-6 overflow-x-scroll bg-indigo-800 py-2.5 sm:before:flex-1 max-w-screen-xl px-4 md:px-8 mx-auto"
-  >
-    <div v-for="list in upcomingGameList" :key="list.id" class="mx-6 whitespace-nowrap text-white">
-      <div class="flex text-xs">
-        {{ formatGameDay(list.gameday) }}
-      </div>
-      <div class="flex text-xs">
-        <img :src="list.homeTeam.profileImgUrl" alt="" class="h-5 w-5 mr-2" loading="lazy" />
-        {{ getFirstWord(list.homeTeam.name) }}
-      </div>
-      <div class="flex text-xs">
-        <img :src="list.awayTeam.profileImgUrl" alt="" class="h-5 w-5 mr-2" loading="lazy" />
-        {{ getFirstWord(list.awayTeam.name) }}
+  <div class="flex justify-center items-center">
+    <div class="overflow-x-auto max-w-screen-xl bg-indigo-800">
+      <div v-if="enable" class="flex gap-x-6 py-2.5 px-4 sm:flex-1 md:px-5">
+        <div
+          v-for="list in upcomingGameList"
+          :key="list.id"
+          class="mx-6 whitespace-nowrap text-white"
+        >
+          <div class="flex text-xs">
+            {{ formatGameDay(list.gameday) }}
+          </div>
+          <div class="flex text-xs">
+            <img :src="list.homeTeam.profileImgUrl" alt="" class="h-5 w-5 mr-2" loading="lazy" />
+            {{ getFirstWord(list.homeTeam.initial) }}
+          </div>
+          <div class="flex text-xs">
+            <img :src="list.awayTeam.profileImgUrl" alt="" class="h-5 w-5 mr-2" loading="lazy" />
+            {{ getFirstWord(list.awayTeam.initial) }}
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -32,12 +37,18 @@ interface UpcomingGame {
   homeTeam: {
     id: number
     name: string
+    initial: string
     profileImgUrl: string
   }
   awayTeam: {
     id: number
     name: string
+    initial: string
     profileImgUrl: string
+  }
+  league: {
+    id: number
+    name: string
   }
 }
 
@@ -47,19 +58,37 @@ const getFirstWord = (str: string) => {
   const firstSpaceIndex = str.indexOf(' ')
   return firstSpaceIndex !== -1 ? str.substring(0, firstSpaceIndex) : str
 }
-const formatGameDay = (dateString: string) => {
-  const parts = dateString.replace('T', ' ').split(' ')
-  const datePart = parts[0]
-  const timePart = parts[1]
+const formatGameDay = (gameday: string) => {
+  const date = new Date(gameday)
 
-  const dateParts = datePart.split('-')
-  const year = dateParts[0].slice(-2)
-  const month = dateParts[1]
-  const day = dateParts[2]
+  date.setHours(date.getHours() - 9)
 
-  const hour = timePart.split(':')[0]
+  const monthNames = [
+    'JAN',
+    'FEB',
+    'MAR',
+    'APR',
+    'MAY',
+    'JUN',
+    'JUL',
+    'AUG',
+    'SEP',
+    'OCT',
+    'NOV',
+    'DEC'
+  ]
 
-  return `${year}.${month}.${day} ${hour}시`
+  const day = date.getDate()
+  const month = monthNames[date.getMonth()]
+  const hours = date.getHours()
+  const minutes = date.getMinutes()
+  const ampm = hours >= 12 ? 'pm' : 'am'
+
+  if (minutes === 0) {
+    return `${month} ${day}th, ${hours % 12 || 12} ${ampm}`
+  } else {
+    return `${month} ${day}th, ${hours % 12 || 12}:${minutes}0 ${ampm}`
+  }
 }
 
 const getUpcomingGames = async () => {
