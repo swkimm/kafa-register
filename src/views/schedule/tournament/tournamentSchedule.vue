@@ -1,5 +1,4 @@
 <template>
-  <BannerItem></BannerItem>
   <div
     class="bg-cover bg-center text-black py-10 w-full h-full flex flex-col justify-center items-center"
   >
@@ -31,7 +30,6 @@
 </template>
 
 <script lang="ts" setup>
-import BannerItem from '@/components/bannerItem.vue'
 import ScheduleItem from '@/views/schedule/scheduleItem.vue'
 import { useHead } from '@vueuse/head'
 import { computed } from 'vue'

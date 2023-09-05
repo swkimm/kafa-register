@@ -1,33 +1,88 @@
 <template>
   <div
     v-if="enable"
-    class="relative isolate flex items-center gap-x-6 overflow-hidden bg-indigo-800 px-6 py-2.5 sm:px-3.5 sm:before:flex-1"
+    class="relative isolate flex items-center gap-x-6 overflow-x-scroll bg-indigo-800 py-2.5 sm:before:flex-1 max-w-screen-xl px-4 md:px-8 mx-auto"
   >
-    <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
-      <p class="text-sm leading-6 text-white">
-        <strong class="font-semibold">2023 서울/경기강원 추계 대학미식축구 선수권전</strong
-        ><svg viewBox="0 0 2 2" class="mx-2 inline h-0.5 w-0.5 fill-current" aria-hidden="true">
-          <circle cx="1" cy="1" r="1" /></svg
-        >현재 출전 팀 등록이 진행중입니다
-      </p>
-      <a
-        href="https://forms.gle/HxFxoZPkzak7QX3C9"
-        class="flex-none rounded-full bg-gray-900 px-3.5 py-1 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
-        >출전 팀 등록 <span aria-hidden="true">&rarr;</span></a
-      >
-    </div>
-    <div class="flex flex-1 justify-end">
-      <button type="button" class="-m-3 p-3 focus-visible:outline-offset-[-4px]" @click="click">
-        <span class="sr-only">Dismiss</span>
-        <XMarkIcon class="h-5 w-5 text-gray-900" aria-hidden="true" />
-      </button>
+    <div v-for="list in upcomingGameList" :key="list.id" class="mx-6 whitespace-nowrap text-white">
+      <div class="flex text-xs">
+        {{ formatGameDay(list.gameday) }}
+      </div>
+      <div class="flex text-xs">
+        <img :src="list.homeTeam.profileImgUrl" alt="" class="h-5 w-5 mr-2" loading="lazy" />
+        {{ getFirstWord(list.homeTeam.name) }}
+      </div>
+      <div class="flex text-xs">
+        <img :src="list.awayTeam.profileImgUrl" alt="" class="h-5 w-5 mr-2" loading="lazy" />
+        {{ getFirstWord(list.awayTeam.name) }}
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { XMarkIcon } from '@heroicons/vue/20/solid'
-import { ref } from 'vue'
+import { axiosInstance } from '@/common/auth/store'
+import { onMounted, ref } from 'vue'
+
+const take = ref(10)
+
+interface UpcomingGame {
+  id: number
+  location: string
+  gameday: string
+  homeTeam: {
+    id: number
+    name: string
+    profileImgUrl: string
+  }
+  awayTeam: {
+    id: number
+    name: string
+    profileImgUrl: string
+  }
+}
+
+const upcomingGameList = ref<UpcomingGame[]>()
+
+const getFirstWord = (str: string) => {
+  const firstSpaceIndex = str.indexOf(' ')
+  return firstSpaceIndex !== -1 ? str.substring(0, firstSpaceIndex) : str
+}
+const formatGameDay = (dateString: string) => {
+  const parts = dateString.replace('T', ' ').split(' ')
+  const datePart = parts[0]
+  const timePart = parts[1]
+
+  const dateParts = datePart.split('-')
+  const year = dateParts[0].slice(-2)
+  const month = dateParts[1]
+  const day = dateParts[2]
+
+  const hour = timePart.split(':')[0]
+
+  return `${year}.${month}.${day} ${hour}시`
+}
+
+const getUpcomingGames = async () => {
+  await axiosInstance
+    .get(`team-game/leagueId/1/upcoming`, {
+      params: {
+        take: take.value
+      }
+    })
+    .then((response) => {
+      upcomingGameList.value = response.data
+      console.log(response.data)
+    })
+    .catch((error) => {
+      if (error) {
+        alert('다가오는 일정 불러오기 오류')
+      }
+    })
+}
+
+onMounted(async () => {
+  await getUpcomingGames()
+})
 
 function click() {
   enable.value = false

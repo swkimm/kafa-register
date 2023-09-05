@@ -1,5 +1,4 @@
 <template>
-  <BannerItem></BannerItem>
   <div class="my-20 max-w-screen-md px-5 mx-auto">
     <div class="px-4 sm:px-0">
       <h3 class="text-2xl sm:text-3xl font-bold leading-7 text-gray-900">
@@ -359,7 +358,6 @@
 </template>
 
 <script lang="ts" setup>
-import BannerItem from '@/components/bannerItem.vue'
 import { PaperClipIcon } from '@heroicons/vue/20/solid'
 import { useHead } from '@vueuse/head'
 

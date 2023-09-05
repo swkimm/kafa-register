@@ -1,5 +1,4 @@
 <template>
-  <BannerItem></BannerItem>
   <div class="text-black py-20 w-full h-full flex flex-col items-center text-center">
     <div class="max-w-screen-md font-extrabold text-3xl mb-10">
       2023 서울/경기강원협회 추계리그 출전 등록 팀
@@ -12,7 +11,6 @@
   </div>
 </template>
 <script lang="ts" setup>
-import BannerItem from '@/components/bannerItem.vue'
 import TeamItem from '@/views/teams/teamItem.vue'
 import { useHead } from '@vueuse/head'
 import { onMounted, ref } from 'vue'
