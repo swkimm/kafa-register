@@ -120,10 +120,10 @@
         class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
       >
         <div class="flex items-center justify-between">
-          <a href="/" class="-m-1.5 p-1.5">
+          <router-link to="/" class="-m-1.5 p-1.5" @click="mobileMenuOpen = false">
             <span class="sr-only">KAFA</span>
             <img class="h-12 w-auto" src="/images/logo.jpg" alt="KAFA" />
-          </a>
+          </router-link>
           <button
             type="button"
             class="-m-2.5 rounded-md p-2.5 text-gray-700"
@@ -220,6 +220,24 @@ const products = [
     href: '/schedule/tournament',
     icon: CalendarDaysIcon
   }
+  // {
+  //   name: '대구경북 지역 일정',
+  //   description: '대구경북 지역 일정을 확인할 수 있습니다',
+  //   href: '#',
+  //   icon: CalendarDaysIcon
+  // },
+  // {
+  //   name: '부산울산경남 지역 일정',
+  //   description: '부산울산경남 지역 일정을 확인할 수 있습니다',
+  //   href: '#',
+  //   icon: CalendarDaysIcon
+  // },
+  // {
+  //   name: '사회인리그 일정',
+  //   description: '사회인리그 일정을 확인할 수 있습니다',
+  //   href: '#',
+  //   icon: CalendarDaysIcon
+  // }
 ]
 
 const callsToAction = [
