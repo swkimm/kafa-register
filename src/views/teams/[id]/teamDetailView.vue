@@ -1,12 +1,25 @@
 <template>
-  <div class="max-w-screen-xl mx-auto bg-cover bg-center text-black w-full h-full">
+  <div class="mx-auto bg-center text-black w-full h-full">
     <TeamBannerItem v-if="teamDetail" :banner="teamDetail" />
     <br />
-    <div class="items-center text-center">
-      <button class="mr-10 text-center" @click="toggleInfo">Info</button>
-      <button class="mr-10" @click="toggleRoster">Roster</button>
-      <button class="mr-10">Stats</button>
-      <br />
+    <div class="mb-3 flex flex-row justify-center pt-4 pb-4">
+      <button
+        class="border border-y-blue-600 border-l-blue-600 bg-white hover:bg-blue-600 hover:text-white text-blue-600 font-bold py-2 px-4 lg:px-24 lg:py-3 md:px-20 md:py-2 sm:px-16 sm:py-2"
+        @click="toggleInfo"
+      >
+        Info
+      </button>
+      <button
+        class="border border-y-blue-600 border-x-blue-600 bg-white hover:bg-blue-600 hover:text-white text-blue-600 font-bold py-2 px-4 lg:px-24 lg:py-3 md:px-20 md:py-2 sm:px-16 sm:py-2"
+        @click="toggleRoster"
+      >
+        Roster
+      </button>
+      <button
+        class="border border-y-blue-600 border-r-blue-600 bg-white hover:bg-blue-600 hover:text-white text-blue-600 font-bold py-2 px-4 lg:px-24 lg:py-3 md:px-20 md:py-2 sm:px-16 sm:py-2"
+      >
+        Stats
+      </button>
     </div>
 
     <div class="mx-10 items-center text-center">
@@ -17,29 +30,7 @@
       </div>
       <br />
       <div v-if="rosterVisible && teamDetail">
-        <table
-          class="p-10 ax-auto w-full table-auto bg-white rounded-2xl border-black overflow-hidden"
-        >
-          <thead class="text-left">
-            <tr class="border-b-2">
-              <th class="text-xs sm:text-base pl-2 py-2"></th>
-              <th class="text-xs sm:text-base pl-2 py-2">Name</th>
-              <th class="text-xs sm:text-base pl-2 py-2">Number</th>
-              <th class="hidden sm:table-cell text-xs sm:text-base pl-2 py-2">Height</th>
-              <th class="hidden sm:table-cell text-xs sm:text-base pl-2 py-2">Weight</th>
-              <th class="text-xs sm:text-base pl-2 py-2">Position</th>
-              <th class="hidden sm:table-cell text-xs sm:text-base pl-2 py-2">Exprience</th>
-            </tr>
-          </thead>
-          <tbody>
-            <RosterItem
-              v-for="(member, index) in teamMember"
-              :key="member.id"
-              :member="member"
-              :class="index % 2 === 0 ? 'bg-white' : 'bg-[#F7F7F4]'"
-            />
-          </tbody>
-        </table>
+        <RosterItem :member="teamMember" />
       </div>
       <br />
     </div>
@@ -58,9 +49,11 @@ import { useRoute } from 'vue-router'
 interface TeamDetail {
   id: number
   name: string
-  profileImgUrl: string
+  initial: string
   message: string | null | undefined
+  profileImgUrl: string
   teamColor: string
+  teamSubColor: string
   workoutId: number
   workout: {
     id: number
@@ -100,7 +93,7 @@ const toggleInfo = () => {
 }
 
 const teamDetail = ref<TeamDetail | null | undefined>()
-const teamMember = ref<TeamMember[] | null | undefined>()
+const teamMember = ref<TeamMember[]>([])
 
 const teamId = useRoute().params.id
 
@@ -121,8 +114,9 @@ const getTeamMember = async () => {
   axiosInstance
     .get(`/team/${teamId}/members`)
     .then((response) => {
-      teamMember.value = response.data
-      console.log(response.data)
+      const responseData = response.data as TeamMember[]
+      teamMember.value = responseData
+      console.log(responseData)
     })
     .catch((error) => {
       if (error) {

@@ -9,22 +9,44 @@
   <h1 v-else class="mb-5 font-extrabold font-mono text-2xl text-left">
     {{ getRemainingWords(roster?.name) }} Roster
   </h1> -->
-
-  <tr class="border-b-2">
-    <td class="text-xs pl-2">
-      <img :src="member?.profileImgUrl" class="h-48 w-32 sm:h-30 sm:w-15 mr-1" />
-    </td>
-    <td class="text-xs sm:text-base pl-2 py-3">{{ member?.name }}</td>
-    <td class="text-xs sm:text-base pl-2 py-3">{{ member?.backNumber }}</td>
-    <td class="hidden sm:table-cell pl-2 py-3">{{ member?.height }}</td>
-    <td class="hidden sm:table-cell pl-2 py-3">{{ member?.weight }}</td>
-    <td class="text-xs sm:text-base pl-2 py-3">
-      {{ member?.position[0] }} {{ member?.position[1] }}
-    </td>
-    <td class="hidden sm:table-cell text-xs sm:text-base pl-2 py-3">
-      {{ formatRegistDate(member?.registrationDate) }}
-    </td>
-  </tr>
+  <table class="p-10 w-full table-auto bg-white rounded-2xl border-black overflow-hidden">
+    <thead class="text-lef border-b">
+      <tr>
+        <th class="text-xs sm:text-base pl-2 py-2"></th>
+        <th class="text-xs sm:text-base pl-2 py-2">Name</th>
+        <th class="text-xs sm:text-base pl-2 py-2">Number</th>
+        <th class="hidden sm:table-cell text-xs sm:text-base pl-2 py-2">Height</th>
+        <th class="hidden sm:table-cell text-xs sm:text-base pl-2 py-2">Weight</th>
+        <th class="text-xs sm:text-base pl-2 py-2">Position</th>
+        <th class="hidden sm:table-cell text-xs sm:text-base pl-2 py-2">Exprience</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        class="border-b"
+        v-for="(profile, index) in member"
+        :key="profile.id"
+        :class="index % 2 === 0 ? 'bg-white' : 'bg-[#F7F7F4]'"
+      >
+        <td class="text-xs pl-2 flex justify-center items-center">
+          <img
+            :src="profile?.profileImgUrl"
+            class="lg:h-96 lg:w-64 md:h-48 md:w-32 sm:h-36 sm:w-24 mr-1"
+          />
+        </td>
+        <td class="text-xs sm:text-base text-center pl-2 py-3">{{ profile?.name }}</td>
+        <td class="text-xs sm:text-base text-center pl-2 py-3">{{ profile?.backNumber }}</td>
+        <td class="hidden sm:table-cell text-center pl-2 py-3">{{ profile?.height }}</td>
+        <td class="hidden sm:table-cell text-center pl-2 py-3">{{ profile?.weight }}</td>
+        <td class="text-xs sm:text-base text-center pl-2 py-3">
+          {{ profile?.position[0] }} {{ profile?.position[1] }}
+        </td>
+        <td class="hidden sm:table-cell text-xs text-center sm:text-base pl-2 py-3">
+          {{ formatRegistDate(profile?.registrationDate) }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </template>
 <script lang="ts" setup>
 import { type PropType, toRefs } from 'vue'
@@ -44,7 +66,7 @@ interface TeamMember {
 
 const props = defineProps({
   member: {
-    type: Object as PropType<TeamMember>,
+    type: Object as PropType<TeamMember[]>,
     required: true
   }
 })
