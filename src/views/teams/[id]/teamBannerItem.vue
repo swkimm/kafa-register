@@ -17,14 +17,16 @@
       </div>
     </div>
     <div class="mb-3 flex flex-row pt-4 pb-4">
-      <div class="flex flex-col items-center border-solid text-white basis-1/3">
+      <div class="flex flex-col items-center border-r text-white basis-1/3">
         <div>CONFERENCE</div>
         <div>{{ banner?.association.name }}</div>
       </div>
-      <div class="flex flex-col items-center text-white basis-1/3">
+
+      <div class="flex flex-col items-center border-r text-white basis-1/3">
         <h4>NICKNAME</h4>
-        <div>{{ banner?.initial }}</div>
+        <div>{{ getRemainingWords(banner?.name) }}</div>
       </div>
+
       <div class="flex flex-col items-center text-white basis-1/3">
         <h4>COLORS</h4>
         <h1>{{ banner?.teamColor }} & {{ banner?.teamSubColor }}</h1>
@@ -78,7 +80,8 @@ const getFirstWord = (str: string) => {
   return firstSpaceIndex !== -1 ? str.substring(0, firstSpaceIndex) : str
 }
 
-const getRemainingWords = (str: string) => {
+const getRemainingWords = (str: string | undefined) => {
+  if (!str) return ''
   const firstSpaceIndex = str.indexOf(' ')
   return firstSpaceIndex !== -1 ? str.substring(firstSpaceIndex + 1) : ''
 }

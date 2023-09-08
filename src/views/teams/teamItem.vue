@@ -1,5 +1,8 @@
 <template>
-  <div class="flex flex-col sm:flex-row font-sans rounded-lg bg-black drop-shadow-xl">
+  <div
+    class="flex flex-col sm:flex-row font-sans rounded-lg bg-black drop-shadow-xl"
+    :style="{ backgroundColor: team.teamColor }"
+  >
     <router-link :to="{ name: 'team detail', params: { id: team.id } }">
       <div class="flex flex-col relative items-center justify-center px-10">
         <img :src="team.profileImgUrl" alt="" class="mt-5 w-40 h-40" loading="lazy" />
