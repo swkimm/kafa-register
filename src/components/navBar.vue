@@ -71,10 +71,10 @@
                 </div>
               </div>
               <div class="grid grid-cols-1 divide-gray-900/5 bg-gray-50">
-                <router-link
+                <a
                   v-for="item in callsToAction"
                   :key="item.name"
-                  :to="item.href"
+                  :href="item.href"
                   class="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-teal-500 hover:text-white"
                   active-class="text-teal-500"
                 >
@@ -84,7 +84,7 @@
                     aria-hidden="true"
                   />
                   {{ item.name }}
-                </router-link>
+                </a>
               </div>
             </PopoverPanel>
           </transition>
@@ -209,35 +209,35 @@ import { ChevronDownIcon, PlayCircleIcon } from '@heroicons/vue/20/solid'
 
 const products = [
   {
-    name: '서울 지역 일정',
+    name: '서울협회',
     description: '서울 지역 일정을 확인할 수 있습니다',
-    href: '/schedule/group-stage',
+    href: '/schedule/association/2',
     icon: CalendarDaysIcon
   },
   {
-    name: '경기강원 지역 일정',
+    name: '경기강원협회',
     description: '경기강원 지역 일정을 확인할 수 있습니다',
-    href: '/schedule/tournament',
+    href: '/schedule/association/3',
+    icon: CalendarDaysIcon
+  },
+  {
+    name: '부산울산경남협회',
+    description: '부산울산경남 지역 일정을 확인할 수 있습니다',
+    href: '/schedule/association/4',
+    icon: CalendarDaysIcon
+  },
+  {
+    name: '대구경북협회',
+    description: '대구경북 지역 일정을 확인할 수 있습니다',
+    href: '/schedule/association/5',
+    icon: CalendarDaysIcon
+  },
+  {
+    name: '사회인연맹',
+    description: '사회인리그 일정을 확인할 수 있습니다',
+    href: '/schedule/association/6',
     icon: CalendarDaysIcon
   }
-  // {
-  //   name: '대구경북 지역 일정',
-  //   description: '대구경북 지역 일정을 확인할 수 있습니다',
-  //   href: '#',
-  //   icon: CalendarDaysIcon
-  // },
-  // {
-  //   name: '부산울산경남 지역 일정',
-  //   description: '부산울산경남 지역 일정을 확인할 수 있습니다',
-  //   href: '#',
-  //   icon: CalendarDaysIcon
-  // },
-  // {
-  //   name: '사회인리그 일정',
-  //   description: '사회인리그 일정을 확인할 수 있습니다',
-  //   href: '#',
-  //   icon: CalendarDaysIcon
-  // }
 ]
 
 const callsToAction = [

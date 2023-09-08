@@ -110,7 +110,6 @@ const getUpcomingGames = async () => {
     })
     .then((response) => {
       upcomingGameList.value = response.data
-      console.log(response.data)
     })
     .catch((error) => {
       if (error) {

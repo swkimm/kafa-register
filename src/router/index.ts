@@ -2,8 +2,8 @@ import DefaultLayout from '@/layouts/defaultLayout.vue'
 import HomeView from '@/views/home/homeView.vue'
 import NoticeView from '@/views/notice/noticeView.vue'
 // import ResultView from '@/views/result/resultView.vue'
-import GroupStageScheduleVue from '@/views/schedule/group-stage/groupStage.vue'
-import TournamentScheduleVue from '@/views/schedule/tournament/tournamentSchedule.vue'
+import LeagueScheduleView from '@/views/schedule/league/leagueSchedule.vue'
+import AssociationScheduleView from '@/views/schedule/association/associationSchedule.vue'
 import TeamDetailView from '@/views/teams/[id]/teamDetailView.vue'
 import TeamListView from '@/views/teams/teamListView.vue'
 import TeamRegisterView from '@/views/temp/uploadTeamProfile.vue'
@@ -29,14 +29,14 @@ const router = createRouter({
           component: NoticeView
         },
         {
-          path: '/schedule/group-stage',
-          name: 'group stage schedule',
-          component: GroupStageScheduleVue
+          path: '/schedule/association/:id',
+          name: 'association schedule',
+          component: AssociationScheduleView
         },
         {
-          path: '/schedule/tournament',
-          name: 'tournament schedule',
-          component: TournamentScheduleVue
+          path: '/schedule/league/:id',
+          name: 'league schedule',
+          component: LeagueScheduleView
         },
         {
           path: '/team',
