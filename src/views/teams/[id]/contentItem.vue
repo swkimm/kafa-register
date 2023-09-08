@@ -38,7 +38,7 @@
 import { computed, ref, type PropType, toRefs } from 'vue'
 
 const currentPage = ref(1)
-const cardsPerPage = 3
+const cardsPerPage = 4
 
 interface TeamDetail {
   id: number

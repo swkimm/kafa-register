@@ -2,8 +2,8 @@
   <div :style="{ backgroundColor: banner?.teamColor || '#173921' }">
     <div class="mb-3 flex flex-row pt-8">
       <div class="basis-1/3 text-white">
-        <h1 class="pl-5 sm:pl-3 sm:text-m md:pl-10 md:text-xl">
-          {{ getFirstWord(banner?.name || '') }}
+        <h1 class="pl-5 sm:pl-3 md:pl-10">
+          <div class="text-xs sm:text-xs">{{ getFirstWord(banner?.name || '') }}</div>
         </h1>
         <h1 class="pl-5 sm:pl-3 sm:text-m md:pl-10 md:text-xl">
           {{ getRemainingWords(banner?.name || '') }}
@@ -12,24 +12,39 @@
       <div class="basis-1/3">
         <img
           :src="banner?.profileImgUrl"
-          class="sm:w-32 sm:h-32 md:w-64 md:h-64 items-center text-center m-auto"
+          class="items-center text-center m-auto hidden lg:block sm:hidden lg:w-64 lg:h-64"
+        />
+      </div>
+      <div class="basis-1/3">
+        <img
+          :src="banner?.profileImgUrl"
+          class="items-center block lg:hidden md:block sm:block sm:w-32 sm:h-32 md:w-32 md:h-32"
         />
       </div>
     </div>
-    <div class="mb-3 flex flex-row pt-4 pb-4">
-      <div class="flex flex-col items-center border-r text-white basis-1/3">
-        <div>CONFERENCE</div>
-        <div>{{ banner?.association.name }}</div>
+    <div class="mb-3 flex flex-col sm:flex-row pt-4 pb-4 px-5">
+      <div
+        class="flex flex-col border-0 text-white basis-1/3 xl:items-center xl:border-r lg:items-center lg:border-r md:items-center md:border-r sm:flex-col sm:items-start"
+      >
+        <div class="text-xs mb-2">CONFERENCE</div>
+        <div class="font-bold lg:text-2xl sm:text-lg">{{ banner?.association.name }}</div>
       </div>
+      <hr class="border-b-0 my-3" />
 
-      <div class="flex flex-col items-center border-r text-white basis-1/3">
-        <h4>NICKNAME</h4>
-        <div>{{ getRemainingWords(banner?.name) }}</div>
+      <div
+        class="flex flex-col text-white basis-1/3 xl:items-center xl:border-r lg:items-center lg:border-r md:items-center md:border-r sm:flex-col sm:items-start sm-border-b"
+      >
+        <div class="text-xs mb-2">NICKNAME</div>
+        <div class="font-bold lg:text-2xl sm:text-lg">{{ getRemainingWords(banner?.name) }}</div>
       </div>
-
-      <div class="flex flex-col items-center text-white basis-1/3">
-        <h4>COLORS</h4>
-        <h1>{{ banner?.teamColor }} & {{ banner?.teamSubColor }}</h1>
+      <hr class="border-b-0 my-3" />
+      <div
+        class="flex flex-col border-0 text-white basis-1/3 xl:items-center xl:border-0 lg:items-center lg:border-0 md:items-center sm:flex-col sm:items-start"
+      >
+        <div class="text-xs mb-2">COLORS</div>
+        <div class="font-bold lg:text-2xl sm:text-lg">
+          {{ banner?.teamColor }} & {{ banner?.teamSubColor }}
+        </div>
       </div>
     </div>
     <div
