@@ -16,7 +16,7 @@ resource "aws_cloudfront_distribution" "main" {
   comment             = "KAFA Register CloudFront"
   default_root_object = "index.html"
 
-  aliases = ["register.kafa.one"]
+  aliases = ["kafa.one"]
 
   default_cache_behavior {
     allowed_methods        = ["GET", "HEAD", "OPTIONS"]
