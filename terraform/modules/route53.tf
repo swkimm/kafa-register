@@ -33,7 +33,7 @@ resource "aws_route53_record" "cert" {
 }
 
 resource "aws_route53_record" "main" {
-  name    = "register.kafa.one"
+  name    = "kafa.one"
   type    = "A"
   zone_id = data.aws_route53_zone.main.zone_id
 
