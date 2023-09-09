@@ -27,7 +27,7 @@ useHead({
     },
     { property: 'og:title', content: '대한미식축구협회-등록 팀 명단' },
     { property: 'og:description', content: '협회 등록 팀 명단 페이지' },
-    { property: 'og:image', content: 'https://register.kafa.one/images/ogtag.png' },
+    { property: 'og:image', content: 'https://kafa.one/images/ogtag.png' },
     { property: 'og:image:height', content: '400' },
     { property: 'og:image:width', content: '800' }
   ]
