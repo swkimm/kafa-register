@@ -36,14 +36,27 @@
                   >
                     <ExclamationTriangleIcon class="h-6 w-6 text-amber-500" aria-hidden="true" />
                   </div>
-                  <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-                    <DialogTitle as="h3" class="text-base font-semibold leading-6 text-gray-900">
+                  <div class="mt-3 sm:ml-4 sm:mt-0 text-left">
+                    <DialogTitle
+                      as="h3"
+                      class="text-sm text-center sm:text-left sm:text-lg font-semibold leading-6 text-gray-900"
+                    >
                       주의
                     </DialogTitle>
                     <div class="mt-2">
-                      <p class="text-sm text-gray-500">
-                        지금 보시는 대회 일정 정보는 확정된 사안이 아니므로 주의해주시기 바랍니다.
-                      </p>
+                      <div class="text-xs sm:text-base text-gray-500">
+                        현재 홈페이지는 협회 공식페이지는 아닙니다.<br />
+                        Playprove(휴먼트러스트 주식회사)는 현재 2023홍천군수배 서울/경기/강원 추계
+                        대학 미식축구대회 운영을 후원 차원에서 시스템개발을 시작하였고, 협회차원의
+                        내용들은 테스트페이지임을 알려드립니다. <br />
+                        지역 협회, 사회인, 플래그연맹등도 동일한수준으로 쉽게 적용가능한 수준으로
+                        개발과 테스트를 진행중입니다.<br />
+                        조금더 발전시켜서 협회 공식페이지가 될 수 있게 노력하겠습니다<br /><br />
+                        <p>문의사항</p>
+                        <p>경기/강원협회 회장 김진국 010-8433-5189</p>
+                        <p>서울미식축구협회 사무국장 이동준 010-5668-0430</p>
+                        <p>PLAYPROVE 대표이사 이기호 01030040862</p>
+                      </div>
                     </div>
                   </div>
                 </div>

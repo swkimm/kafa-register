@@ -171,9 +171,11 @@
       </div>
     </div>
   </div>
+  <alertModal></alertModal>
 </template>
 <script lang="ts" setup>
 import { LinkIcon, MapIcon, MapPinIcon } from '@heroicons/vue/20/solid'
+import alertModal from '@/modal/alertModal.vue'
 
 const features = [
   {
