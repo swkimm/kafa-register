@@ -29,17 +29,14 @@
         :class="index % 2 === 0 ? 'bg-white' : 'bg-[#F7F7F4]'"
       >
         <td class="text-xs pl-2 flex justify-center items-center">
-          <img
-            :src="profile?.profileImgUrl"
-            class="lg:h-96 lg:w-auto md:h-48 md:w-auto sm:h-36 sm:w-auto mr-1"
-          />
+          <img :src="profile?.profileImgUrl" class="sm:h-40 h-24 sm:w-auto mr-1" />
         </td>
         <td class="text-xs sm:text-base text-center pl-2 py-3">{{ profile?.name }}</td>
         <td class="text-xs sm:text-base text-center pl-2 py-3">{{ profile?.backNumber }}</td>
         <td class="hidden sm:table-cell text-center pl-2 py-3">{{ profile?.height }}</td>
         <td class="hidden sm:table-cell text-center pl-2 py-3">{{ profile?.weight }}</td>
         <td class="text-xs sm:text-base text-center pl-2 py-3">
-          {{ profile?.position[0] }} {{ profile?.position[1] }}
+          {{ profile?.position.join('/') }}
         </td>
         <td class="hidden sm:table-cell text-xs text-center sm:text-base pl-2 py-3">
           {{ formatRegistDate(profile?.registrationDate) }}

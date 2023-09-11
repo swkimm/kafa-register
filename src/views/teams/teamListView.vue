@@ -1,9 +1,11 @@
 <template>
-  <div class="text-black py-20 w-full h-full flex flex-col items-center text-center">
-    <div class="max-w-screen-md font-extrabold text-3xl mb-10">
-      2023 서울/경기강원협회 추계리그 출전 등록 팀
+  <div
+    class="text-black py-14 max-w-screen-xl sm:py-20 w-full h-full flex flex-col items-center text-center px-4 md:px-20 mx-auto"
+  >
+    <div class="font-extrabold text-xl sm:text-3xl mb-8 sm:mb-20">
+      {{ associationName }} 등록 팀
     </div>
-    <div class="max-w-screen-xl grid grid-cols-1 md:grid-cols-2 gap-8 px-8 md:px-20">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
       <div v-for="team in teamList" :key="team.id">
         <TeamItem :team="team" />
       </div>
@@ -13,9 +15,10 @@
 <script lang="ts" setup>
 import TeamItem from '@/views/teams/teamItem.vue'
 import { useHead } from '@vueuse/head'
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { axiosInstance } from '@/common/auth/store'
 import type { Team } from './interface/team.interface'
+import { onBeforeRouteLeave, useRoute } from 'vue-router'
 
 useHead({
   title: '대한미식축구협회-등록 팀 명단',
@@ -33,12 +36,14 @@ useHead({
   ]
 })
 
-const associationId = ref(1)
 const teamList = ref<Team[]>()
+const route = useRoute()
+const associationId = computed(() => route.params.id)
+const associationName = ref()
 
 const getTeamList = async () => {
   await axiosInstance
-    .get(`/association/${associationId.value}/teams/all`)
+    .get(`/association/${associationId.value}/teams`)
     .then((response) => {
       teamList.value = response.data
     })
@@ -49,7 +54,29 @@ const getTeamList = async () => {
     })
 }
 
+async function getAssociationInfo() {
+  const result = await axiosInstance
+    .get(`/association/${route.params.id}`)
+    .then((result) => result.data)
+
+  associationName.value = result.name
+}
+
+const unwatch = watch(associationId, async (newId, oldId) => {
+  if (newId !== oldId) {
+    await getTeamList()
+    await getAssociationInfo()
+  }
+})
+
 onMounted(async () => {
   await getTeamList()
+  await getAssociationInfo()
+})
+
+onBeforeRouteLeave(() => {
+  if (unwatch) {
+    unwatch()
+  }
 })
 </script>

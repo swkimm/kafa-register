@@ -9,18 +9,20 @@
     <h1 v-else class="mb-5 font-extrabold font-mono text-2xl text-left">
       {{ getRemainingWords(content?.name) }} Content
     </h1>
-    <div class="overflow-x-auto">
-      <div class="flex lg:justify-center space-x-5">
-        <div v-for="(card, index) in paginatedCards" :key="index" class="flex items-center">
-          <div class="bg-white w-72 mx-auto">
-            <img :src="card.profileImgUrl" class="mx-auto w-48 h-48" />
-            <div class="p-6">
-              <h2 class="text-xl font-semibold text-gray-800">
-                {{ card.contentType }}
-              </h2>
-              <h2 class="text-xl font-semibold text-gray-800">
-                {{ card.title }}
-              </h2>
+    <div class="overflow-hidden">
+      <div class="overflow-x-scroll">
+        <div class="flex flex-row space-x-5">
+          <div v-for="(card, index) in paginatedCards" :key="index" class="flex">
+            <div class="bg-white w-72">
+              <img :src="card.profileImgUrl" class="mx-auto w-48 h-48" />
+              <div class="p-6">
+                <h2 class="text-xl font-semibold text-gray-800">
+                  {{ card.contentType }}
+                </h2>
+                <h2 class="text-xl font-semibold text-gray-800">
+                  {{ card.title }}
+                </h2>
+              </div>
             </div>
           </div>
         </div>

@@ -97,13 +97,74 @@
         >
           대회 요강
         </router-link>
-        <router-link
-          to="/team"
-          class="text-base font-bold leading-6 text-gray-900 hover:text-teal-500"
-          active-class="text-teal-500"
-        >
-          등록 팀 명단
-        </router-link>
+        <Popover class="relative">
+          <PopoverButton
+            class="flex items-center gap-x-1 text-base font-bold leading-6 text-gray-900"
+          >
+            협회 팀 명단
+            <ChevronDownIcon class="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
+          </PopoverButton>
+
+          <transition
+            enter-active-class="transition ease-out duration-200"
+            enter-from-class="opacity-0 translate-y-1"
+            enter-to-class="opacity-100 translate-y-0"
+            leave-active-class="transition ease-in duration-150"
+            leave-from-class="opacity-100 translate-y-0"
+            leave-to-class="opacity-0 translate-y-1"
+          >
+            <PopoverPanel
+              class="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-teal-900/5"
+            >
+              <div class="p-4">
+                <div
+                  v-for="item in associations"
+                  :key="item.name"
+                  class="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-200"
+                >
+                  <div
+                    class="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-200 group-hover:bg-white"
+                  >
+                    <component
+                      :is="item.icon"
+                      class="h-6 w-6 text-gray-600 group-hover:text-teal-500"
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <div class="flex-auto">
+                    <router-link
+                      :to="item.href"
+                      class="block font-semibold text-gray-900"
+                      active-class="text-teal-500"
+                    >
+                      <PopoverButton>
+                        {{ item.name }}
+                        <span class="absolute inset-0" />
+                      </PopoverButton>
+                    </router-link>
+                    <p class="mt-1 text-gray-600">{{ item.description }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 divide-gray-900/5 bg-gray-50">
+                <a
+                  v-for="item in callsToAction"
+                  :key="item.name"
+                  :href="item.href"
+                  class="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-teal-500 hover:text-white"
+                  active-class="text-teal-500"
+                >
+                  <component
+                    :is="item.icon"
+                    class="h-5 w-5 flex-none text-gray-400"
+                    aria-hidden="true"
+                  />
+                  {{ item.name }}
+                </a>
+              </div>
+            </PopoverPanel>
+          </transition>
+        </Popover>
       </PopoverGroup>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
         <a
@@ -168,14 +229,30 @@
               >
                 대회 요강
               </router-link>
-              <router-link
-                to="/team"
-                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-200"
-                active-class="text-teal-500"
-                @click="mobileMenuOpen = false"
-              >
-                협회 팀 명단
-              </router-link>
+              <Disclosure as="div" class="-mx-3" v-slot="{ open }">
+                <DisclosureButton
+                  class="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  협회 팀 명단
+                  <ChevronDownIcon
+                    :class="[open ? 'rotate-180' : '', 'h-5 w-5 flex-none']"
+                    aria-hidden="true"
+                  />
+                </DisclosureButton>
+                <DisclosurePanel class="mt-2 space-y-2">
+                  <router-link
+                    v-for="item in [...associations]"
+                    :key="item.name"
+                    as="a"
+                    @click="mobileMenuOpen = false"
+                    active-class="text-teal-500"
+                    class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    :to="item.href"
+                  >
+                    <DisclosureButton>{{ item.name }}</DisclosureButton>
+                  </router-link>
+                </DisclosurePanel>
+              </Disclosure>
             </div>
             <div class="py-6">
               <a
@@ -236,6 +313,39 @@ const products = [
     name: '사회인연맹',
     description: '사회인리그 일정을 확인할 수 있습니다',
     href: '/schedule/association/6',
+    icon: CalendarDaysIcon
+  }
+]
+
+const associations = [
+  {
+    name: '서울협회',
+    description: '서울 협회 등록 팀 명단',
+    href: '/association/2/teams',
+    icon: CalendarDaysIcon
+  },
+  {
+    name: '경기강원협회',
+    description: '경기강원 협회 등록 팀 명단',
+    href: '/association/3/teams',
+    icon: CalendarDaysIcon
+  },
+  {
+    name: '부산울산경남협회',
+    description: '부산울산경남 협회 등록 팀 명단',
+    href: '/association/4/teams',
+    icon: CalendarDaysIcon
+  },
+  {
+    name: '대구경북협회',
+    description: '대구경북협회 협회 등록 팀 명단',
+    href: '/association/5/teams',
+    icon: CalendarDaysIcon
+  },
+  {
+    name: '사회인연맹',
+    description: '사회인연맹 등록 팀 명단',
+    href: '/association/6/teams',
     icon: CalendarDaysIcon
   }
 ]

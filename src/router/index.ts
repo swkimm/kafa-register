@@ -39,7 +39,7 @@ const router = createRouter({
           component: LeagueScheduleView
         },
         {
-          path: '/team',
+          path: '/association/:id/teams',
           name: 'team',
           component: TeamListView
         },

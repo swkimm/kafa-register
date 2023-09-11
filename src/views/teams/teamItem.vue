@@ -1,16 +1,19 @@
 <template>
   <div
-    class="flex flex-col sm:flex-row font-sans rounded-lg bg-black drop-shadow-xl"
+    class="flex flex-col sm:flex-row font-sans rounded-lg bg-black drop-shadow-xl text-white"
     :style="{ backgroundColor: team.teamColor }"
   >
     <router-link :to="{ name: 'team detail', params: { id: team.id } }">
       <div class="flex flex-col relative items-center justify-center px-10">
-        <img :src="team.profileImgUrl" alt="" class="mt-5 w-40 h-40" loading="lazy" />
+        <img :src="team.profileImgUrl" alt="" class="mt-5 h-40" loading="lazy" />
       </div>
     </router-link>
     <form @submit.prevent="openDetail" class="flex-auto p-5 sm:w-56">
       <div class="flex flex-wrap">
-        <h1 class="flex-auto text-lg font-extrabold text-white">
+        <h1
+          class="flex-1 text-lg font-extrabold"
+          :class="{ 'text-black': isWhite(team.teamColor) }"
+        >
           {{ getFirstWord(team.name) }}
         </h1>
         <div class="w-full flex-none text-sm font-bold text-gray-400 mt-2">
@@ -20,13 +23,18 @@
       <div class="flex my-6 text-sm font-bold">
         <div class="mx-auto">
           <router-link :to="{ name: 'team detail', params: { id: team.id } }">
-            <button class="h-10 px-6 font-semibold rounded-md bg-white text-black">
+            <button
+              class="h-10 px-6 font-semibold rounded-md bg-white text-black"
+              :class="{ 'border-2 border-black': isWhite(team.teamColor) }"
+            >
               팀 소개 보기
             </button>
           </router-link>
         </div>
       </div>
-      <p class="text-sm text-white">{{ team.createdAt.substring(0, 10) }}</p>
+      <p class="text-sm" :class="{ 'text-black': isWhite(team.teamColor) }">
+        {{ team.createdAt.substring(0, 10) }}
+      </p>
     </form>
   </div>
 </template>
@@ -54,6 +62,10 @@ const { team } = toRefs(props)
 
 function openDetail() {
   open.value = true
+}
+
+function isWhite(color: string) {
+  return color === '#ffffff' || color === 'white'
 }
 
 const open = ref(false)

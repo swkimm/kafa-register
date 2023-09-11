@@ -2,31 +2,35 @@
   <div class="mx-auto bg-center text-black w-full h-full">
     <TeamBannerItem v-if="teamDetail" :banner="teamDetail" />
     <br />
-    <div class="mb-3 flex flex-row justify-center pt-4 pb-4">
-      <button
-        class="border border-y-blue-600 border-l-blue-600 bg-white hover:bg-blue-600 hover:text-white text-blue-600 font-bold py-2 px-4 lg:px-24 lg:py-3 md:px-20 md:py-2 sm:px-16 sm:py-2"
-        @click="toggleInfo"
-      >
-        Info
-      </button>
-      <button
-        class="border border-y-blue-600 border-x-blue-600 bg-white hover:bg-blue-600 hover:text-white text-blue-600 font-bold py-2 px-4 lg:px-24 lg:py-3 md:px-20 md:py-2 sm:px-16 sm:py-2"
-        @click="toggleRoster"
-      >
-        Roster
-      </button>
-      <button
-        class="border border-y-blue-600 border-r-blue-600 bg-white hover:bg-blue-600 hover:text-white text-blue-600 font-bold py-2 px-4 lg:px-24 lg:py-3 md:px-20 md:py-2 sm:px-16 sm:py-2"
-      >
-        Stats
-      </button>
+    <div class="w-full mx-auto max-w-screen-xl py-8 px-4 sm:px-20">
+      <TabGroup>
+        <TabList class="flex space-x-1 rounded-xl bg-slate-600/20 p-1">
+          <Tab v-for="category in tabs" as="template" :key="category.name" v-slot="{ selected }">
+            <button
+              :class="[
+                'w-full rounded-lg py-2.5 text-sm font-bold leading-5 text-black',
+                'focus:outline-none',
+                selected
+                  ? 'bg-black text-white shadow'
+                  : 'text-black hover:bg-white/[0.12] hover:text-white'
+              ]"
+              @click="category.callback"
+            >
+              {{ category.name }}
+            </button>
+          </Tab>
+        </TabList>
+      </TabGroup>
     </div>
 
-    <div class="mx-10 items-center text-center">
+    <div class="w-full mx-auto max-w-screen-xl px-4 py-8 sm:px-20 items-center text-center">
       <div v-if="infoVisible && teamDetail">
-        <ContentItem v-if="teamDetail" :content="teamDetail" />
-        <br />
-        <IntroItem v-if="teamDetail" :intro="teamDetail" />
+        <div class="mb-16">
+          <ContentItem v-if="teamDetail" :content="teamDetail" />
+        </div>
+        <div>
+          <IntroItem v-if="teamDetail" :intro="teamDetail" />
+        </div>
       </div>
       <br />
       <div v-if="rosterVisible && teamDetail">
@@ -40,7 +44,7 @@
 import RosterItem from './rosterItem.vue'
 import ContentItem from './contentItem.vue'
 import TeamBannerItem from './teamBannerItem.vue'
-
+import { TabGroup, TabList, Tab } from '@headlessui/vue'
 import IntroItem from './introItem.vue'
 import { axiosInstance } from '@/common/auth/store'
 import { onMounted, ref } from 'vue'
@@ -92,6 +96,12 @@ const toggleInfo = () => {
   infoVisible.value = true
 }
 
+const tabs = ref([
+  { name: 'Info', callback: toggleInfo },
+  { name: 'Roster', callback: toggleRoster },
+  { name: 'Stat', callback: () => [] }
+])
+
 const teamDetail = ref<TeamDetail | null | undefined>()
 const teamMember = ref<TeamMember[]>([])
 
@@ -116,7 +126,6 @@ const getTeamMember = async () => {
     .then((response) => {
       const responseData = response.data as TeamMember[]
       teamMember.value = responseData
-      console.log(responseData)
     })
     .catch((error) => {
       if (error) {
