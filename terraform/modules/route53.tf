@@ -4,14 +4,13 @@ provider "aws" {
 }
 
 data "aws_route53_zone" "main" {
-  name = "kafa.one."
+  name = "playprove.one."
 }
 
 resource "aws_acm_certificate" "main" {
-  domain_name               = "kafa.one"
-  subject_alternative_names = ["*.kafa.one"]
-  validation_method         = "DNS"
-  provider                  = aws.us-east-1
+  domain_name       = "kafa.playprove.one"
+  validation_method = "DNS"
+  provider          = aws.us-east-1
 }
 
 resource "aws_route53_record" "cert" {
@@ -33,7 +32,7 @@ resource "aws_route53_record" "cert" {
 }
 
 resource "aws_route53_record" "main" {
-  name    = "kafa.one"
+  name    = "kafa.playprove.one"
   type    = "A"
   zone_id = data.aws_route53_zone.main.zone_id
 

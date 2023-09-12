@@ -367,11 +367,11 @@ useHead({
     { name: 'description', content: '2023 서울경기강원 추계대회 요강' },
     {
       property: 'og:url',
-      content: 'https://register.kafa.one/notice'
+      content: 'https://kafa.playprove.one/notice'
     },
     { property: 'og:title', content: '대한미식축구협회-대회 요강' },
     { property: 'og:description', content: '2023 서울경기강원 추계대회 요강' },
-    { property: 'og:image', content: 'https://kafa.one/images/ogtag.png' },
+    { property: 'og:image', content: 'https://kafa.playprove.one/images/ogtag.png' },
     { property: 'og:image:height', content: '400' },
     { property: 'og:image:width', content: '800' }
   ]
