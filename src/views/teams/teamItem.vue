@@ -1,18 +1,18 @@
 <template>
   <div
     class="flex flex-col sm:flex-row font-sans rounded-lg bg-black drop-shadow-xl text-white"
-    :style="{ backgroundColor: team.teamColor }"
+    :style="{ backgroundColor: team.team_color }"
   >
     <router-link :to="{ name: 'team detail', params: { id: team.id } }">
       <div class="flex flex-col relative items-center justify-center px-10">
-        <img :src="team.profileImgUrl" alt="" class="mt-5 h-40" loading="lazy" />
+        <img :src="team.profile_img_url" alt="" class="mt-5 h-40" loading="lazy" />
       </div>
     </router-link>
     <form @submit.prevent="openDetail" class="flex-auto p-5 sm:w-56">
       <div class="flex flex-wrap">
         <h1
           class="flex-1 text-lg font-extrabold"
-          :class="{ 'text-black': isWhite(team.teamColor) }"
+          :class="{ 'text-black': isWhite(team.team_color) }"
         >
           {{ getFirstWord(team.name) }}
         </h1>
@@ -25,15 +25,15 @@
           <router-link :to="{ name: 'team detail', params: { id: team.id } }">
             <button
               class="h-10 px-6 font-semibold rounded-md bg-white text-black"
-              :class="{ 'border-2 border-black': isWhite(team.teamColor) }"
+              :class="{ 'border-2 border-black': isWhite(team.team_color) }"
             >
               팀 소개 보기
             </button>
           </router-link>
         </div>
       </div>
-      <p class="text-sm" :class="{ 'text-black': isWhite(team.teamColor) }">
-        {{ team.createdAt.substring(0, 10) }}
+      <p class="text-sm" :class="{ 'text-black': isWhite(team.team_color) }">
+        {{ team.created_at.substring(0, 10) }}
       </p>
     </form>
   </div>

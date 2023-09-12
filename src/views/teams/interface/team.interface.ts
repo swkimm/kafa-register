@@ -1,15 +1,12 @@
 export interface Team {
   id: number
-  workoutId: number
+  workout_id: number
   name: string
   message?: string
-  teamColor: string
-  teamSubColor: string
-  profileImgUrl: string
-  createdAt: string
-  associationId: number
-  workout: {
-    id: number
-    name: string
-  }
+  team_color: string
+  team_sub_color: string
+  profile_img_url: string
+  created_at: string
+  association_id: number
+  initial: string
 }
