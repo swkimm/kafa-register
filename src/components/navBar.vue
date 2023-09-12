@@ -167,12 +167,14 @@
         </Popover>
       </PopoverGroup>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-        <a
-          href="https://forms.gle/HxFxoZPkzak7QX3C9"
-          class="text-base font-bold leading-6 text-teal-500"
+        <router-link
+          to="/auth/login"
+          class="text-base font-bold leading-6 text-gray-900 hover:text-teal-500"
+          active-class="text-teal-500"
+          @click="mobileMenuOpen = false"
         >
-          출전 팀 등록하기 <span aria-hidden="true">&rarr;</span></a
-        >
+          로그인
+        </router-link>
       </div>
     </nav>
     <Dialog as="div" class="lg:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
@@ -255,11 +257,14 @@
               </Disclosure>
             </div>
             <div class="py-6">
-              <a
-                href="https://forms.gle/HxFxoZPkzak7QX3C9"
-                class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-teal-500 hover:bg-gray-200"
-                >출전 팀 등록하기</a
+              <router-link
+                to="/auth/login"
+                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-200"
+                active-class="text-teal-500"
+                @click="mobileMenuOpen = false"
               >
+                로그인
+              </router-link>
             </div>
           </div>
         </div>

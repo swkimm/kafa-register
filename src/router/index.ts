@@ -8,6 +8,7 @@ import TeamDetailView from '@/views/teams/[id]/teamDetailView.vue'
 import TeamListView from '@/views/teams/teamListView.vue'
 import TeamRegisterView from '@/views/temp/uploadTeamProfile.vue'
 import TeamMemberRegisterView from '@/views/temp/uploadTeamMemberProfile.vue'
+import LoginView from '@/views/auth/loginView.vue'
 
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -57,7 +58,13 @@ const router = createRouter({
           path: '/register/member',
           name: 'register member',
           component: TeamMemberRegisterView
+        },
+        {
+          path: '/auth/login',
+          name: 'login',
+          component: LoginView
         }
+
         // {
         //   path: '/result',
         //   name: 'result',
