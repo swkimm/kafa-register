@@ -1,32 +1,45 @@
 <template>
   <div class="flex justify-center items-center w-full bg-indigo-800">
     <div class="max-w-screen-xl px-4 sm:px-20 overflow-x-hidden">
-      <div v-if="enable" class="flex flex-row space-x-3 py-2.5 overflow-x-scroll">
+      <div
+        v-if="enable"
+        class="flex flex-row space-x-3 py-2 overflow-x-scroll"
+        @mousedown="startDragging"
+        @mousemove="performDrag"
+        @mouseup="endDragging"
+        @mouseleave="endDragging"
+      >
         <div
           v-for="list in upcomingGameList"
           :key="list.id"
-          class="whitespace-nowrap text-white flex flex-col gap-y-1 border-solid border-x border-white px-3 py-2"
+          class="whitespace-nowrap text-white gap-y-0.5 flex flex-col border-solid border-r border-white px-1 py-0.5"
         >
-          <div class="flex text-xs font-bold mb-1">
-            {{ formatGameDay(list.gameday) }}
-          </div>
-          <div class="flex text-xs font-semibold">
-            <img
-              :src="list.homeTeam.profileImgUrl"
-              alt=""
-              class="h-5 w-5 mr-2 rounded-full"
-              loading="lazy"
-            />
-            {{ getFirstWord(list.homeTeam.initial) }}
-          </div>
-          <div class="flex text-xs font-semibold">
-            <img
-              :src="list.awayTeam.profileImgUrl"
-              alt=""
-              class="h-5 w-5 mr-2 rounded-full"
-              loading="lazy"
-            />
-            {{ getFirstWord(list.awayTeam.initial) }}
+          <div class="mx-auto w-28">
+            <div class="flex text-xxs font-bold mb-1">
+              {{ formatGameDay(list.gameday) }}
+            </div>
+            <div class="flex text-xs font-semibold">
+              <img
+                :src="list.homeTeam.profileImgUrl"
+                alt=""
+                class="h-4 w-4 mr-6 rounded-full"
+                loading="lazy"
+              />
+              <p>
+                {{ list.homeTeam.initial }}
+              </p>
+            </div>
+            <div class="flex text-xs font-semibold">
+              <img
+                :src="list.awayTeam.profileImgUrl"
+                alt=""
+                class="h-4 w-4 mr-6 rounded-full"
+                loading="lazy"
+              />
+              <p>
+                {{ list.awayTeam.initial }}
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -64,41 +77,18 @@ interface UpcomingGame {
 
 const upcomingGameList = ref<UpcomingGame[]>()
 
-const getFirstWord = (str: string) => {
-  const firstSpaceIndex = str.indexOf(' ')
-  return firstSpaceIndex !== -1 ? str.substring(0, firstSpaceIndex) : str
-}
 const formatGameDay = (gameday: string) => {
   const date = new Date(gameday)
 
-  date.setHours(date.getHours() - 9)
+  const day = date.getDate().toLocaleString()
+  const hour = date.getHours()
+  const min = date.getMinutes().toLocaleString()
+  const month = date.getMonth() + 1
 
-  const monthNames = [
-    'JAN',
-    'FEB',
-    'MAR',
-    'APR',
-    'MAY',
-    'JUN',
-    'JUL',
-    'AUG',
-    'SEP',
-    'OCT',
-    'NOV',
-    'DEC'
-  ]
+  const hourText = hour < 12 ? 'AM ' + hour : 'PM ' + (hour - 12)
 
-  const day = date.getDate()
-  const month = monthNames[date.getMonth()]
-  const hours = date.getHours()
-  const minutes = date.getMinutes()
-  const ampm = hours >= 12 ? 'pm' : 'am'
-
-  if (minutes === 0) {
-    return `${month} ${day}th, ${hours % 12 || 12} ${ampm}`
-  } else {
-    return `${month} ${day}th, ${hours % 12 || 12}:${minutes}0 ${ampm}`
-  }
+  return `${month.toString().padStart(2, '0')}/${day.padStart(2, '0')} 
+  ${hourText}:${min.padStart(2, '0')}`
 }
 
 const getUpcomingGames = async () => {
@@ -123,5 +113,55 @@ onMounted(async () => {
 })
 
 const enable = ref(true)
+
+const isDragging = ref(false)
+
+let startX = ref(0)
+let scrollLeft = ref(0)
+
+const startDragging = (e: MouseEvent) => {
+  isDragging.value = true
+  const target = e.currentTarget as HTMLElement
+  startX.value = e.pageX - target.offsetLeft
+  scrollLeft.value = target.scrollLeft
+}
+
+const performDrag = (e: MouseEvent) => {
+  if (!isDragging.value) return
+  e.preventDefault()
+  const target = e.currentTarget as HTMLElement
+  const x = e.pageX - target.offsetLeft
+  const walk = x - startX.value
+  target.scrollLeft = scrollLeft.value - walk
+}
+
+const endDragging = () => {
+  isDragging.value = false
+}
 </script>
-<style scoped></style>
+<style scoped>
+/* Chrome, Safari, Opera */
+.overflow-x-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Firefox */
+.overflow-x-scroll {
+  scrollbar-width: thin;
+}
+
+/* IE and Edge */
+.overflow-x-scroll {
+  -ms-overflow-style: none;
+}
+
+.text-xs {
+  font-size: 0.65rem;
+  line-height: 0.95rem;
+}
+
+.text-xxs {
+  font-size: 0.6rem;
+  line-height: 0.9rem;
+}
+</style>

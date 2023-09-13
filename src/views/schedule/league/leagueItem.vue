@@ -55,7 +55,9 @@
               </div>
             </div>
           </th>
-          <td class="px-6 py-4 whitespace-nowrap">{{ formatDate(dataItem.gameday) }}</td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            {{ formatGameDay(dataItem.gameday) }}
+          </td>
           <td class="px-6 py-4 whitespace-nowrap">{{ dataItem.location }}</td>
         </tr>
       </tbody>
@@ -72,27 +74,17 @@ const props = defineProps({
   data: Array as () => GameInfo[]
 })
 
-function formatDate(date: string): string {
-  const d = new Date(date)
-  const monthNames = [
-    '',
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'June',
-    'July',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec'
-  ]
-  const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+const formatGameDay = (gameday: string) => {
+  const date = new Date(gameday)
 
-  return `${monthNames[d.getUTCMonth() + 1]} ${d.getUTCDate()}, ${dayNames[d.getUTCDay()]} ${String(
-    d.getUTCHours()
-  ).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`
+  const day = date.getDate().toLocaleString()
+  const hour = date.getHours()
+  const min = date.getMinutes().toLocaleString()
+  const month = date.getMonth() + 1
+
+  const hourText = hour < 12 ? 'AM ' + hour : 'PM ' + (hour - 12)
+
+  return `${month.toString().padStart(2, '0')}/${day.padStart(2, '0')} 
+  ${hourText}:${min.padStart(2, '0')}`
 }
 </script>
