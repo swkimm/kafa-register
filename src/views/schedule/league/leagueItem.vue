@@ -14,6 +14,7 @@
           v-for="dataItem in props.data"
           :key="dataItem.gameday"
           class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+          @click="router.push(`/game/${dataItem.id}`)"
         >
           <td class="px-6 py-4 whitespace-nowrap hidden sm:table-cell">
             <div class="flex flex-row gap-2 items-center flex-nowrap">
@@ -68,11 +69,14 @@
 <style scoped></style>
 
 <script lang="ts" setup>
+import { useRouter } from 'vue-router'
 import type { GameInfo } from './interfaces'
 
 const props = defineProps({
   data: Array as () => GameInfo[]
 })
+
+const router = useRouter()
 
 const formatGameDay = (gameday: string) => {
   const date = new Date(gameday)
@@ -84,7 +88,7 @@ const formatGameDay = (gameday: string) => {
 
   const hourText = hour < 12 ? 'AM ' + hour : 'PM ' + (hour - 12)
 
-  return `${month.toString().padStart(2, '0')}/${day.padStart(2, '0')} 
+  return `${month.toString().padStart(2, '0')}/${day.padStart(2, '0')}
   ${hourText}:${min.padStart(2, '0')}`
 }
 </script>

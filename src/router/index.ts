@@ -1,7 +1,7 @@
 import DefaultLayout from '@/layouts/defaultLayout.vue'
 import HomeView from '@/views/home/homeView.vue'
 import NoticeView from '@/views/notice/noticeView.vue'
-// import ResultView from '@/views/result/resultView.vue'
+import GameView from '@/views/game/gameView.vue'
 import LeagueScheduleView from '@/views/schedule/league/leagueSchedule.vue'
 import AssociationScheduleView from '@/views/schedule/association/associationSchedule.vue'
 import TeamDetailView from '@/views/teams/[id]/teamDetailView.vue'
@@ -63,13 +63,12 @@ const router = createRouter({
           path: '/auth/login',
           name: 'login',
           component: LoginView
+        },
+        {
+          path: '/game/:id',
+          name: 'game',
+          component: GameView
         }
-
-        // {
-        //   path: '/result',
-        //   name: 'result',
-        //   component: ResultView
-        // }
       ]
     }
   ]
