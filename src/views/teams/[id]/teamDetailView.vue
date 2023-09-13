@@ -34,7 +34,95 @@
       </div>
       <br />
       <div v-if="rosterVisible && teamDetail">
-        <RosterItem :member="teamMember" />
+        <Menu as="div" class="relative inline-block text-left">
+          <div>
+            <MenuButton
+              class="inline-flex w-full justify-center rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+            >
+              {{ selectedRosterType }}
+              <ChevronDownIcon
+                class="ml-2 -mr-1 h-5 w-5 text-violet-200 hover:text-violet-100"
+                aria-hidden="true"
+              />
+            </MenuButton>
+          </div>
+
+          <transition
+            enter-active-class="transition duration-100 ease-out"
+            enter-from-class="transform scale-95 opacity-0"
+            enter-to-class="transform scale-100 opacity-100"
+            leave-active-class="transition duration-75 ease-in"
+            leave-from-class="transform scale-100 opacity-100"
+            leave-to-class="transform scale-95 opacity-0"
+          >
+            <MenuItems
+              class="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+            >
+              <div class="px-1 py-1">
+                <MenuItem v-slot="{ active }">
+                  <button
+                    :class="[
+                      active ? 'bg-violet-500 text-white' : 'text-gray-900',
+                      'group flex w-full items-center rounded-md px-2 py-2 text-sm'
+                    ]"
+                    @click="selectedRosterType = Type.Athlete"
+                  >
+                    Athlete
+                  </button>
+                </MenuItem>
+                <MenuItem v-slot="{ active }">
+                  <button
+                    :class="[
+                      active ? 'bg-violet-500 text-white' : 'text-gray-900',
+                      'group flex w-full items-center rounded-md px-2 py-2 text-sm'
+                    ]"
+                    @click="selectedRosterType = Type.Staff"
+                  >
+                    Staff
+                  </button>
+                </MenuItem>
+                <MenuItem v-slot="{ active }">
+                  <button
+                    :class="[
+                      active ? 'bg-violet-500 text-white' : 'text-gray-900',
+                      'group flex w-full items-center rounded-md px-2 py-2 text-sm'
+                    ]"
+                    @click="selectedRosterType = Type.HeadCoach"
+                  >
+                    HeadCoach
+                  </button>
+                </MenuItem>
+                <MenuItem v-slot="{ active }">
+                  <button
+                    :class="[
+                      active ? 'bg-violet-500 text-white' : 'text-gray-900',
+                      'group flex w-full items-center rounded-md px-2 py-2 text-sm'
+                    ]"
+                    @click="selectedRosterType = Type.Coach"
+                  >
+                    Coach
+                  </button>
+                </MenuItem>
+              </div>
+            </MenuItems>
+          </transition>
+        </Menu>
+        <div v-if="selectedRosterType === Type.Athlete">
+          <div class="py-3 text-start font-bold text-lg sm:text-2xl">Athlete</div>
+          <RosterItem :member="athlete" :type="Type.Athlete" />
+        </div>
+        <div v-if="selectedRosterType === Type.Staff">
+          <div class="py-3 text-start font-bold text-lg sm:text-2xl">Staff</div>
+          <RosterItem :member="staff" :type="Type.Staff" />
+        </div>
+        <div v-if="selectedRosterType === Type.Coach">
+          <div class="py-3 text-start font-bold text-lg sm:text-2xl">Coach</div>
+          <RosterItem :member="coach" :type="Type.Coach" />
+        </div>
+        <div v-if="selectedRosterType === Type.HeadCoach">
+          <div class="py-3 text-start font-bold text-lg sm:text-2xl">HeadCoach</div>
+          <RosterItem :member="headCoach" :type="Type.HeadCoach" />
+        </div>
       </div>
       <br />
     </div>
@@ -47,8 +135,11 @@ import TeamBannerItem from './teamBannerItem.vue'
 import { TabGroup, TabList, Tab } from '@headlessui/vue'
 import IntroItem from './introItem.vue'
 import { axiosInstance } from '@/common/auth/store'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, type Ref } from 'vue'
 import { useRoute } from 'vue-router'
+import { Type } from './interfaces/member-type.interface'
+import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
+import { ChevronDownIcon } from '@heroicons/vue/20/solid'
 
 interface TeamDetail {
   id: number
@@ -75,7 +166,7 @@ interface TeamMember {
   name: string
   backNumber: number
   registrationDate: string
-  type: string
+  type: Type
   weight: number
   height: number
   position: [string, string]
@@ -104,8 +195,14 @@ const tabs = ref([
 
 const teamDetail = ref<TeamDetail | null | undefined>()
 const teamMember = ref<TeamMember[]>([])
+const athlete = ref<TeamMember[]>([])
+const headCoach = ref<TeamMember[]>([])
+const coach = ref<TeamMember[]>([])
+const staff = ref<TeamMember[]>([])
 
 const teamId = useRoute().params.id
+
+const selectedRosterType: Ref<Type> = ref(Type.Athlete)
 
 const getTeamDetail = async () => {
   axiosInstance
@@ -132,6 +229,13 @@ const getTeamMember = async () => {
         console.error('선수 프로필 불러오기 오류')
       }
     })
+
+  if (teamMember.value.length > 0) {
+    headCoach.value = teamMember.value.filter((member) => member.type === Type.HeadCoach)
+    athlete.value = teamMember.value.filter((member) => member.type === Type.Athlete)
+    coach.value = teamMember.value.filter((member) => member.type === Type.Coach)
+    staff.value = teamMember.value.filter((member) => member.type === Type.Staff)
+  }
 }
 
 onMounted(async () => {

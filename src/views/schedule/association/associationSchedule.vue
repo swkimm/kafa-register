@@ -1,7 +1,9 @@
 <template>
-  <div class="text-black py-20 w-full h-full flex flex-col items-center">
-    <div class="py-15 max-w-screen-xl rounded-2xl px-4 md:px-20 w-full">
-      <h1 class="text-center text-3xl font-bold mb-10">{{ associationName }} 리그 일정</h1>
+  <div class="text-black py-12 sm:py-20 w-full h-full flex flex-col items-center">
+    <div class="max-w-screen-xl rounded-2xl px-4 md:px-20 w-full">
+      <h1 class="text-center text-xl sm:text-3xl font-bold mb-10">
+        {{ associationName }} 리그 일정
+      </h1>
       <div v-if="!noItem">
         <div v-for="league in leagues" :key="league.id">
           <leagueItem

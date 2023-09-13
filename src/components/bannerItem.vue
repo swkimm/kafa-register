@@ -12,7 +12,7 @@
         <div
           v-for="list in upcomingGameList"
           :key="list.id"
-          class="whitespace-nowrap text-white gap-y-0.5 flex flex-col border-solid border-r border-white px-1 py-0.5"
+          class="whitespace-nowrap text-white gap-y-0.5 flex flex-col border-solid border-r border-white px-1 py-0.5 hover:bg-indigo-700 active:brightness-95"
           @click="router.push(`/game/${list.id}`)"
         >
           <div class="mx-auto w-28">

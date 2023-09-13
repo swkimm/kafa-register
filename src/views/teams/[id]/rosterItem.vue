@@ -1,23 +1,23 @@
 <template>
-  <br />
-  <!-- <h1
-    v-if="roster?.name === null || roster?.name === undefined"
-    class="mb-5 font-extrabold font-mono text-2xl text-left"
-  >
-    팀명 Roster
-  </h1>
-  <h1 v-else class="mb-5 font-extrabold font-mono text-2xl text-left">
-    {{ getRemainingWords(roster?.name) }} Roster
-  </h1> -->
   <table class="p-10 w-full table-auto bg-white rounded-2xl border-black overflow-hidden">
     <thead class="text-lef border-b">
       <tr>
         <th class="text-xs sm:text-base pl-2 py-2"></th>
         <th class="text-xs sm:text-base pl-2 py-2">Name</th>
-        <th class="text-xs sm:text-base pl-2 py-2">Number</th>
-        <th class="hidden sm:table-cell text-xs sm:text-base pl-2 py-2">Height</th>
-        <th class="hidden sm:table-cell text-xs sm:text-base pl-2 py-2">Weight</th>
-        <th class="text-xs sm:text-base pl-2 py-2">Position</th>
+        <th v-if="props.type === Type.Athlete" class="text-xs sm:text-base pl-2 py-2">Number</th>
+        <th
+          v-if="props.type === Type.Athlete"
+          class="hidden sm:table-cell text-xs sm:text-base pl-2 py-2"
+        >
+          Height
+        </th>
+        <th
+          v-if="props.type === Type.Athlete"
+          class="hidden sm:table-cell text-xs sm:text-base pl-2 py-2"
+        >
+          Weight
+        </th>
+        <th v-if="props.type === Type.Athlete" class="text-xs sm:text-base pl-2 py-2">Position</th>
         <th class="hidden sm:table-cell text-xs sm:text-base pl-2 py-2">Exprience</th>
       </tr>
     </thead>
@@ -28,14 +28,20 @@
         :key="profile.id"
         :class="index % 2 === 0 ? 'bg-white' : 'bg-[#F7F7F4]'"
       >
-        <td class="text-xs pl-2 flex justify-center items-center">
+        <td class="text-xs pl-2 flex justify-start items-center">
           <img :src="profile?.profileImgUrl" class="sm:h-40 h-24 sm:w-auto mr-1" />
         </td>
         <td class="text-xs sm:text-base text-center pl-2 py-3">{{ profile?.name }}</td>
-        <td class="text-xs sm:text-base text-center pl-2 py-3">{{ profile?.backNumber }}</td>
-        <td class="hidden sm:table-cell text-center pl-2 py-3">{{ profile?.height }}</td>
-        <td class="hidden sm:table-cell text-center pl-2 py-3">{{ profile?.weight }}</td>
-        <td class="text-xs sm:text-base text-center pl-2 py-3">
+        <td v-if="props.type === Type.Athlete" class="text-xs sm:text-base text-center pl-2 py-3">
+          {{ profile?.backNumber }}
+        </td>
+        <td v-if="props.type === Type.Athlete" class="hidden sm:table-cell text-center pl-2 py-3">
+          {{ profile?.height }}
+        </td>
+        <td v-if="props.type === Type.Athlete" class="hidden sm:table-cell text-center pl-2 py-3">
+          {{ profile?.weight }}
+        </td>
+        <td v-if="props.type === Type.Athlete" class="text-xs sm:text-base text-center pl-2 py-3">
           {{ profile?.position.join('/') }}
         </td>
         <td class="hidden sm:table-cell text-xs text-center sm:text-base pl-2 py-3">
@@ -47,6 +53,7 @@
 </template>
 <script lang="ts" setup>
 import { type PropType, toRefs } from 'vue'
+import { Type } from './interfaces/member-type.interface'
 
 interface TeamMember {
   id: number
@@ -54,7 +61,7 @@ interface TeamMember {
   name: string
   backNumber: number
   registrationDate: string
-  type: string
+  type: Type
   weight: number
   height: number
   position: [string, string]
@@ -64,6 +71,10 @@ interface TeamMember {
 const props = defineProps({
   member: {
     type: Object as PropType<TeamMember[]>,
+    required: true
+  },
+  type: {
+    type: String as PropType<Type>,
     required: true
   }
 })
