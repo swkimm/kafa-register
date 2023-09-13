@@ -42,11 +42,11 @@ useHead({
     { name: 'description', content: '2023 서울경기강원 추계대회 일정' },
     {
       property: 'og:url',
-      content: 'https://kafa.playprove.one/schedule'
+      content: 'https://kafa.one/schedule'
     },
     { property: 'og:title', content: '대한미식축구협회-대회 일정' },
-    { property: 'og:description', content: '2023 서울경기강원 추계대회 일정' },
-    { property: 'og:image', content: 'https://kafa.playprove.one/images/ogtag.png' },
+    { property: 'og:description', content: '미식축구 대회 일정' },
+    { property: 'og:image', content: 'https://kafa.one/images/ogtag.png' },
     { property: 'og:image:height', content: '400' },
     { property: 'og:image:width', content: '800' }
   ]
