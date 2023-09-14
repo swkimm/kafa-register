@@ -9,39 +9,41 @@
     <div class="max-w-screen-xl rounded-2xl px-4 md:px-20 w-full">
       <div class="text-black grid grid-cols-10 items-center mx-auto">
         <div class="col-span-4">
-          <div
-            class="flex flex-row items-center justify-start text-start gap-x-3 sm:gap-x-5 md:gap-x-8 my-0"
-          >
-            <img :src="gameInfo?.homeTeam.profileImgUrl" alt="" class="w-10 sm:w-18 md:w-24" />
-            <div class="hidden sm:block">
-              <p
-                class="text-xs font-bold text-black"
-                :class="{ 'text-slate-700': gameInfo?.result === GameResult.AwayWin }"
-              >
-                HOME
-              </p>
-              <h1
-                class="text-sm font-semibold sm:text-xl"
-                :class="{ 'text-slate-700': gameInfo?.result === GameResult.AwayWin }"
-              >
-                {{ gameInfo?.homeTeam.name.split(' ')[0] }}
-              </h1>
-            </div>
-            <div class="block sm:hidden">
-              <h1
-                class="text-sm sm:text-xl font-semibold"
-                :class="{ 'text-slate-700': gameInfo?.result === GameResult.AwayWin }"
-              >
-                {{ gameInfo?.homeTeam.initial }}
-              </h1>
-            </div>
+          <router-link :to="`/team/${gameInfo?.homeTeam.id}`">
             <div
-              class="text-lg sm:text-5xl font-black"
-              :class="{ 'text-slate-600': gameInfo?.result === GameResult.AwayWin }"
+              class="flex flex-row items-center justify-start text-start gap-x-3 sm:gap-x-5 md:gap-x-8 my-0"
             >
-              {{ gameInfo?.homeTeamScore ? gameInfo?.homeTeamScore : '--' }}
+              <img :src="gameInfo?.homeTeam.profileImgUrl" alt="" class="w-10 sm:w-18 md:w-24" />
+              <div class="hidden sm:block">
+                <p
+                  class="text-xs font-bold text-black"
+                  :class="{ 'text-slate-700': gameInfo?.result === GameResult.AwayWin }"
+                >
+                  HOME
+                </p>
+                <h1
+                  class="text-sm font-semibold sm:text-xl"
+                  :class="{ 'text-slate-700': gameInfo?.result === GameResult.AwayWin }"
+                >
+                  {{ gameInfo?.homeTeam.name.split(' ')[0] }}
+                </h1>
+              </div>
+              <div class="block sm:hidden">
+                <h1
+                  class="text-sm sm:text-xl font-semibold"
+                  :class="{ 'text-slate-700': gameInfo?.result === GameResult.AwayWin }"
+                >
+                  {{ gameInfo?.homeTeam.initial }}
+                </h1>
+              </div>
+              <div
+                class="text-lg sm:text-5xl font-black"
+                :class="{ 'text-slate-600': gameInfo?.result === GameResult.AwayWin }"
+              >
+                {{ gameInfo?.homeTeamScore ? gameInfo?.homeTeamScore : '--' }}
+              </div>
             </div>
-          </div>
+          </router-link>
         </div>
         <div class="col-span-2">
           <div
@@ -80,39 +82,41 @@
           </div>
         </div>
         <div class="col-span-4">
-          <div
-            class="flex flex-row items-center justify-end text-end gap-x-3 sm:gap-x-5 md:gap-x-8"
-          >
+          <router-link :to="`/team/${gameInfo?.awayTeam.id}`">
             <div
-              class="text-lg sm:text-5xl font-black"
-              :class="{ 'text-slate-600': gameInfo?.result === GameResult.HomeWin }"
+              class="flex flex-row items-center justify-end text-end gap-x-3 sm:gap-x-5 md:gap-x-8"
             >
-              {{ gameInfo?.awayTeamScore ? gameInfo?.awayTeamScore : '--' }}
-            </div>
-            <div class="block sm:hidden">
-              <h1
-                class="text-sm sm:text-xl font-semibold"
-                :class="{ 'text-slate-700': gameInfo?.result === GameResult.HomeWin }"
+              <div
+                class="text-lg sm:text-5xl font-black"
+                :class="{ 'text-slate-600': gameInfo?.result === GameResult.HomeWin }"
               >
-                {{ gameInfo?.awayTeam.initial }}
-              </h1>
+                {{ gameInfo?.awayTeamScore ? gameInfo?.awayTeamScore : '--' }}
+              </div>
+              <div class="block sm:hidden">
+                <h1
+                  class="text-sm sm:text-xl font-semibold"
+                  :class="{ 'text-slate-700': gameInfo?.result === GameResult.HomeWin }"
+                >
+                  {{ gameInfo?.awayTeam.initial }}
+                </h1>
+              </div>
+              <div class="hidden sm:block">
+                <p
+                  class="text-xs font-bold text-black"
+                  :class="{ 'text-slate-700': gameInfo?.result === GameResult.HomeWin }"
+                >
+                  AWAY
+                </p>
+                <h1
+                  class="text-sm sm:text-xl font-semibold"
+                  :class="{ 'text-slate-700': gameInfo?.result === GameResult.HomeWin }"
+                >
+                  {{ gameInfo?.awayTeam.name.split(' ')[0] }}
+                </h1>
+              </div>
+              <img :src="gameInfo?.awayTeam.profileImgUrl" alt="" class="w-10 sm:w-18 md:w-24" />
             </div>
-            <div class="hidden sm:block">
-              <p
-                class="text-xs font-bold text-black"
-                :class="{ 'text-slate-700': gameInfo?.result === GameResult.HomeWin }"
-              >
-                AWAY
-              </p>
-              <h1
-                class="text-sm sm:text-xl font-semibold"
-                :class="{ 'text-slate-700': gameInfo?.result === GameResult.HomeWin }"
-              >
-                {{ gameInfo?.awayTeam.name.split(' ')[0] }}
-              </h1>
-            </div>
-            <img :src="gameInfo?.awayTeam.profileImgUrl" alt="" class="w-10 sm:w-18 md:w-24" />
-          </div>
+          </router-link>
         </div>
       </div>
     </div>

@@ -45,9 +45,9 @@
           :class="{ 'text-black': isWhite(banner?.teamColor as string) }"
           class="flex flex-col border-0 basis-1/3 xl:items-center xl:border-0 lg:items-center lg:border-0 md:items-center sm:flex-col sm:items-start"
         >
-          <div class="text-xs mb-2">COLORS</div>
+          <div class="text-xs mb-2">Established</div>
           <div class="font-bold lg:text-2xl sm:text-lg">
-            {{ banner?.teamColor }} & {{ banner?.teamSubColor }}
+            {{ new Date(banner?.createdAt).getFullYear() }}
           </div>
         </div>
       </div>
@@ -77,6 +77,7 @@ interface TeamDetail {
   profileImgUrl: string
   teamColor: string
   teamSubColor: string
+  createdAt: string
   workoutId: number
   workout: {
     id: number
@@ -90,7 +91,7 @@ interface TeamDetail {
 
 const props = defineProps({
   banner: {
-    type: Object as PropType<TeamDetail | null | undefined>,
+    type: Object as PropType<TeamDetail>,
     required: true
   }
 })

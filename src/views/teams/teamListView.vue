@@ -1,10 +1,8 @@
 <template>
+  <SectionTitleItem :item="{ title: itemTitle, subtitle: associationName }"></SectionTitleItem>
   <div
-    class="text-black py-14 max-w-screen-xl sm:py-20 w-full h-full flex flex-col items-center text-center px-4 md:px-20 mx-auto"
+    class="text-black py-8 sm:py-10 max-w-screen-xl w-full h-full flex flex-col items-center text-center px-4 md:px-20 mx-auto"
   >
-    <div class="font-extrabold text-xl sm:text-3xl mb-8 sm:mb-20">
-      {{ associationName }} 등록 팀
-    </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
       <div v-for="team in teamList" :key="team.id">
         <TeamItem :team="team" />
@@ -19,6 +17,7 @@ import { computed, onMounted, ref, watch } from 'vue'
 import { axiosInstance } from '@/common/auth/store'
 import type { Team } from './interface/team.interface'
 import { onBeforeRouteLeave, useRoute } from 'vue-router'
+import SectionTitleItem from '@/components/sectionTitleItem.vue'
 
 useHead({
   title: '대한미식축구협회-등록 팀 명단',
@@ -40,6 +39,7 @@ const teamList = ref<Team[]>()
 const route = useRoute()
 const associationId = computed(() => route.params.id)
 const associationName = ref()
+const itemTitle = '등록 팀 명단'
 
 const getTeamList = async () => {
   await axiosInstance

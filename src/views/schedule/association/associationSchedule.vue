@@ -1,9 +1,7 @@
 <template>
-  <div class="text-black py-12 sm:py-20 w-full h-full flex flex-col items-center">
+  <SectionTitleItem :item="{ title: itemTitle, subtitle: associationName }"></SectionTitleItem>
+  <div class="text-black py-8 sm:py-10 w-full h-full flex flex-col items-center">
     <div class="max-w-screen-xl rounded-2xl px-4 md:px-20 w-full">
-      <h1 class="text-center text-xl sm:text-3xl font-bold mb-10">
-        {{ associationName }} 리그 일정
-      </h1>
       <div v-if="!noItem">
         <div v-for="league in leagues" :key="league.id">
           <leagueItem
@@ -31,12 +29,14 @@ import { computed, onMounted, ref, watch, type Ref } from 'vue'
 import { onBeforeRouteLeave, useRoute } from 'vue-router'
 import type { LeagueInfo } from './interfaces'
 import leagueItem from './leagueItem.vue'
+import SectionTitleItem from '@/components/sectionTitleItem.vue'
 
 const route = useRoute()
 const routeId = computed(() => route.params.id)
 const noItem = ref(false)
 const associationName = ref()
 const leagues: Ref<LeagueInfo[]> = ref([])
+const itemTitle = '리그일정'
 
 useHead({
   title: '대한미식축구협회-대회 일정',

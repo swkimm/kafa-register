@@ -1,75 +1,41 @@
 <template>
-  <table class="p-10 w-full table-auto bg-white rounded-2xl border-black overflow-hidden">
-    <thead class="text-lef border-b">
-      <tr>
-        <th class="text-xs sm:text-base pl-2 py-2"></th>
-        <th class="text-xs sm:text-base pl-2 py-2">Name</th>
-        <th v-if="props.type === Type.Athlete" class="text-xs sm:text-base pl-2 py-2">Number</th>
-        <th
-          v-if="props.type === Type.Athlete"
-          class="hidden sm:table-cell text-xs sm:text-base pl-2 py-2"
-        >
-          Height
-        </th>
-        <th
-          v-if="props.type === Type.Athlete"
-          class="hidden sm:table-cell text-xs sm:text-base pl-2 py-2"
-        >
-          Weight
-        </th>
-        <th v-if="props.type === Type.Athlete" class="text-xs sm:text-base pl-2 py-2">Position</th>
-        <th class="hidden sm:table-cell text-xs sm:text-base pl-2 py-2">Exprience</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr
-        class="border-b"
-        v-for="(profile, index) in member"
-        :key="profile.id"
-        :class="index % 2 === 0 ? 'bg-white' : 'bg-[#F7F7F4]'"
+  <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+    <div v-for="member in members" :key="member.id" class="group relative">
+      <div
+        class="w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-80 lg:h-80"
       >
-        <td class="text-xs pl-2 flex justify-start items-center">
-          <img :src="profile?.profileImgUrl" class="sm:h-40 h-24 sm:w-auto mr-1" />
-        </td>
-        <td class="text-xs sm:text-base text-center pl-2 py-3">{{ profile?.name }}</td>
-        <td v-if="props.type === Type.Athlete" class="text-xs sm:text-base text-center pl-2 py-3">
-          {{ profile?.backNumber }}
-        </td>
-        <td v-if="props.type === Type.Athlete" class="hidden sm:table-cell text-center pl-2 py-3">
-          {{ profile?.height }}
-        </td>
-        <td v-if="props.type === Type.Athlete" class="hidden sm:table-cell text-center pl-2 py-3">
-          {{ profile?.weight }}
-        </td>
-        <td v-if="props.type === Type.Athlete" class="text-xs sm:text-base text-center pl-2 py-3">
-          {{ profile?.position.join('/') }}
-        </td>
-        <td class="hidden sm:table-cell text-xs text-center sm:text-base pl-2 py-3">
-          {{ formatRegistDate(profile?.registrationDate) }}
-        </td>
-      </tr>
-    </tbody>
-  </table>
+        <img
+          :src="member.profileImgUrl"
+          class="h-full w-full object-cover object-center lg:h-full lg:w-full"
+          @click="toggleDialog(member)"
+        />
+      </div>
+      <div class="mt-3 flex justify-between">
+        <div>
+          <h3 class="text-lg font-semibold text-gray-700">{{ member.name }}</h3>
+          <p class="mt-1 text-sm text-gray-500 font-normal">{{ member.position.join('/') }}</p>
+        </div>
+        <p class="text-lg font-medium text-gray-900">{{ member.backNumber }}</p>
+      </div>
+    </div>
+  </div>
+  <MemberModal
+    :open="dialogOpen"
+    @update:open="(newOpenValue) => (dialogOpen = newOpenValue)"
+    :member="member"
+    :team-name="teamName"
+  ></MemberModal>
 </template>
 <script lang="ts" setup>
-import { type PropType, toRefs } from 'vue'
+import { ref, type PropType, type Ref, onMounted } from 'vue'
 import { Type } from './interfaces/member-type.interface'
-
-interface TeamMember {
-  id: number
-  teamId: number
-  name: string
-  backNumber: number
-  registrationDate: string
-  type: Type
-  weight: number
-  height: number
-  position: [string, string]
-  profileImgUrl: string
-}
+import type { TeamMember } from './interfaces/team-member.interface'
+import MemberModal from './memberModal.vue'
+import { axiosInstance } from '@/common/auth/store'
+import { useRoute } from 'vue-router'
 
 const props = defineProps({
-  member: {
+  members: {
     type: Object as PropType<TeamMember[]>,
     required: true
   },
@@ -79,13 +45,31 @@ const props = defineProps({
   }
 })
 
-const formatRegistDate = (dateString: string): number => {
-  const date = new Date(dateString)
-  const year = date.getFullYear()
-  return year
+const route = useRoute()
+
+const dialogOpen = ref(false)
+
+const member: Ref<TeamMember> = ref(props.members[0])
+
+const toggleDialog = (newMember: TeamMember) => {
+  dialogOpen.value = !dialogOpen.value
+  member.value = newMember
 }
 
-const { member } = toRefs(props)
+const teamName: Ref<string> = ref('')
+
+onMounted(async () => {
+  axiosInstance
+    .get(`/team/${route.params.id}`)
+    .then((response) => {
+      teamName.value = response.data.name
+    })
+    .catch((error) => {
+      if (error) {
+        console.error(error)
+      }
+    })
+})
 </script>
 
 <style scoped></style>

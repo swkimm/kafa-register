@@ -2,7 +2,7 @@
   <div class="mx-auto bg-center text-black w-full h-full">
     <TeamBannerItem v-if="teamDetail" :banner="teamDetail" />
     <br />
-    <div class="w-full mx-auto max-w-screen-xl py-8 px-4 sm:px-20">
+    <div class="w-full mx-auto max-w-screen-xl py-4 px-4 sm:px-20">
       <TabGroup>
         <TabList class="flex space-x-1 rounded-xl bg-slate-600/20 p-1">
           <Tab v-for="category in tabs" as="template" :key="category.name" v-slot="{ selected }">
@@ -23,7 +23,7 @@
       </TabGroup>
     </div>
 
-    <div class="w-full mx-auto max-w-screen-xl px-4 py-8 sm:px-20 items-center text-center">
+    <div class="w-full mx-auto max-w-screen-xl px-4 py-4 sm:px-20">
       <div v-if="infoVisible && teamDetail">
         <div class="mb-16">
           <ContentItem v-if="teamDetail" :content="teamDetail" />
@@ -34,69 +34,64 @@
       </div>
       <br />
       <div v-if="rosterVisible && teamDetail">
+        <div class="inline-block font-semibold mr-3 text-lg sm:text-2xl">로스터 선택</div>
         <Menu as="div" class="relative inline-block text-left">
           <div>
             <MenuButton
-              class="inline-flex w-full justify-center rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+              class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
             >
               {{ selectedRosterType }}
-              <ChevronDownIcon
-                class="ml-2 -mr-1 h-5 w-5 text-violet-200 hover:text-violet-100"
-                aria-hidden="true"
-              />
+              <ChevronDownIcon class="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
             </MenuButton>
           </div>
 
           <transition
-            enter-active-class="transition duration-100 ease-out"
-            enter-from-class="transform scale-95 opacity-0"
-            enter-to-class="transform scale-100 opacity-100"
-            leave-active-class="transition duration-75 ease-in"
-            leave-from-class="transform scale-100 opacity-100"
-            leave-to-class="transform scale-95 opacity-0"
+            enter-active-class="transition ease-out duration-100"
+            enter-from-class="transform opacity-0 scale-95"
+            enter-to-class="transform opacity-100 scale-100"
+            leave-active-class="transition ease-in duration-75"
+            leave-from-class="transform opacity-100 scale-100"
+            leave-to-class="transform opacity-0 scale-95"
           >
             <MenuItems
-              class="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+              class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
             >
-              <div class="px-1 py-1">
+              <div class="py-1">
                 <MenuItem v-slot="{ active }">
-                  <button
+                  <a
                     :class="[
-                      active ? 'bg-violet-500 text-white' : 'text-gray-900',
-                      'group flex w-full items-center rounded-md px-2 py-2 text-sm'
+                      active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                      'block px-4 py-2 text-sm'
                     ]"
                     @click="selectedRosterType = Type.Athlete"
+                    >Athlete</a
                   >
-                    Athlete
-                  </button>
                 </MenuItem>
                 <MenuItem v-slot="{ active }">
-                  <button
+                  <a
                     :class="[
-                      active ? 'bg-violet-500 text-white' : 'text-gray-900',
-                      'group flex w-full items-center rounded-md px-2 py-2 text-sm'
+                      active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                      'block px-4 py-2 text-sm'
                     ]"
                     @click="selectedRosterType = Type.Staff"
+                    >Staff</a
                   >
-                    Staff
-                  </button>
                 </MenuItem>
                 <MenuItem v-slot="{ active }">
-                  <button
+                  <a
                     :class="[
-                      active ? 'bg-violet-500 text-white' : 'text-gray-900',
-                      'group flex w-full items-center rounded-md px-2 py-2 text-sm'
+                      active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                      'block px-4 py-2 text-sm'
                     ]"
                     @click="selectedRosterType = Type.HeadCoach"
+                    >HeadCoach</a
                   >
-                    HeadCoach
-                  </button>
                 </MenuItem>
                 <MenuItem v-slot="{ active }">
                   <button
                     :class="[
-                      active ? 'bg-violet-500 text-white' : 'text-gray-900',
-                      'group flex w-full items-center rounded-md px-2 py-2 text-sm'
+                      active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                      'block w-full px-4 py-2 text-left text-sm'
                     ]"
                     @click="selectedRosterType = Type.Coach"
                   >
@@ -108,20 +103,16 @@
           </transition>
         </Menu>
         <div v-if="selectedRosterType === Type.Athlete">
-          <div class="py-3 text-start font-bold text-lg sm:text-2xl">Athlete</div>
-          <RosterItem :member="athlete" :type="Type.Athlete" />
+          <RosterItem :members="athlete" :type="Type.Athlete" />
         </div>
         <div v-if="selectedRosterType === Type.Staff">
-          <div class="py-3 text-start font-bold text-lg sm:text-2xl">Staff</div>
-          <RosterItem :member="staff" :type="Type.Staff" />
+          <RosterItem :members="staff" :type="Type.Staff" />
         </div>
         <div v-if="selectedRosterType === Type.Coach">
-          <div class="py-3 text-start font-bold text-lg sm:text-2xl">Coach</div>
-          <RosterItem :member="coach" :type="Type.Coach" />
+          <RosterItem :members="coach" :type="Type.Coach" />
         </div>
         <div v-if="selectedRosterType === Type.HeadCoach">
-          <div class="py-3 text-start font-bold text-lg sm:text-2xl">HeadCoach</div>
-          <RosterItem :member="headCoach" :type="Type.HeadCoach" />
+          <RosterItem :members="headCoach" :type="Type.HeadCoach" />
         </div>
       </div>
       <br />
@@ -140,6 +131,7 @@ import { useRoute } from 'vue-router'
 import { Type } from './interfaces/member-type.interface'
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
 import { ChevronDownIcon } from '@heroicons/vue/20/solid'
+import type { TeamMember } from './interfaces/team-member.interface'
 
 interface TeamDetail {
   id: number
@@ -147,6 +139,7 @@ interface TeamDetail {
   initial: string
   message: string | null | undefined
   profileImgUrl: string
+  createdAt: string
   teamColor: string
   teamSubColor: string
   workoutId: number
@@ -158,19 +151,6 @@ interface TeamDetail {
     id: number
     name: string
   }
-}
-
-interface TeamMember {
-  id: number
-  teamId: number
-  name: string
-  backNumber: number
-  registrationDate: string
-  type: Type
-  weight: number
-  height: number
-  position: [string, string]
-  profileImgUrl: string
 }
 
 const infoVisible = ref(true)

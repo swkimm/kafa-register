@@ -27,13 +27,13 @@
               class="h-10 px-6 font-semibold rounded-md bg-white text-black"
               :class="{ 'border-2 border-black': isWhite(team.team_color) }"
             >
-              팀 소개 보기
+              팀 페이지
             </button>
           </router-link>
         </div>
       </div>
       <p class="text-sm" :class="{ 'text-black': isWhite(team.team_color) }">
-        {{ team.created_at.substring(0, 10) }}
+        since {{ new Date(team.created_at).getFullYear() }}
       </p>
     </form>
   </div>
