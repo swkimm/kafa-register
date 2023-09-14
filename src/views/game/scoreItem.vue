@@ -5,40 +5,113 @@
       <div class="text-white text-base sm:text-2xl font-bold">{{ gameInfo?.association.name }}</div>
     </div>
   </div>
-  <div class="bg-slate-800 py-4 sm:py-10 w-full flex flex-col items-center">
+  <div class="bg-white py-4 sm:py-10 w-full flex flex-col items-center">
     <div class="max-w-screen-xl rounded-2xl px-4 md:px-20 w-full">
-      <div class="text-white grid grid-cols-10 place-items-center">
-        <div class="col-span-10 sm:col-span-4">
-          <div class="flex flex-row items-center text-start gap-x-5">
-            <div>
-              <p class="text-xs font-bold text-slate-300">HOME</p>
-              <h1 class="text-sm sm:text-xl">{{ gameInfo?.homeTeam.name.split(' ')[0] }}</h1>
+      <div class="text-black grid grid-cols-10 items-center mx-auto">
+        <div class="col-span-4">
+          <div
+            class="flex flex-row items-center justify-start text-start gap-x-3 sm:gap-x-5 md:gap-x-8 my-0"
+          >
+            <img :src="gameInfo?.homeTeam.profileImgUrl" alt="" class="w-10 sm:w-18 md:w-24" />
+            <div class="hidden sm:block">
+              <p
+                class="text-xs font-bold text-black"
+                :class="{ 'text-slate-700': gameInfo?.result === GameResult.AwayWin }"
+              >
+                HOME
+              </p>
+              <h1
+                class="text-sm font-semibold sm:text-xl"
+                :class="{ 'text-slate-700': gameInfo?.result === GameResult.AwayWin }"
+              >
+                {{ gameInfo?.homeTeam.name.split(' ')[0] }}
+              </h1>
             </div>
-            <img :src="gameInfo?.homeTeam.profileImgUrl" alt="" class="w-10 sm:w-24" />
-            <div class="text-lg sm:text-5xl font-bold">
+            <div class="block sm:hidden">
+              <h1
+                class="text-sm sm:text-xl font-semibold"
+                :class="{ 'text-slate-700': gameInfo?.result === GameResult.AwayWin }"
+              >
+                {{ gameInfo?.homeTeam.initial }}
+              </h1>
+            </div>
+            <div
+              class="text-lg sm:text-5xl font-black"
+              :class="{ 'text-slate-600': gameInfo?.result === GameResult.AwayWin }"
+            >
               {{ gameInfo?.homeTeamScore ? gameInfo?.homeTeamScore : '--' }}
             </div>
           </div>
         </div>
-        <div class="col-span-10 sm:col-span-2">
+        <div class="col-span-2">
           <div
-            class="flex flex-col items-center text-center justify-center text-xs sm:text-sm text-slate-300 py-10 sm:py-0"
+            class="flex-row items-center text-center justify-center gap-x-4 text-xs sm:text-sm text-black py-10 hidden sm:flex"
           >
-            <div class="font-semibold text-xs sm:text-lg">{{ gameInfo?.name }}</div>
-            <div class="mt-2">{{ printTime(gameDate) }}</div>
-            <div>{{ gameInfo?.location }}</div>
+            <FontAwesomeIcon
+              icon="fa-solid fa-caret-left"
+              class="text-3xl"
+              v-if="gameInfo?.result === GameResult.HomeWin"
+            ></FontAwesomeIcon>
+            <div
+              class="flex-col items-center text-center justify-center text-xs sm:text-sm text-black"
+            >
+              <div class="font-semibold text-xs sm:text-base md:text-lg">{{ gameInfo?.name }}</div>
+              <div class="mt-2">{{ printTime(gameDate) }}</div>
+              <div>{{ gameInfo?.location }}</div>
+            </div>
+            <FontAwesomeIcon
+              icon="fa-solid fa-caret-right"
+              v-if="gameInfo?.result === GameResult.AwayWin"
+              class="text-3xl"
+            ></FontAwesomeIcon>
+          </div>
+          <div
+            class="flex-row items-center text-center justify-center gap-x-1.5 text-black py-3 flex sm:hidden my-0"
+          >
+            <FontAwesomeIcon
+              icon="fa-solid fa-caret-left"
+              v-if="gameInfo?.result === GameResult.HomeWin"
+            ></FontAwesomeIcon>
+            <div class="text-xs font-medium">{{ printTime(gameDate) }}</div>
+            <FontAwesomeIcon
+              icon="fa-solid fa-caret-right"
+              v-if="gameInfo?.result === GameResult.AwayWin"
+            ></FontAwesomeIcon>
           </div>
         </div>
-        <div class="col-span-10 sm:col-span-4">
-          <div class="flex flex-row items-center text-end gap-x-5">
-            <div class="text-lg sm:text-5xl font-bold">
+        <div class="col-span-4">
+          <div
+            class="flex flex-row items-center justify-end text-end gap-x-3 sm:gap-x-5 md:gap-x-8"
+          >
+            <div
+              class="text-lg sm:text-5xl font-black"
+              :class="{ 'text-slate-600': gameInfo?.result === GameResult.HomeWin }"
+            >
               {{ gameInfo?.awayTeamScore ? gameInfo?.awayTeamScore : '--' }}
             </div>
-            <img :src="gameInfo?.awayTeam.profileImgUrl" alt="" class="w-10 sm:w-24" />
-            <div>
-              <p class="text-xs font-bold text-slate-300">AWAY</p>
-              <h1 class="text-sm sm:text-xl">{{ gameInfo?.awayTeam.name.split(' ')[0] }}</h1>
+            <div class="block sm:hidden">
+              <h1
+                class="text-sm sm:text-xl font-semibold"
+                :class="{ 'text-slate-700': gameInfo?.result === GameResult.HomeWin }"
+              >
+                {{ gameInfo?.awayTeam.initial }}
+              </h1>
             </div>
+            <div class="hidden sm:block">
+              <p
+                class="text-xs font-bold text-black"
+                :class="{ 'text-slate-700': gameInfo?.result === GameResult.HomeWin }"
+              >
+                AWAY
+              </p>
+              <h1
+                class="text-sm sm:text-xl font-semibold"
+                :class="{ 'text-slate-700': gameInfo?.result === GameResult.HomeWin }"
+              >
+                {{ gameInfo?.awayTeam.name.split(' ')[0] }}
+              </h1>
+            </div>
+            <img :src="gameInfo?.awayTeam.profileImgUrl" alt="" class="w-10 sm:w-18 md:w-24" />
           </div>
         </div>
       </div>
@@ -49,8 +122,9 @@
 <script lang="ts" setup>
 import { computed, onMounted, ref, watch, type Ref } from 'vue'
 import { onBeforeRouteLeave, useRoute } from 'vue-router'
-import type { GameDetailInfo } from './interfaces/game.interface'
+import { GameResult, type GameDetailInfo } from './interfaces/game.interface'
 import { axiosInstance } from '@/common/auth/store'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 const route = useRoute()
 const gameId = computed(() => route.params.id)

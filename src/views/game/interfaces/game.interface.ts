@@ -3,6 +3,7 @@ export interface GameDetailInfo {
   name: string
   gameday: string
   location: SVGStringList
+  result: GameResult
   awayTeam: {
     id: number
     name: string
@@ -25,4 +26,11 @@ export interface GameDetailInfo {
     id: number
     name: string
   }
+}
+
+export enum GameResult {
+  HomeWin = 'HomeWin',
+  AwayWin = 'AwayWin',
+  Draw = 'Draw',
+  NotFinished = 'NotFinished'
 }
