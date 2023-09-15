@@ -17,13 +17,13 @@
               <div class="hidden sm:block">
                 <p
                   class="text-xs font-bold text-black"
-                  :class="{ 'text-slate-700': gameInfo?.result === GameResult.AwayWin }"
+                  :class="{ 'text-slate-500': gameInfo?.result === GameResult.AwayWin }"
                 >
                   HOME
                 </p>
                 <h1
                   class="text-sm font-semibold sm:text-xl"
-                  :class="{ 'text-slate-700': gameInfo?.result === GameResult.AwayWin }"
+                  :class="{ 'text-slate-500': gameInfo?.result === GameResult.AwayWin }"
                 >
                   {{ gameInfo?.homeTeam.name.split(' ')[0] }}
                 </h1>
@@ -31,14 +31,14 @@
               <div class="block sm:hidden">
                 <h1
                   class="text-sm sm:text-xl font-semibold"
-                  :class="{ 'text-slate-700': gameInfo?.result === GameResult.AwayWin }"
+                  :class="{ 'text-slate-500': gameInfo?.result === GameResult.AwayWin }"
                 >
                   {{ gameInfo?.homeTeam.initial }}
                 </h1>
               </div>
               <div
                 class="text-lg sm:text-5xl font-black"
-                :class="{ 'text-slate-600': gameInfo?.result === GameResult.AwayWin }"
+                :class="{ 'text-slate-500': gameInfo?.result === GameResult.AwayWin }"
               >
                 {{ gameInfo?.homeTeamScore ? gameInfo?.homeTeamScore : '--' }}
               </div>
@@ -88,14 +88,14 @@
             >
               <div
                 class="text-lg sm:text-5xl font-black"
-                :class="{ 'text-slate-600': gameInfo?.result === GameResult.HomeWin }"
+                :class="{ 'text-slate-500': gameInfo?.result === GameResult.HomeWin }"
               >
                 {{ gameInfo?.awayTeamScore ? gameInfo?.awayTeamScore : '--' }}
               </div>
               <div class="block sm:hidden">
                 <h1
                   class="text-sm sm:text-xl font-semibold"
-                  :class="{ 'text-slate-700': gameInfo?.result === GameResult.HomeWin }"
+                  :class="{ 'text-slate-500': gameInfo?.result === GameResult.HomeWin }"
                 >
                   {{ gameInfo?.awayTeam.initial }}
                 </h1>
@@ -103,13 +103,13 @@
               <div class="hidden sm:block">
                 <p
                   class="text-xs font-bold text-black"
-                  :class="{ 'text-slate-700': gameInfo?.result === GameResult.HomeWin }"
+                  :class="{ 'text-slate-500': gameInfo?.result === GameResult.HomeWin }"
                 >
                   AWAY
                 </p>
                 <h1
                   class="text-sm sm:text-xl font-semibold"
-                  :class="{ 'text-slate-700': gameInfo?.result === GameResult.HomeWin }"
+                  :class="{ 'text-slate-500': gameInfo?.result === GameResult.HomeWin }"
                 >
                   {{ gameInfo?.awayTeam.name.split(' ')[0] }}
                 </h1>
