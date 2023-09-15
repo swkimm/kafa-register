@@ -26,13 +26,12 @@
             </div>
           </td>
           <th class="px-6 py-4 whitespace-nowrap table-cell sm:hidden">
-            <div class="flex flex-row gap-2 items-center flex-nowrap">
-              <div>
-                <img :src="dataItem.homeTeam.profileImgUrl" alt="" class="w-4 min-w-[16px]" />
+            <div class="flex flex-row justify-between gap-2 items-center flex-nowrap">
+              <div class="flex items-center gap-2">
+                <img :src="dataItem.homeTeam.profileImgUrl" alt="" class="w-5 min-w-[16px]" />
+                <span>{{ dataItem.homeTeam.initial }}</span>
               </div>
-              <div>
-                {{ dataItem.homeTeam.initial }}
-              </div>
+              <span class="font-bold">{{ dataItem.homeTeamScore }}</span>
             </div>
           </th>
           <td class="px-6 py-4 whitespace-nowrap hidden sm:table-cell">
@@ -45,13 +44,12 @@
             </div>
           </td>
           <th class="px-6 py-4 whitespace-nowrap table-cell sm:hidden">
-            <div class="flex flex-row gap-2 items-center flex-nowrap">
-              <div>
-                <img :src="dataItem.awayTeam.profileImgUrl" alt="" class="w-4 min-w-[16px]" />
+            <div class="flex flex-row justify-between gap-2 items-center flex-nowrap">
+              <div class="flex items-center gap-2">
+                <img :src="dataItem.awayTeam.profileImgUrl" alt="" class="w-5 min-w-[16px]" />
+                <span>{{ dataItem.awayTeam.initial }}</span>
               </div>
-              <div>
-                {{ dataItem.awayTeam.initial }}
-              </div>
+              <span class="font-bold">{{ dataItem.awayTeamScore }}</span>
             </div>
           </th>
           <td class="px-6 py-4 whitespace-nowrap">
