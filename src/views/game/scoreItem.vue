@@ -40,7 +40,7 @@
                 class="text-lg sm:text-5xl font-black"
                 :class="{ 'text-slate-500': gameInfo?.result === GameResult.AwayWin }"
               >
-                {{ gameInfo?.homeTeamScore ? gameInfo?.homeTeamScore : '--' }}
+                {{ gameInfo?.homeTeamScore !== undefined ? gameInfo?.homeTeamScore : '--' }}
               </div>
             </div>
           </router-link>
@@ -90,7 +90,7 @@
                 class="text-lg sm:text-5xl font-black"
                 :class="{ 'text-slate-500': gameInfo?.result === GameResult.HomeWin }"
               >
-                {{ gameInfo?.awayTeamScore ? gameInfo?.awayTeamScore : '--' }}
+                {{ gameInfo?.awayTeamScore !== undefined ? gameInfo?.awayTeamScore : '--' }}
               </div>
               <div class="block sm:hidden">
                 <h1

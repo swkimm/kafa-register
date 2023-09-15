@@ -17,13 +17,12 @@
           @click="router.push(`/game/${dataItem.id}`)"
         >
           <td class="px-6 py-4 whitespace-nowrap hidden sm:table-cell">
-            <div class="flex flex-row gap-2 items-center flex-nowrap">
-              <div>
+            <div class="flex flex-row justify-between gap-2 items-center flex-nowrap">
+              <div class="flex items-center gap-2">
                 <img :src="dataItem.homeTeam.profileImgUrl" alt="" class="w-8 min-w-[32px]" />
+                <span>{{ dataItem.homeTeam.name }}</span>
               </div>
-              <div>
-                {{ dataItem.homeTeam.name }}
-              </div>
+              <span class="font-bold">{{ dataItem.homeTeamScore }}</span>
             </div>
           </td>
           <th class="px-6 py-4 whitespace-nowrap table-cell sm:hidden">
@@ -37,13 +36,12 @@
             </div>
           </th>
           <td class="px-6 py-4 whitespace-nowrap hidden sm:table-cell">
-            <div class="flex flex-row gap-2 items-center flex-nowrap">
-              <div>
+            <div class="flex flex-row justify-between gap-2 items-center flex-nowrap">
+              <div class="flex items-center gap-2">
                 <img :src="dataItem.awayTeam.profileImgUrl" alt="" class="w-8 min-w-[32px]" />
+                <span>{{ dataItem.awayTeam.name }}</span>
               </div>
-              <div>
-                {{ dataItem.awayTeam.name }}
-              </div>
+              <span class="font-bold">{{ dataItem.awayTeamScore }}</span>
             </div>
           </td>
           <th class="px-6 py-4 whitespace-nowrap table-cell sm:hidden">

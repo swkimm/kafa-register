@@ -1,9 +1,9 @@
 <template>
-  <div class="text-black py-4 sm:py-10 w-full h-full flex flex-col items-center">
-    <div class="py-4 sm:py-10 max-w-screen-xl rounded-2xl px-4 md:px-20 w-full">
-      <div class="font-bold text-lg sm:text-3xl pb-5 sm:pb-16 pt-5">
-        <h1>{{ league?.name }}</h1>
-      </div>
+  <SectionTitleItem
+    :item="{ title: league?.name, subtitle: league?.host.join(',') }"
+  ></SectionTitleItem>
+  <div class="text-black py-8 sm:py-10 w-full h-full flex flex-col items-center">
+    <div class="max-w-screen-xl rounded-2xl px-4 md:px-20 w-full">
       <div v-for="(weekGame, index) in groupedGames" :key="index" class="py-5 w-full">
         <h2 class="text-base sm:text-xl font-bold mb-3">Week {{ index + 1 }}</h2>
         <leagueItem :data="weekGame[1]"></leagueItem>
@@ -18,6 +18,7 @@ import type { GameInfo } from './interfaces'
 import { axiosInstance } from '@/common/auth/store'
 import type { LeagueInfo } from '../association/interfaces'
 import leagueItem from './leagueItem.vue'
+import SectionTitleItem from '@/components/sectionTitleItem.vue'
 
 const route = useRoute()
 const leagueId = computed(() => route.params.id)
