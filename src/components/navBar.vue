@@ -1,5 +1,8 @@
 <template>
-  <header class="bg-white sticky top-0 z-50" :class="scrolled ? 'shadow-xl' : 'bg-white'">
+  <header
+    class="bg-white sticky top-0 z-10"
+    :class="scrolled && !mobileMenuOpen ? 'shadow-xl' : 'shadow-none'"
+  >
     <nav
       class="mx-auto flex max-w-screen-xl items-center justify-between p-6 px-4 md:px-20"
       aria-label="Global"
@@ -12,6 +15,7 @@
       </div>
       <div class="flex lg:hidden">
         <button
+          v-if="!mobileMenuOpen"
           type="button"
           class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
           @click="mobileMenuOpen = true"
@@ -177,10 +181,10 @@
         </router-link>
       </div>
     </nav>
-    <Dialog as="div" class="lg:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
-      <div class="fixed inset-0 z-10" />
+    <Dialog as="div" class="flex lg:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
+      <div class="fixed inset-0 z-20" />
       <DialogPanel
-        class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
+        class="fixed inset-y-0 right-0 z-20 w-full overflow-y-auto bg-white px-4 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
       >
         <div class="flex items-center justify-between">
           <router-link to="/" class="-m-1.5 p-1.5" @click="mobileMenuOpen = false">
