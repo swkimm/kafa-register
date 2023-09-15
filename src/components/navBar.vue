@@ -1,5 +1,8 @@
 <template>
-  <header class="bg-white">
+  <header
+    class="bg-white sticky top-0 z-50"
+    :class="scrolled ? 'bg-opacity-90 shadow-md' : 'bg-white'"
+  >
     <nav
       class="mx-auto flex max-w-screen-xl items-center justify-between p-6 px-4 md:px-20"
       aria-label="Global"
@@ -274,7 +277,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import {
   Dialog,
   DialogPanel,
@@ -360,6 +363,20 @@ const callsToAction = [
 ]
 
 const mobileMenuOpen = ref(false)
+
+const scrolled = ref(false)
+
+const handleScroll = () => {
+  scrolled.value = window.scrollY > 10
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
 </script>
 
 <style scoped></style>
