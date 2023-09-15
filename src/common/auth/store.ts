@@ -17,20 +17,20 @@ axiosInstance.interceptors.response.use(
 
     if (error.response.status === 401 && !origin._retry) {
       origin._retry = true
-      // await useAuthStore().reissue(origin)
+      await useAuthStore().reissue(origin)
       return axiosInstance(origin)
     }
     return Promise.reject(error)
   }
 )
 
-// useAuthStore 함수를 먼저 정의하고 나중에 사용합니다.
+const storageIsLoggedIn = useStorage('isLoggedIn', false)
+
 export const useAuthStore = defineStore('auth', {
   state: () => ({
-    isLoggedIn: useStorage('isLoggedIn', false)
+    isLoggedIn: storageIsLoggedIn.value
   }),
   getters: {
-    // getter로 isLoggined 상태를 가져올 수 있음
     getIsLogginedIn(state) {
       return state.isLoggedIn
     }
@@ -44,8 +44,10 @@ export const useAuthStore = defineStore('auth', {
         })
         axiosInstance.defaults.headers.common.authorization = res.headers.authorization
         console.log(res.headers)
+        console.log(res.headers.authorization)
 
         this.isLoggedIn = true
+        this.setIsLoggedIn(true)
       } catch (error: any) {
         this.isLoggedIn = false
         throw error
@@ -57,8 +59,9 @@ export const useAuthStore = defineStore('auth', {
         origin.headers.authorization = res.headers.authorization
         axiosInstance.defaults.headers.common.authorization = res.headers.authorization
         this.isLoggedIn = true
-      } catch (e) {
+      } catch (error) {
         this.isLoggedIn = false
+        throw error
       }
     },
     async logout() {
@@ -76,9 +79,11 @@ export const useAuthStore = defineStore('auth', {
         throw new Error('Logout failed')
       }
     },
-    // setIsLoggedIn 액션 추가
     setIsLoggedIn(status: boolean) {
       this.isLoggedIn = status
+      storageIsLoggedIn.value = status
     }
   }
 })
+
+export type AuthStoreType = ReturnType<typeof useAuthStore>

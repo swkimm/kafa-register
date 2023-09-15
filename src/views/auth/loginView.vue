@@ -49,7 +49,7 @@ function validate() {
       .login(username.value, password.value)
       .then(() => {
         authStore.setIsLoggedIn(true)
-        router.push('/')
+        router.push('/console')
       })
       .catch((error) => {
         alert(error.response.data.message)

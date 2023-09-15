@@ -1,4 +1,5 @@
 import DefaultLayout from '@/layouts/defaultLayout.vue'
+import ConsoleLayout from '@/layouts/consoleLayout.vue'
 import HomeView from '@/views/home/homeView.vue'
 import NoticeView from '@/views/notice/noticeView.vue'
 import GameView from '@/views/game/gameView.vue'
@@ -9,6 +10,11 @@ import TeamListView from '@/views/teams/teamListView.vue'
 import TeamRegisterView from '@/views/temp/uploadTeamProfile.vue'
 import TeamMemberRegisterView from '@/views/temp/uploadTeamMemberProfile.vue'
 import LoginView from '@/views/auth/loginView.vue'
+import ConsoleView from '@/views/console/consoleView.vue'
+import TeamInfoUpdateView from '@/views/manager/updateTeamInfo.vue'
+import TeamLogoUpdateView from '@/views/manager/updateTeamLogo.vue'
+import TeamRosterUpdateView from '@/views/manager/updateTeamRoster.vue'
+import TeamRosterRegisterView from '@/views/manager/registerTeamRoster.vue'
 
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -68,6 +74,37 @@ const router = createRouter({
           path: '/game/:id',
           name: 'game',
           component: GameView
+        }
+      ]
+    },
+    {
+      path: '/console',
+      component: ConsoleLayout,
+      children: [
+        {
+          path: '/console',
+          name: 'consoleView',
+          component: ConsoleView
+        },
+        {
+          path: '/update/info',
+          name: 'update team info',
+          component: TeamInfoUpdateView
+        },
+        {
+          path: '/update/logo',
+          name: 'update team Logo',
+          component: TeamLogoUpdateView
+        },
+        {
+          path: '/register/member',
+          name: 'register member',
+          component: TeamRosterRegisterView
+        },
+        {
+          path: '/update/roster',
+          name: 'update roster',
+          component: TeamRosterUpdateView
         }
       ]
     }
