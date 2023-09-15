@@ -2,7 +2,7 @@
   <div>
     <ConsoleNavBar />
     <div>
-      <main class="flex-1 bg-slate-50">
+      <main class="flex-1">
         <TempBar />
         <!-- <Sidebar /> -->
         <RouterView />

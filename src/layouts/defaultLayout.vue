@@ -2,7 +2,7 @@
   <div class="flex flex-col flex-1">
     <NavBar />
     <BannerItem />
-    <main class="flex flex-col flex-1 bg-slate-50">
+    <main class="flex flex-col flex-1">
       <RouterView />
     </main>
     <Footer />
