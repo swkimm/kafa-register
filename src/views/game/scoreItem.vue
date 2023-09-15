@@ -129,11 +129,29 @@ import { onBeforeRouteLeave, useRoute } from 'vue-router'
 import { GameResult, type GameDetailInfo } from './interfaces/game.interface'
 import { axiosInstance } from '@/common/auth/store'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { useHead } from '@vueuse/head'
 
 const route = useRoute()
 const gameId = computed(() => route.params.id)
 const gameInfo: Ref<GameDetailInfo | null> = ref(null)
 const gameDate: Ref<Date> = ref(new Date())
+const matchShortText = ref()
+
+useHead({
+  title: '경기 결과',
+  meta: [
+    { name: 'description', content: matchShortText },
+    {
+      property: 'og:url',
+      content: 'https://kafa.one' + useRoute().fullPath
+    },
+    { property: 'og:title', content: '경기 결과' },
+    { property: 'og:description', content: matchShortText },
+    { property: 'og:image', content: 'https://kafa.one/images/ogtag.png' },
+    { property: 'og:image:height', content: '400' },
+    { property: 'og:image:width', content: '800' }
+  ]
+})
 
 async function getGameInfo() {
   const result: GameDetailInfo = await axiosInstance
@@ -144,6 +162,7 @@ async function getGameInfo() {
   if (result) {
     gameInfo.value = result
     gameDate.value = new Date(result.gameday)
+    matchShortText.value = result.homeTeam.name + ' vs ' + result.awayTeam.name
   } else {
     alert('상세 정보 불러오기 오류')
   }

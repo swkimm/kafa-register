@@ -176,6 +176,23 @@
 <script lang="ts" setup>
 import { LinkIcon, MapIcon, MapPinIcon } from '@heroicons/vue/20/solid'
 import alertModal from '@/modal/alertModal.vue'
+import { useHead } from '@vueuse/head'
+
+useHead({
+  title: '대한미식축구협회',
+  meta: [
+    { name: 'description', content: '대한미식축구협회 메인페이지' },
+    {
+      property: 'og:url',
+      content: 'https://kafa.one'
+    },
+    { property: 'og:title', content: '대한미식축구협회' },
+    { property: 'og:description', content: '대한미식축구협회 메인페이지' },
+    { property: 'og:image', content: 'https://kafa.one/images/ogtag.png' },
+    { property: 'og:image:height', content: '400' },
+    { property: 'og:image:width', content: '800' }
+  ]
+})
 
 const features = [
   {

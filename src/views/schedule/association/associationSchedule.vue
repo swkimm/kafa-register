@@ -39,15 +39,15 @@ const leagues: Ref<LeagueInfo[]> = ref([])
 const itemTitle = '리그일정'
 
 useHead({
-  title: '대한미식축구협회-대회 일정',
+  title: associationName,
   meta: [
-    { name: 'description', content: '2023 서울경기강원 추계대회 일정' },
+    { name: 'description', content: '리그목록 페이지' },
     {
       property: 'og:url',
-      content: 'https://kafa.one/schedule'
+      content: 'https://kafa.one' + useRoute().fullPath
     },
-    { property: 'og:title', content: '대한미식축구협회-대회 일정' },
-    { property: 'og:description', content: '미식축구 대회 일정' },
+    { property: 'og:title', content: associationName },
+    { property: 'og:description', content: '리그목록 페이지' },
     { property: 'og:image', content: 'https://kafa.one/images/ogtag.png' },
     { property: 'og:image:height', content: '400' },
     { property: 'og:image:width', content: '800' }

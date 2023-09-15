@@ -19,27 +19,27 @@ import type { Team } from './interface/team.interface'
 import { onBeforeRouteLeave, useRoute } from 'vue-router'
 import SectionTitleItem from '@/components/sectionTitleItem.vue'
 
-useHead({
-  title: '대한미식축구협회-등록 팀 명단',
-  meta: [
-    { name: 'description', content: '협회 등록 팀 명단 페이지' },
-    {
-      property: 'og:url',
-      content: 'https://kafa.one/team'
-    },
-    { property: 'og:title', content: '대한미식축구협회-등록 팀 명단' },
-    { property: 'og:description', content: '협회 등록 팀 명단 페이지' },
-    { property: 'og:image', content: 'https://kafa.one/images/ogtag.png' },
-    { property: 'og:image:height', content: '400' },
-    { property: 'og:image:width', content: '800' }
-  ]
-})
-
 const teamList = ref<Team[]>()
 const route = useRoute()
 const associationId = computed(() => route.params.id)
 const associationName = ref()
 const itemTitle = '등록 팀 명단'
+
+useHead({
+  title: '등록 팀 명단',
+  meta: [
+    { name: 'description', content: associationName },
+    {
+      property: 'og:url',
+      content: 'https://kafa.one' + useRoute().fullPath
+    },
+    { property: 'og:title', content: '등록 팀 명단' },
+    { property: 'og:description', content: associationName },
+    { property: 'og:image', content: 'https://kafa.one/images/ogtag.png' },
+    { property: 'og:image:height', content: '400' },
+    { property: 'og:image:width', content: '800' }
+  ]
+})
 
 const getTeamList = async () => {
   await axiosInstance

@@ -132,6 +132,7 @@ import { Type } from './interfaces/member-type.interface'
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
 import { ChevronDownIcon } from '@heroicons/vue/20/solid'
 import type { TeamMember } from './interfaces/team-member.interface'
+import { useHead } from '@vueuse/head'
 
 interface TeamDetail {
   id: number
@@ -183,12 +184,32 @@ const staff = ref<TeamMember[]>([])
 const teamId = useRoute().params.id
 
 const selectedRosterType: Ref<Type> = ref(Type.Athlete)
+const teamName = ref()
+const teamProfileUrl = ref()
+
+useHead({
+  title: teamName,
+  meta: [
+    { name: 'description', content: '팀 소개 페이지' },
+    {
+      property: 'og:url',
+      content: 'https://kafa.one' + useRoute().fullPath
+    },
+    { property: 'og:title', content: teamName },
+    { property: 'og:description', content: '팀 소개 페이지' },
+    { property: 'og:image', content: teamProfileUrl },
+    { property: 'og:image:height', content: '512' },
+    { property: 'og:image:width', content: '512' }
+  ]
+})
 
 const getTeamDetail = async () => {
   axiosInstance
     .get(`/team/${teamId}`)
     .then((response) => {
       teamDetail.value = response.data
+      teamName.value = response.data.name
+      teamProfileUrl.value = response.data.profileImgUrl
     })
     .catch((error) => {
       if (error) {

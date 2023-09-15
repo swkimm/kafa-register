@@ -19,6 +19,7 @@ import { axiosInstance } from '@/common/auth/store'
 import type { LeagueInfo } from '../association/interfaces'
 import leagueItem from './leagueItem.vue'
 import SectionTitleItem from '@/components/sectionTitleItem.vue'
+import { useHead } from '@vueuse/head'
 
 const route = useRoute()
 const leagueId = computed(() => route.params.id)
@@ -33,6 +34,23 @@ const league: Ref<LeagueInfo> = ref({
   sponser: []
 })
 const groupedGames: Ref<Map<number, GameInfo[]> | undefined> = ref()
+const leagueName = ref()
+
+useHead({
+  title: '리그일정',
+  meta: [
+    { name: 'description', content: leagueName },
+    {
+      property: 'og:url',
+      content: 'https://kafa.one' + useRoute().fullPath
+    },
+    { property: 'og:title', content: '리그일정' },
+    { property: 'og:description', content: leagueName },
+    { property: 'og:image', content: 'https://kafa.one/images/ogtag.png' },
+    { property: 'og:image:height', content: '400' },
+    { property: 'og:image:width', content: '800' }
+  ]
+})
 
 onMounted(async () => {
   await getLeagueDetail()
@@ -69,6 +87,7 @@ async function getLeagueDetail(): Promise<void> {
     .then((result) => result.data)
 
   league.value = result
+  leagueName.value = result.name
 }
 
 function getWeekNumber(d: Date): number {
