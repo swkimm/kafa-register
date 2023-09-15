@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-center h-screen">
+  <div class="flex items-center justify-center py-20">
     <div class="bg-white p-8 shadow-lg rounded-lg">
       <h2 class="text-2xl font-semibold mb-4">로그인</h2>
       <div class="mb-4">

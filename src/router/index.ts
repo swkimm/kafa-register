@@ -97,8 +97,8 @@ const router = createRouter({
           component: TeamLogoUpdateView
         },
         {
-          path: '/register/member',
-          name: 'register member',
+          path: '/register/roster',
+          name: 'register roster',
           component: TeamRosterRegisterView
         },
         {

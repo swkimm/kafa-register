@@ -43,9 +43,6 @@ export const useAuthStore = defineStore('auth', {
           password
         })
         axiosInstance.defaults.headers.common.authorization = res.headers.authorization
-        console.log(res.headers)
-        console.log(res.headers.authorization)
-
         this.isLoggedIn = true
         this.setIsLoggedIn(true)
       } catch (error: any) {

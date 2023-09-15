@@ -32,7 +32,6 @@
     </nav>
   </header>
 
-  <!-- 사이드바 코드 -->
   <TransitionRoot as="template" :show="open">
     <Dialog as="div" class="relative z-10" @close="open = false">
       <TransitionChild
@@ -44,7 +43,10 @@
         leave-from="opacity-100"
         leave-to="opacity-0"
       >
-        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+        <div
+          class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+          @click="open = false"
+        />
       </TransitionChild>
 
       <div class="fixed inset-0 overflow-hidden">
@@ -88,9 +90,18 @@
                     </DialogTitle>
                   </div>
                   <div class="flex flex-col space-y-4 mt-6 px-4 sm:px-6">
-                    <router-link to="/update/info"><div>정보 수정</div> </router-link>
-                    <router-link to="/update/logo"><div>로고 수정</div> </router-link>
-                    <router-link to="/register/roster"><div>로스터 수정</div> </router-link>
+                    <router-link to="/update/info" @click="open = false"
+                      ><div>정보 수정</div></router-link
+                    >
+                    <router-link to="/update/logo" @click="open = false"
+                      ><div>로고 수정</div></router-link
+                    >
+                    <router-link to="/update/roster" @click="open = false"
+                      ><div>로스터 수정</div></router-link
+                    >
+                    <router-link to="/register/roster" @click="open = false"
+                      ><div>로스터 등록</div></router-link
+                    >
                   </div>
                 </div>
               </DialogPanel>

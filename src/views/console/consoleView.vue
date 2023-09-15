@@ -1,5 +1,5 @@
 <template>
-  <div class="text-2xl font-extrabold px-3 mb-3">팀 관리자 페이지</div>
+  <div class="text-2xl font-extrabold px-3 py-3 mb-3">팀 관리자 페이지</div>
 
   <div class="max-w-screen h-full">
     <div :style="{ backgroundColor: teamProfile?.teamColor || '#173921' }">
@@ -74,28 +74,35 @@
     </div>
   </div>
 
-  <div class="px-10 mb-3 mt-5">
+  <div class="px-10 mb-3 mt-5 flex flex-col items-center justify-center">
     <div class="text-xl font-bold">팀 관리자 메뉴</div>
-    <ul>
+    <ul class="text-center">
       <router-link
         to="/update/info"
-        class="block ml-10 mt-5 hover:text-indigo-600 transition-colors duration-200"
+        class="block mt-5 hover:text-indigo-600 transition-colors duration-200"
       >
         <li>정보 수정</li>
       </router-link>
 
       <router-link
         to="/update/logo"
-        class="block ml-10 mt-5 hover:text-indigo-600 transition-colors duration-200"
+        class="block mt-5 hover:text-indigo-600 transition-colors duration-200"
       >
         <li>로고 수정</li>
       </router-link>
 
       <router-link
         to="/update/roster"
-        class="block ml-10 mt-5 hover:text-indigo-600 transition-colors duration-200"
+        class="block mt-5 hover:text-indigo-600 transition-colors duration-200"
       >
         <li>로스터 수정</li>
+      </router-link>
+
+      <router-link
+        to="/register/roster"
+        class="block mt-5 hover:text-indigo-600 transition-colors duration-200"
+      >
+        <li>로스터 등록</li>
       </router-link>
     </ul>
   </div>
@@ -129,7 +136,6 @@ const getTeamProfile = async () => {
   try {
     const response = await axiosInstance.get('/manager/team/profile')
     teamProfile.value = response.data
-    console.log('Response Data:', response.data)
   } catch (error: any) {
     console.error('데이터 요청 중 오류 발생:', error)
     // 오류 응답 내용을 콘솔에 출력
