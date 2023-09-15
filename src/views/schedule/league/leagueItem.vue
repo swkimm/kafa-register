@@ -1,7 +1,7 @@
 <template>
   <div class="relative overflow-x-auto shadow-md rounded-lg">
-    <table class="w-full text-xs sm:text-sm text-left text-gray-500 dark:text-gray-400">
-      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <table class="w-full text-xs sm:text-sm text-left text-gray-800">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50">
         <tr>
           <th scope="col" class="px-6 py-3">Home</th>
           <th scope="col" class="px-6 py-3">Away</th>
@@ -13,7 +13,7 @@
         <tr
           v-for="dataItem in props.data"
           :key="dataItem.gameday"
-          class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+          class="bg-white border-b hover:bg-gray-50"
           @click="router.push(`/game/${dataItem.id}`)"
         >
           <td class="px-6 py-4 whitespace-nowrap hidden sm:table-cell">
