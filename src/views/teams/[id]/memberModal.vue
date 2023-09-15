@@ -1,6 +1,6 @@
 <template>
   <TransitionRoot as="template" :show="open">
-    <Dialog as="div" class="relative z-10" @close="closeDialog">
+    <Dialog as="div" class="relative z-30" @close="closeDialog">
       <TransitionChild
         as="template"
         enter="ease-out duration-300"
@@ -13,7 +13,7 @@
         <div class="fixed inset-0 hidden bg-gray-500 bg-opacity-75 transition-opacity md:block" />
       </TransitionChild>
 
-      <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+      <div class="fixed inset-0 z-30 w-screen overflow-y-auto">
         <div
           class="flex min-h-full items-stretch justify-center text-center md:items-center md:px-2 lg:px-4"
         >
@@ -45,44 +45,50 @@
                   class="grid w-full grid-cols-1 items-start gap-x-6 gap-y-8 sm:grid-cols-12 lg:gap-x-8"
                 >
                   <div
-                    class="aspect-h-3 aspect-w-2 overflow-hidden rounded-lg bg-gray-100 sm:col-span-4 lg:col-span-5"
+                    class="overflow-hidden rounded-lg bg-gray-100 sm:col-span-4 lg:col-span-5 w-40 sm:w-full mx-auto"
                   >
                     <img :src="member.profileImgUrl" class="object-cover object-center" />
                   </div>
                   <div class="sm:col-span-8 lg:col-span-7">
                     <section class="mt-2">
-                      <div class="text-base font-bold text-gray-800">{{ props.teamName }}</div>
-                      <p class="text-2xl font-medium">{{ member.name }}</p>
+                      <div class="text-xs sm:text-base font-bold text-gray-800">
+                        {{ props.teamName }}
+                      </div>
+                      <p class="text-xl sm:text-2xl font-medium">{{ member.name }}</p>
                     </section>
 
                     <section class="mt-8">
-                      <div class="mt-8">
+                      <div class="mt-4 sm:mt-8">
                         <div class="flex flex-col items-start">
-                          <h4 class="text-sm font-semibold text-gray-800">Back Number</h4>
-                          <p class="font-medium text-xl"># {{ member.backNumber }}</p>
+                          <h4 class="text-xs sm:text-sm font-semibold text-gray-800">
+                            Back Number
+                          </h4>
+                          <p class="font-medium text-base sm:text-xl"># {{ member.backNumber }}</p>
                         </div>
                       </div>
 
-                      <div class="mt-8">
+                      <div class="mt-4 sm:mt-8">
                         <div class="flex flex-col items-start">
-                          <h4 class="text-sm font-semibold text-gray-800">Position</h4>
-                          <p class="font-medium text-xl">{{ member.position.join('/') }}</p>
+                          <h4 class="text-xs sm:text-sm font-semibold text-gray-800">Position</h4>
+                          <p class="font-medium text-base sm:text-xl">
+                            {{ member.position.join('/') }}
+                          </p>
                         </div>
                       </div>
 
-                      <div class="mt-8">
+                      <div class="mt-4 sm:mt-8">
                         <div class="flex flex-col items-start">
-                          <h4 class="text-sm font-semibold text-gray-800">Physical</h4>
-                          <p class="font-medium text-xl">
+                          <h4 class="text-xs sm:text-sm font-semibold text-gray-800">Physical</h4>
+                          <p class="font-medium text-base sm:text-xl">
                             {{ member.height }}cm/{{ member.weight }}kg
                           </p>
                         </div>
                       </div>
 
-                      <div class="mt-8">
+                      <div class="mt-4 sm:mt-8">
                         <div class="flex flex-col items-start">
-                          <h4 class="text-sm font-semibold text-gray-800">Experience</h4>
-                          <p class="font-medium text-xl">
+                          <h4 class="text-xs sm:text-sm font-semibold text-gray-800">Experience</h4>
+                          <p class="font-medium text-base sm:text-xl">
                             {{
                               new Date().getFullYear() -
                               new Date(member.registrationDate).getFullYear() +
