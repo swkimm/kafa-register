@@ -23,7 +23,15 @@ import SectionTitleItem from '@/components/sectionTitleItem.vue'
 const route = useRoute()
 const leagueId = computed(() => route.params.id)
 const games: Ref<GameInfo[]> = ref([])
-const league: Ref<LeagueInfo | undefined> = ref()
+const league: Ref<LeagueInfo> = ref({
+  id: 0,
+  name: '리그 정보 불러오는 중',
+  workoutId: 0,
+  startedAt: '1970-01-01',
+  endedAt: '1970-01-01',
+  host: [],
+  sponser: []
+})
 const groupedGames: Ref<Map<number, GameInfo[]> | undefined> = ref()
 
 onMounted(async () => {
