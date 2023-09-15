@@ -1,8 +1,5 @@
 <template>
-  <header
-    class="bg-white sticky top-0 z-50"
-    :class="scrolled ? 'bg-opacity-90 shadow-md' : 'bg-white'"
-  >
+  <header class="bg-white sticky top-0 z-50" :class="scrolled ? 'shadow-xl' : 'bg-white'">
     <nav
       class="mx-auto flex max-w-screen-xl items-center justify-between p-6 px-4 md:px-20"
       aria-label="Global"
