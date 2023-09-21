@@ -53,9 +53,9 @@
             :class="{ 'text-black': isWhite(teamProfile?.teamColor as string) }"
             class="flex flex-col border-0 basis-1/3 xl:items-center xl:border-0 lg:items-center lg:border-0 md:items-center sm:flex-col sm:items-start"
           >
-            <div class="text-xs mb-2">COLORS</div>
+            <div class="text-xs mb-2">Establish</div>
             <div class="font-bold lg:text-2xl sm:text-lg">
-              {{ teamProfile?.teamColor }} & {{ teamProfile?.teamSubColor }}
+              {{ teamProfile?.createdAt ? new Date(teamProfile.createdAt).getFullYear() : 'N/A' }}
             </div>
           </div>
         </div>
@@ -75,40 +75,46 @@
   </div>
 
   <div class="px-10 mb-3 mt-5 flex flex-col items-center justify-center">
-    <div class="text-xl font-bold">팀 관리자 메뉴</div>
+    <div class="text-2xl font-bold mb-5">팀 관리자 메뉴</div>
     <ul class="text-center">
-      <router-link
-        to="/update/info"
-        class="block mt-5 hover:text-indigo-600 transition-colors duration-200"
-      >
-        <li>정보 수정</li>
-      </router-link>
-
-      <router-link
-        to="/update/logo"
-        class="block mt-5 hover:text-indigo-600 transition-colors duration-200"
-      >
-        <li>로고 수정</li>
-      </router-link>
-
-      <router-link
-        to="/update/roster"
-        class="block mt-5 hover:text-indigo-600 transition-colors duration-200"
-      >
-        <li>로스터 수정</li>
-      </router-link>
-
-      <router-link
-        to="/register/roster"
-        class="block mt-5 hover:text-indigo-600 transition-colors duration-200"
-      >
-        <li>로스터 등록</li>
-      </router-link>
+      <li class="mb-3">
+        <button
+          class="px-2 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          @click="goToUpdateInfo"
+        >
+          정보 수정
+        </button>
+      </li>
+      <li class="mb-3">
+        <button
+          class="px-2 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          @click="goToUpdateLogo"
+        >
+          로고 수정
+        </button>
+      </li>
+      <li class="mb-3">
+        <button
+          class="px-2 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          @click="goToUpdateRoster"
+        >
+          로스터 수정
+        </button>
+      </li>
+      <li class="mb-3">
+        <button
+          class="px-2 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          @click="goToRegisterRoster"
+        >
+          로스터 등록
+        </button>
+      </li>
     </ul>
   </div>
 </template>
 <script lang="ts" setup>
 import { axiosInstance } from '@/common/auth/store'
+import router from '@/router'
 import { onMounted, ref } from 'vue'
 
 interface TeamDetail {
@@ -119,7 +125,7 @@ interface TeamDetail {
   profileImgUrl: string
   teamColor: string
   teamSubColor: string
-  workoutId: number
+  createdAt: string
   workout: {
     id: number
     name: string
@@ -128,6 +134,22 @@ interface TeamDetail {
     id: number
     name: string
   }
+}
+
+const goToRegisterRoster = () => {
+  router.push('/register/roster')
+}
+
+const goToUpdateRoster = () => {
+  router.push('/update/roster')
+}
+
+const goToUpdateInfo = () => {
+  router.push('/update/info')
+}
+
+const goToUpdateLogo = () => {
+  router.push('/update/logo')
 }
 
 const teamProfile = ref<TeamDetail>() // 초기값을 null로 설정
