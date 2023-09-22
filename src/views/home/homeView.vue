@@ -1,10 +1,24 @@
 <template>
-  <div class="flex flex-col w-full h-full">
-    <div
-      id="landing"
-      class="bg-cover bg-center w-full text-black py-20 lg:py-24 flex justify-center items-center"
-    >
-      <div class="py-10 sm:py-20 text-start max-w-screen-xl px-4 md:px-20 w-full">
+  <div class="flex flex-col">
+    <div class="relative flex justify-center w-full h-60%">
+      <div class="w-[1500px] h-[350px] sm:h-[650px]">
+        <img :src="currentImageUrl" alt="description" class="object-cover w-full h-full" />
+      </div>
+      <div class="absolute bottom-3 right-1 transform -translate-x-1/2 z-10 space-x-2">
+        <button
+          v-for="page in totalPages"
+          :key="page"
+          :class="{
+            'text-opacity-100': currentPage === page,
+            'text-opacity-50': currentPage !== page
+          }"
+          class="text-4xl sm:text-8xl text-white hover:text-opacity-100 focus:outline-none"
+          @click="navigate(page)"
+        >
+          •
+        </button>
+      </div>
+      <!-- <div class="py-10 sm:py-20 text-start max-w-screen-xl px-4 md:px-20 w-full">
         <h3 class="text-lg md:text-2xl text-teal-300 mb-2 font-bold">
           2023 홍천군수배 서울/경기·강원
         </h3>
@@ -28,10 +42,49 @@
             </button>
           </a>
         </div>
-      </div>
+      </div> -->
     </div>
-    <div class="w-full text-center">
-      <div class="flex flex-col justify-center items-center">
+
+    <div class="w-full text-center bg-white">
+      <div class="grid sm:grid-cols-3 gap-4 sm:px-16">
+        <div class="pl-3 pt-3 sm:col-span-2">
+          <div class="text-xl font-bold text-left flex justify-between items-center">
+            경기 일정
+            <div class="mr-3">
+              <button class="text-end text-xl sm:text-2xl" @click="previousImage">
+                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512">
+                  <path
+                    d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"
+                  />
+                </svg>
+              </button>
+              <button class="text-end text-xl sm:text-2xl ml-5 sm:ml-10" @click="nextImage">
+                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512">
+                  <path
+                    d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <img :src="gameScheduleImgUrl[currentScheduleIndex]" alt="" class="mt-3" />
+        </div>
+        <div class="pl-3 pt-3 text-xl font-bold text-left">
+          NOTICE
+          <table class="mt-3">
+            <thead>
+              <tr></tr>
+            </thead>
+            <tbody>
+              <tr v-for="notice in 5" :key="notice" class="mt-5">
+                <td>[공지] TEST {{ notice }}</td>
+                <hr />
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- <div class="flex flex-col justify-center items-center">
         <div class="py-20 text-start max-w-screen-xl px-4 md:px-20">
           <h1 class="text-3xl font-extrabold text-center">경기장 정보</h1>
           <div class="overflow-hidden py-20">
@@ -81,7 +134,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <div class="flex flex-col bg-white">
         <div class="py-24">
           <h1 class="text-3xl font-extrabold mb-14">협회 등록 팀 현황</h1>
@@ -174,9 +227,118 @@
   <alertModal></alertModal>
 </template>
 <script lang="ts" setup>
-import { LinkIcon, MapIcon, MapPinIcon } from '@heroicons/vue/20/solid'
+// import { LinkIcon, MapIcon, MapPinIcon } from '@heroicons/vue/20/solid'
 import alertModal from '@/modal/alertModal.vue'
 import { useHead } from '@vueuse/head'
+import { ref, computed, watch, onMounted } from 'vue'
+import { axiosInstance } from '@/common/auth/store'
+
+let timeoutId: number | null = null
+
+const currentPage = ref<number>(1)
+const totalPages = 5
+
+interface UpcomingGame {
+  id: number
+  location: string
+  gameday: string
+  homeTeam: {
+    id: number
+    name: string
+    initial: string
+    profileImgUrl: string
+  }
+  awayTeam: {
+    id: number
+    name: string
+    initial: string
+    profileImgUrl: string
+  }
+  league: {
+    id: number
+    name: string
+  }
+}
+
+const gameScheduleImgUrl = ref<string[]>([
+  '/images/mainScheduleImg/seoulWeek1.jpg',
+  '/images/mainScheduleImg/seoulWeek2.jpg',
+  '/images/mainScheduleImg/seoulWeek3.jpg',
+  '/images/mainScheduleImg/seoulWeek4.jpg',
+  '/images/mainScheduleImg/seoulWeek5.jpg'
+])
+const currentScheduleIndex = ref(0)
+
+const previousImage = () => {
+  if (currentScheduleIndex.value > 0) {
+    currentScheduleIndex.value--
+  }
+}
+
+const nextImage = () => {
+  if (currentScheduleIndex.value < gameScheduleImgUrl.value.length - 1) {
+    currentScheduleIndex.value++
+  }
+}
+
+const upcomingGameList = ref<UpcomingGame[]>()
+
+watch(
+  currentPage,
+  (newPage) => {
+    if (timeoutId !== null) {
+      clearTimeout(timeoutId)
+    }
+
+    timeoutId = setTimeout(() => {
+      if (newPage < totalPages) {
+        navigate(newPage + 1)
+      } else {
+        navigate(1)
+      }
+    }, 5000)
+  },
+  { immediate: true }
+)
+const take = ref(15)
+
+const getUpcomingGames = async () => {
+  await axiosInstance
+    .get(`team-game/leagueId/1/upcoming`, {
+      params: {
+        take: take.value
+      }
+    })
+    .then((response) => {
+      upcomingGameList.value = response.data
+    })
+    .catch((error) => {
+      if (error) {
+        alert('다가오는 일정 불러오기 오류')
+      }
+    })
+}
+
+const navigate = (page: number) => {
+  currentPage.value = page
+}
+
+const currentImageUrl = computed(() => {
+  switch (currentPage.value) {
+    case 1:
+      return '/images/mainTopImg/mainTop1.png'
+    case 2:
+      return '/images/mainTopImg/mainTop2.jpg'
+    case 3:
+      return '/images/mainTopImg/mainTop3.jpg'
+    case 4:
+      return '/images/mainTopImg/mainTop4.jpg'
+    case 5:
+      return '/images/mainTopImg/mainTop5.jpg'
+    default:
+      return ''
+  }
+})
 
 useHead({
   title: '대한미식축구협회',
@@ -194,32 +356,32 @@ useHead({
   ]
 })
 
-const features = [
-  {
-    name: '주소',
-    description: '강원 홍천군 홍천읍 태학여내길 27',
-    icon: MapPinIcon
-  },
-  {
-    name: '지도 앱에서 보기',
-    description: 'https://naver.me/FOvh9bcR',
-    icon: MapIcon
-  },
-  {
-    name: '홈페이지',
-    description: 'http://sports.gangwon.kr',
-    icon: LinkIcon
-  }
-]
+// const features = [
+//   {
+//     name: '주소',
+//     description: '강원 홍천군 홍천읍 태학여내길 27',
+//     icon: MapPinIcon
+//   },
+//   {
+//     name: '지도 앱에서 보기',
+//     description: 'https://naver.me/FOvh9bcR',
+//     icon: MapIcon
+//   },
+//   {
+//     name: '홈페이지',
+//     description: 'http://sports.gangwon.kr',
+//     icon: LinkIcon
+//   }
+// ]
 
 const stats = [
   { id: 1, name: '합계', value: '20' },
   { id: 2, name: '서울 미식축구협회', value: '14' },
   { id: 3, name: '경기강원 미식축구협회', value: '6' }
 ]
+
+onMounted(async () => {
+  await getUpcomingGames()
+})
 </script>
-<style scoped>
-#landing {
-  background-image: url('/images/background.webp');
-}
-</style>
+<style scoped></style>
