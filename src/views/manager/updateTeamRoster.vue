@@ -282,7 +282,7 @@ const updateMember = () => {
   console.log(dataToUpdate)
 
   axiosInstance
-    .put(`/manager/team/member/${currentEditingId.value}/profile/content`, dataToUpdate)
+    .put(`/manager/team/member/${currentEditingId.value}/profile/contents`, dataToUpdate)
     .then((response) => {
       console.log(response.data)
       closeModal()
