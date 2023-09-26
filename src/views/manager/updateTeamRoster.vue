@@ -272,6 +272,7 @@ const updateMember = () => {
   if (currentEditingId.value === null) return
 
   const dataToUpdate = {
+    type: updateProfile.value.type,
     name: updateProfile.value.name,
     backNumber: updateProfile.value.backNumber,
     registrationYear: updateProfile.value.registrationYear,
@@ -290,6 +291,7 @@ const updateMember = () => {
     })
     .catch((error) => {
       console.error('Error updating member:', error)
+      console.error('Error details:', error.response.data)
       alert('로스터 수정 중 오류 발생')
     })
 }
@@ -308,6 +310,7 @@ const getTeamRoster = () => {
     .then((response) => {
       member.value = response.data
       filterMembersByType()
+      console.log(response.data)
     })
     .catch((error) => {
       console.error('API 호출 중 에러 발생:', error)

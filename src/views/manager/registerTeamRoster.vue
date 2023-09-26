@@ -331,13 +331,13 @@ const uploadFile = async () => {
       formData.append('file', selectedFile.value)
 
       try {
-        await axiosInstance.put(`/manager/team/member/${result.memberId}/profile/image`, formData, {
+        await axiosInstance.post(`/manager/team/member/${result.id}/profile/image`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
-          },
-          params: {
-            memberId: result.id
           }
+          // params: {
+          //   memberId: result.id
+          // }
         })
         alert('등록 성공')
         router.push('/update/roster')

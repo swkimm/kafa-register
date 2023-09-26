@@ -1,12 +1,8 @@
 <template>
   <div class="flex flex-col bg-white">
     <div class="relative flex justify-center w-full h-60%">
-      <div class="w-full h-[150px] sm:h-[400px]">
-        <img
-          :src="currentImageUrl"
-          alt="description"
-          class="object-cover w-full h-full grayscale-[50%]"
-        />
+      <div class="h-[150px] sm:h-[400px] w-full">
+        <img :src="currentImageUrl" alt="description" class="object-cover w-full h-full" />
       </div>
       <div class="absolute bottom-3 right-1 transform -translate-x-1/2 z-10 space-x-2">
         <button
@@ -16,7 +12,7 @@
             'text-opacity-100': currentPage === page,
             'text-opacity-50': currentPage !== page
           }"
-          class="text-xl sm:text-4xl text-white hover:text-opacity-100 focus:outline-none"
+          class="text-xl sm:text-3xl text-white hover:text-opacity-100 focus:outline-none"
           @click="navigate(page)"
         >
           •
@@ -24,116 +20,181 @@
       </div>
     </div>
 
-    <div class="text-3xl font-extrabold w-full bg-white text-center mx-auto pt-20 pb-5">
-      <h1>최근 종료된 경기</h1>
-    </div>
-
-    <div class="max-w-screen-xl px-4 sm:px-20 mx-auto w-full pb-5">
-      <div
-        v-for="game in displayGame"
-        :key="game.id"
-        class="flex justify-center bg-white py-4 w-full"
-      >
-        <div class="w-full shadow-lg rounded-xl">
-          <div class="text-black grid grid-cols-10 items-center mx-auto gap-y-4 p-5">
-            <!-- Home Team -->
-            <div class="col-span-4 flex items-center">
-              <router-link
-                :to="`/team/${game.homeTeam.id}`"
-                class="flex flex-row items-center gap-x-3 sm:gap-x-5 md:gap-x-8"
-              >
+    <div class="text-3xl font-extrabold text-center mt-20 max-w-screen-xl px:4 sm:px-20 mx-auto">
+      경기 결과
+      <div v-for="game in displayGame" :key="game.id" class="flex justify-center mt-5">
+        <div style="max-width: 1500px" class="rounded-2xl w-full shadow-none bg-white py-8">
+          <div class="text-black grid grid-cols-12 items-center mx-auto gap-y-4">
+            <div class="col-span-1 flex items-center">
+              <router-link :to="`/team/${game.homeTeam.id}`">
                 <img :src="game.homeTeam.profileImgUrl" alt="" class="w-16 sm:w-18 md:w-24" />
-                <div class="hidden sm:block mr-3" style="width: 150px">
-                  <p class="text-xs font-bold text-black">HOME</p>
-                  <div class="text-sm font-semibold sm:text-xl">
-                    {{ getFirstWord(game.homeTeam.name) }}
-                  </div>
-                  <div class="block">
-                    {{ game.homeTeam.initial }}
-                  </div>
-                </div>
-                <div class="text-lg sm:text-3xl font-black">{{ game.homeTeamScore }}</div>
               </router-link>
             </div>
 
-            <!-- Match Info -->
+            <div class="col-span-2 flex items-center justify-start">
+              <router-link :to="`/team/${game.homeTeam.id}`" class="flex justify-start text-left">
+                <div class="ml-3" style="width: 150px">
+                  <p class="text-xs font-bold text-black">HOME</p>
+                  <div class="sm:hidden text-sm font-semibold text-left">
+                    {{ game.homeTeam.initial }}
+                  </div>
+                  <div class="hidden sm:block text-sm font-semibold sm:text-xl">
+                    {{ getFirstWord(game.homeTeam.name) }}
+                  </div>
+                </div>
+              </router-link>
+            </div>
+
+            <div class="col-span-1 flex items-center justify-center">
+              <div class="text-lg sm:text-3xl font-black">{{ game.homeTeamScore }}</div>
+            </div>
+
+            <div class="col-span-1 flex items-center justify-center">
+              <FontAwesomeIcon
+                icon="fa-solid fa-caret-left"
+                class="text-3xl"
+                v-if="game.homeTeamScore > game.awayTeamScore"
+              />
+            </div>
+
             <div class="col-span-2 flex flex-col items-center justify-center gap-y-2">
               <div class="text-xs sm:text-lg hidden sm:block">{{ game.name }}</div>
-              <!-- <div class="text-xs font-medium">{{ printTime(game.gameday) }}</div> -->
               <div class="text-xs sm:text-lg font-extrabold">RESULT</div>
             </div>
 
-            <!-- Away Team -->
-            <div class="col-span-4 flex items-center justify-end py-5">
-              <router-link
-                :to="`/team/${game.awayTeam.id}`"
-                class="flex flex-row-reverse items-center gap-x-3 sm:gap-x-5 md:gap-x-8"
-              >
-                <img :src="game.awayTeam.profileImgUrl" alt="" class="w-16 sm:w-18 md:w-24" />
-                <div class="hidden sm:block ml-3" style="width: 150px">
+            <div class="col-span-1 flex items-center justify-center">
+              <FontAwesomeIcon
+                icon="fa-solid fa-caret-right"
+                class="text-3xl"
+                v-if="game.homeTeamScore < game.awayTeamScore"
+              />
+            </div>
+
+            <div class="col-span-1 flex items-center justify-end">
+              <div class="text-lg sm:text-3xl font-black">{{ game.awayTeamScore }}</div>
+            </div>
+
+            <div class="col-span-2 flex items-center justify-end">
+              <router-link :to="`/team/${game.awayTeam.id}`" class="flex justify-end text-right">
+                <div class="mr-3" style="width: 150px">
                   <p class="text-xs font-bold text-black">AWAY</p>
-                  <div class="text-sm font-semibold sm:text-xl">
-                    {{ getFirstWord(game.awayTeam.name) }}
-                  </div>
-                  <div class="sm:block">
+                  <div class="sm:hidden text-sm font-semibold text-right">
                     {{ game.awayTeam.initial }}
                   </div>
+                  <div class="hidden sm:block text-sm font-semibold sm:text-xl">
+                    {{ getFirstWord(game.awayTeam.name) }}
+                  </div>
                 </div>
-                <div class="text-lg sm:text-3xl font-black">{{ game.awayTeamScore }}</div>
+              </router-link>
+            </div>
+
+            <div class="col-span-1 flex items-center justify-end">
+              <router-link :to="`/team/${game.awayTeam.id}`">
+                <img :src="game.awayTeam.profileImgUrl" alt="" class="w-16 sm:w-18 md:w-24" />
               </router-link>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <div
+      class="text-3xl font-extrabold text-center mt-16 max-w-screen-xl px:4 sm:px-20 mx-auto w-full"
+    >
+      경기 일정
+      <div v-for="game in getDisplayedGames" :key="game.id" class="flex justify-center mt-3 w-full">
+        <div class="rounded-2xl w-full shadow-none bg-white py-8">
+          <div class="text-black grid grid-cols-8 items-center mx-auto gap-y-4">
+            <div class="col-span-1 flex items-center">
+              <router-link :to="`/team/${game.homeTeam.id}`">
+                <img :src="game.homeTeam.profileImgUrl" alt="" class="w-16 sm:w-18 md:w-24" />
+              </router-link>
+            </div>
 
-    <div class="w-full text-center bg-white">
-      <div class="sm:grid-cols-3 gap-4 sm:px-16 hidden">
-        <div class="pl-3 pt-3 sm:col-span-2">
-          <div class="text-xl font-bold text-left flex justify-between items-center">
-            경기 일정
-            <div class="mr-3">
-              <button class="text-end text-xl sm:text-2xl" @click="previousImage">
-                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512">
-                  <path
-                    d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"
-                  />
-                </svg>
-              </button>
-              <button class="text-end text-xl sm:text-2xl ml-5 sm:ml-10" @click="nextImage">
-                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512">
-                  <path
-                    d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
-                  />
-                </svg>
-              </button>
+            <div class="col-span-2 flex items-center justify-start">
+              <router-link :to="`/team/${game.homeTeam.id}`" class="flex justify-start text-left">
+                <div class="ml-3" style="width: 150px">
+                  <p class="text-xs font-bold text-black">HOME</p>
+                  <div class="sm:hidden text-sm font-semibold text-left">
+                    {{ game.homeTeam.initial }}
+                  </div>
+                  <div class="hidden sm:block text-sm font-semibold sm:text-xl">
+                    {{ getFirstWord(game.homeTeam.name) }}
+                  </div>
+                </div>
+              </router-link>
+            </div>
+
+            <div class="col-span-2 flex flex-col items-center justify-center gap-y-2">
+              <div class="text-xs sm:text-lg font-semibold sm:font-extrabold">
+                {{ game.name }}
+              </div>
+              <div class="text-xs sm:text-lg font-semibold sm:font-extrabold">
+                {{ game.location }}
+              </div>
+              <div class="text-xs sm:text-lg font-semibold sm:font-extrabold">
+                {{ getKSTDate(game.gameday) }}
+              </div>
+            </div>
+
+            <div class="col-span-2 flex items-center justify-end">
+              <router-link :to="`/team/${game.awayTeam.id}`" class="flex justify-end text-right">
+                <div class="mr-3" style="width: 150px">
+                  <p class="text-xs font-bold text-black">AWAY</p>
+                  <div class="sm:hidden text-sm font-semibold text-right">
+                    {{ game.awayTeam.initial }}
+                  </div>
+                  <div class="hidden sm:block text-sm font-semibold sm:text-xl">
+                    {{ getFirstWord(game.awayTeam.name) }}
+                  </div>
+                </div>
+              </router-link>
+            </div>
+
+            <div class="col-span-1 flex items-center justify-end">
+              <router-link :to="`/team/${game.awayTeam.id}`">
+                <img :src="game.awayTeam.profileImgUrl" alt="" class="w-16 sm:w-18 md:w-24" />
+              </router-link>
             </div>
           </div>
-          <img :src="gameScheduleImgUrl[currentScheduleIndex]" alt="" class="mt-3" />
         </div>
-        <div class="pl-3 pt-3 text-xl font-bold text-left">
-          NOTICE
-          <div class="bg-gray-100">
-            <table class="mt-3">
-              <thead>
-                <tr>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="notice in 6" :key="notice" class="mt-3">
-                  <td class="p-3">[공지] test {{ notice }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+      </div>
+      <div class="flex justify-center mt-5" style="max-width: 1500px">
+        <button
+          @click="prevPage"
+          :disabled="!canGoPrev"
+          class="px-2 py-2 bg-gray-300 rounded-md mr-2"
+        >
+          <div class="text-lg">이전</div>
+        </button>
+        <button @click="nextPage" :disabled="!canGoNext" class="px-2 py-2 bg-gray-300 rounded-md">
+          <div class="text-lg">다음</div>
+        </button>
+      </div>
+
+      <div class="text-3xl font-extrabold text-center mt-16 mb-3 hidden">
+        NOTICE
+        <div class="bg-white mx-auto" style="max-width: 1500px; width: 100%">
+          <table class="w-full mx-auto mt-3">
+            <thead class="border-b">
+              <tr>
+                <th class="p-3">분류</th>
+                <th class="p-3">제목</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="notice in 5" :key="notice" class="mt-0.5 border-b">
+                <td class="p-10 text-sm sm:text-xl">[공지]</td>
+                <td class="p-10 text-sm sm:text-xl">test 공지사항 {{ notice }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
       <div class="flex flex-col bg-white">
         <div class="py-24">
           <h1 class="text-3xl font-extrabold mb-14">협회 등록 팀 현황</h1>
-          <div class="mx-auto max-w-screen-xl px-6 lg:px-8">
+          <div class="mx-auto max-w-screen-xl px-6 lg:px-8" style="max-width: 1500px">
             <dl class="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
               <div
                 v-for="stat in stats"
@@ -156,7 +217,7 @@
       <div class="flex flex-col">
         <div class="py-24">
           <h1 class="text-3xl font-extrabold">주관 및 주최</h1>
-          <div class="mx-auto max-w-screen-sm px-20 md:px-4">
+          <div class="mx-auto max-w-screen-sm px-20 md:px-4" style="max-width: 1500px">
             <div
               class="mx-auto mt-14 grid grid-cols-1 items-center gap-x-2 gap-y-10 sm:gap-x-4 lg:mx-0 lg:grid-cols-2"
             >
@@ -181,7 +242,7 @@
       <div class="flex flex-col bg-white">
         <div class="py-24">
           <h1 class="text-3xl font-extrabold">후원</h1>
-          <div class="mx-auto max-w-screen-sm px-20 md:px-4">
+          <div class="mx-auto max-w-screen-sm px-20 md:px-4" style="max-width: 1500px">
             <div
               class="mx-auto mt-14 grid grid-cols-1 items-center gap-x-5 gap-y-10 sm:gap-x-10 lg:mx-0 lg:grid-cols-4"
             >
@@ -226,62 +287,17 @@ import alertModal from '@/modal/alertModal.vue'
 import { useHead } from '@vueuse/head'
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import { axiosInstance } from '@/common/auth/store'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { type GetLeagueGames } from './interfaces/getLeagueGames.interface'
+import { type UpcomingGame } from './interfaces/upcommingGame.interface'
+import { type RemainingGames } from './interfaces/remainingGames.interface'
 
 let timeoutId: number | null = null
 
 const currentPage = ref<number>(1)
 const totalPages = 5
 
-interface UpcomingGame {
-  id: number
-  location: string
-  gameday: string
-  homeTeam: {
-    id: number
-    name: string
-    initial: string
-    profileImgUrl: string
-  }
-  awayTeam: {
-    id: number
-    name: string
-    initial: string
-    profileImgUrl: string
-  }
-  league: {
-    id: number
-    name: string
-  }
-}
-
-interface GetLeagueGames {
-  id: number
-  homeTeamId: number
-  homeTeamScore: number
-  awayTeamId: number
-  awayTeamScore: number
-  leagueId: number
-  name: string
-  gameday: Date
-  location: string
-  result: string
-  awayTeam: {
-    id: number
-    name: string
-    initial: string
-    profileImgUrl: string
-  }
-  homeTeam: {
-    id: number
-    name: string
-    initial: string
-    profileImgUrl: string
-  }
-  league: {
-    id: number
-    name: string
-  }
-}
+// const containerWidth = ref('1500px')
 
 const getFirstWord = (str: string) => {
   const firstSpaceIndex = str.indexOf(' ')
@@ -310,7 +326,7 @@ const displayGame = computed(() => {
 const startTimer = () => {
   timer = window.setInterval(() => {
     currentGameIndex.value = (currentGameIndex.value + 1) % sortedGameResults.value.length
-  }, 5000)
+  }, 3000)
 }
 
 const getLeagueGames = () => {
@@ -319,8 +335,6 @@ const getLeagueGames = () => {
       .get(`/team-game/${gameId}`)
       .then((response) => {
         gameResults.value.push(response.data)
-
-        console.log('리그게임 불러오기', response.data)
       })
       .catch((error) => {
         if (error) {
@@ -330,29 +344,74 @@ const getLeagueGames = () => {
   }
 }
 
-const gameScheduleImgUrl = ref<string[]>([
-  '/images/mainScheduleImg/seoulWeek1.jpg',
-  '/images/mainScheduleImg/seoulWeek2.jpg',
-  '/images/mainScheduleImg/seoulWeek3.jpg',
-  '/images/mainScheduleImg/seoulWeek4.jpg',
-  '/images/mainScheduleImg/seoulWeek5.jpg',
-  '/images/mainScheduleImg/seoulWeek6.jpg'
-])
-const currentScheduleIndex = ref(0)
+const getKSTDate = (utcDate: string): string => {
+  // 9시간 밀리초로 변환
 
-const previousImage = () => {
-  if (currentScheduleIndex.value > 0) {
-    currentScheduleIndex.value--
+  // 문자열로 된 날짜를 Date 객체로 변환
+  const date = new Date(utcDate)
+
+  // 9시간 더하기
+  date.setTime(date.getTime() + 9)
+
+  // 월/일을 가져오기
+  const month = date.getMonth() + 1 // 월은 0에서 시작하기 때문에 1을 더함
+  const day = date.getDate()
+
+  // 요일을 가져오기 (영어로)
+  const days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
+  const dayName = days[date.getDay()]
+
+  // 시간과 분을 가져오기
+  const hours = date.getHours()
+  const minutes = date.getMinutes().toString().padStart(2, '0') // 분이 한 자리 수일 때 0을 앞에 붙여줌
+
+  return `${month}/${day} ${dayName} ${hours}:${minutes}`
+}
+
+const leagueId = ref(1)
+const PAGE_SIZE = 3
+
+const remainingGames = ref<RemainingGames[]>([])
+const page = ref(1)
+
+const getDisplayedGames = computed(() => {
+  const start = (page.value - 1) * PAGE_SIZE
+  const end = start + PAGE_SIZE
+  return remainingGames.value.slice(start, end)
+})
+
+const canGoNext = computed(() => {
+  return page.value * PAGE_SIZE < remainingGames.value.length
+})
+
+const canGoPrev = computed(() => {
+  return page.value > 1
+})
+
+const nextPage = () => {
+  if (canGoNext.value) {
+    page.value++
   }
 }
 
-const nextImage = () => {
-  if (currentScheduleIndex.value < gameScheduleImgUrl.value.length - 1) {
-    currentScheduleIndex.value++
+const prevPage = () => {
+  if (canGoPrev.value) {
+    page.value--
   }
 }
-
-const upcomingGameList = ref<UpcomingGame[]>()
+const getRemainingGames = () => {
+  axiosInstance
+    .get(`/team-game/leagueId/${leagueId.value}`)
+    .then((response) => {
+      remainingGames.value = response.data.filter((game: RemainingGames) => game.id >= 40)
+      console.log(response.data)
+    })
+    .catch((error) => {
+      if (error) {
+        alert('경기 일정 불러오기 오류입니다.')
+      }
+    })
+}
 
 watch(
   currentPage,
@@ -372,6 +431,8 @@ watch(
   { immediate: true }
 )
 const take = ref(15)
+
+const upcomingGameList = ref<UpcomingGame[]>()
 
 const getUpcomingGames = async () => {
   await axiosInstance
@@ -436,6 +497,7 @@ const stats = [
 onMounted(async () => {
   await getUpcomingGames()
   await getLeagueGames()
+  await getRemainingGames()
   startTimer()
 })
 
