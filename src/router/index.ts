@@ -15,6 +15,7 @@ import TeamInfoUpdateView from '@/views/manager/updateTeamInfo.vue'
 import TeamLogoUpdateView from '@/views/manager/updateTeamLogo.vue'
 import TeamRosterUpdateView from '@/views/manager/updateTeamRoster.vue'
 import TeamRosterRegisterView from '@/views/manager/registerTeamRoster.vue'
+import GalleryView from '@/views/gallery/galleryView.vue'
 
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -66,16 +67,21 @@ const router = createRouter({
           component: TeamMemberRegisterView
         },
         {
-          path: '/auth/login',
-          name: 'login',
-          component: LoginView
-        },
-        {
           path: '/game/:id',
           name: 'game',
           component: GameView
+        },
+        {
+          path: '/gallery/:id',
+          name: 'gallery',
+          component: GalleryView
         }
       ]
+    },
+    {
+      path: '/auth/login',
+      name: 'login',
+      component: LoginView
     },
     {
       path: '/console',

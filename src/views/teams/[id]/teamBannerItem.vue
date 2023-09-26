@@ -28,7 +28,7 @@
           :class="{ 'text-black': isWhite(banner?.teamColor as string) }"
           class="flex flex-col border-0 basis-1/3 xl:items-center xl:border-r lg:items-center lg:border-r md:items-center md:border-r sm:flex-col sm:items-start"
         >
-          <div class="text-xs mb-2">CONFERENCE</div>
+          <div class="text-xs mb-2">Association</div>
           <div class="font-bold lg:text-2xl sm:text-lg">{{ banner?.association.name }}</div>
         </div>
         <hr class="border-b-0 my-3" />
@@ -37,7 +37,7 @@
           :class="{ 'text-black': isWhite(banner?.teamColor as string) }"
           class="flex flex-col basis-1/3 xl:items-center xl:border-r lg:items-center lg:border-r md:items-center md:border-r sm:flex-col sm:items-start sm-border-b"
         >
-          <div class="text-xs mb-2">NICKNAME</div>
+          <div class="text-xs mb-2">Nickname</div>
           <div class="font-bold lg:text-2xl sm:text-lg">{{ getRemainingWords(banner?.name) }}</div>
         </div>
         <hr class="border-b-0 my-3" />

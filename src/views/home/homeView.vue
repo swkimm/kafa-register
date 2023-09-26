@@ -1,8 +1,12 @@
 <template>
-  <div class="flex flex-col">
+  <div class="flex flex-col bg-white">
     <div class="relative flex justify-center w-full h-60%">
-      <div class="w-[1500px] h-[150px] sm:h-[350px]">
-        <img :src="currentImageUrl" alt="description" class="object-cover w-full h-full" />
+      <div class="w-full h-[150px] sm:h-[400px]">
+        <img
+          :src="currentImageUrl"
+          alt="description"
+          class="object-cover w-full h-full grayscale-[50%]"
+        />
       </div>
       <div class="absolute bottom-3 right-1 transform -translate-x-1/2 z-10 space-x-2">
         <button
@@ -12,7 +16,7 @@
             'text-opacity-100': currentPage === page,
             'text-opacity-50': currentPage !== page
           }"
-          class="text-4xl sm:text-8xl text-white hover:text-opacity-100 focus:outline-none"
+          class="text-xl sm:text-4xl text-white hover:text-opacity-100 focus:outline-none"
           @click="navigate(page)"
         >
           •
@@ -20,61 +24,71 @@
       </div>
     </div>
 
-    <div v-for="game in displayGame" :key="game.id" class="flex justify-center bg-white MT-5 py-4">
-      <div class="max-w-screen-xl rounded-2xl px-4 md:px-20 w-full shadow-lg">
-        <div class="text-black grid grid-cols-10 items-center mx-auto gap-y-4">
-          <!-- Home Team -->
-          <div class="col-span-4 flex items-center">
-            <router-link
-              :to="`/team/${game.homeTeam.id}`"
-              class="flex flex-row items-center gap-x-3 sm:gap-x-5 md:gap-x-8"
-            >
-              <img :src="game.homeTeam.profileImgUrl" alt="" class="w-16 sm:w-18 md:w-24" />
-              <div class="hidden sm:block mr-3" style="width: 150px">
-                <p class="text-xs font-bold text-black">HOME</p>
-                <div class="text-sm font-semibold sm:text-xl">
-                  {{ getFirstWord(game.homeTeam.name) }}
-                </div>
-                <div class="block">
-                  {{ game.homeTeam.initial }}
-                </div>
-              </div>
-              <div class="text-lg sm:text-3xl font-black">{{ game.homeTeamScore }}</div>
-            </router-link>
-          </div>
+    <div class="text-3xl font-extrabold w-full bg-white text-center mx-auto pt-20 pb-5">
+      <h1>최근 종료된 경기</h1>
+    </div>
 
-          <!-- Match Info -->
-          <div class="col-span-2 flex flex-col items-center justify-center gap-y-2">
-            <div class="text-xs sm:text-lg hidden sm:block">{{ game.name }}</div>
-            <!-- <div class="text-xs font-medium">{{ printTime(game.gameday) }}</div> -->
-            <div class="text-xs sm:text-lg font-extrabold">RESULT</div>
-          </div>
+    <div class="max-w-screen-xl px-4 sm:px-20 mx-auto w-full pb-5">
+      <div
+        v-for="game in displayGame"
+        :key="game.id"
+        class="flex justify-center bg-white py-4 w-full"
+      >
+        <div class="w-full shadow-lg rounded-xl">
+          <div class="text-black grid grid-cols-10 items-center mx-auto gap-y-4 p-5">
+            <!-- Home Team -->
+            <div class="col-span-4 flex items-center">
+              <router-link
+                :to="`/team/${game.homeTeam.id}`"
+                class="flex flex-row items-center gap-x-3 sm:gap-x-5 md:gap-x-8"
+              >
+                <img :src="game.homeTeam.profileImgUrl" alt="" class="w-16 sm:w-18 md:w-24" />
+                <div class="hidden sm:block mr-3" style="width: 150px">
+                  <p class="text-xs font-bold text-black">HOME</p>
+                  <div class="text-sm font-semibold sm:text-xl">
+                    {{ getFirstWord(game.homeTeam.name) }}
+                  </div>
+                  <div class="block">
+                    {{ game.homeTeam.initial }}
+                  </div>
+                </div>
+                <div class="text-lg sm:text-3xl font-black">{{ game.homeTeamScore }}</div>
+              </router-link>
+            </div>
 
-          <!-- Away Team -->
-          <div class="col-span-4 flex items-center justify-end py-5">
-            <router-link
-              :to="`/team/${game.awayTeam.id}`"
-              class="flex flex-row-reverse items-center gap-x-3 sm:gap-x-5 md:gap-x-8"
-            >
-              <img :src="game.awayTeam.profileImgUrl" alt="" class="w-16 sm:w-18 md:w-24" />
-              <div class="hidden sm:block ml-3" style="width: 150px">
-                <p class="text-xs font-bold text-black">AWAY</p>
-                <div class="text-sm font-semibold sm:text-xl">
-                  {{ getFirstWord(game.awayTeam.name) }}
+            <!-- Match Info -->
+            <div class="col-span-2 flex flex-col items-center justify-center gap-y-2">
+              <div class="text-xs sm:text-lg hidden sm:block">{{ game.name }}</div>
+              <!-- <div class="text-xs font-medium">{{ printTime(game.gameday) }}</div> -->
+              <div class="text-xs sm:text-lg font-extrabold">RESULT</div>
+            </div>
+
+            <!-- Away Team -->
+            <div class="col-span-4 flex items-center justify-end py-5">
+              <router-link
+                :to="`/team/${game.awayTeam.id}`"
+                class="flex flex-row-reverse items-center gap-x-3 sm:gap-x-5 md:gap-x-8"
+              >
+                <img :src="game.awayTeam.profileImgUrl" alt="" class="w-16 sm:w-18 md:w-24" />
+                <div class="hidden sm:block ml-3" style="width: 150px">
+                  <p class="text-xs font-bold text-black">AWAY</p>
+                  <div class="text-sm font-semibold sm:text-xl">
+                    {{ getFirstWord(game.awayTeam.name) }}
+                  </div>
+                  <div class="sm:block">
+                    {{ game.awayTeam.initial }}
+                  </div>
                 </div>
-                <div class="sm:block">
-                  {{ game.awayTeam.initial }}
-                </div>
-              </div>
-              <div class="text-lg sm:text-3xl font-black">{{ game.awayTeamScore }}</div>
-            </router-link>
+                <div class="text-lg sm:text-3xl font-black">{{ game.awayTeamScore }}</div>
+              </router-link>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="w-full text-center bg-white">
-      <div class="grid sm:grid-cols-3 gap-4 sm:px-16">
+      <div class="sm:grid-cols-3 gap-4 sm:px-16 hidden">
         <div class="pl-3 pt-3 sm:col-span-2">
           <div class="text-xl font-bold text-left flex justify-between items-center">
             경기 일정

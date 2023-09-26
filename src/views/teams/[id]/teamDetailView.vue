@@ -26,7 +26,7 @@
     <div class="w-full mx-auto max-w-screen-xl px-4 py-4 sm:px-20">
       <div v-if="infoVisible && teamDetail">
         <div class="mb-16">
-          <ContentItem v-if="teamDetail" :content="teamDetail" />
+          <ContentItem v-if="teamDetail" :content="teamDetail" :galleries="galleries" />
         </div>
         <div>
           <IntroItem v-if="teamDetail" :intro="teamDetail" />
@@ -133,6 +133,7 @@ import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
 import { ChevronDownIcon } from '@heroicons/vue/20/solid'
 import type { TeamMember } from './interfaces/team-member.interface'
 import { useHead } from '@vueuse/head'
+import type { Gallery } from './interfaces/gallery.interface'
 
 interface TeamDetail {
   id: number
@@ -152,6 +153,17 @@ interface TeamDetail {
     id: number
     name: string
   }
+}
+
+const galleries: Ref<Gallery[]> = ref([])
+
+async function getTeamGalleries() {
+  const result = await axiosInstance
+    .get(`/team/${teamId}/galleries`)
+    .then((result) => result.data)
+    .catch(() => [])
+
+  galleries.value.push(...result)
 }
 
 const infoVisible = ref(true)
@@ -242,6 +254,7 @@ const getTeamMember = async () => {
 onMounted(async () => {
   await getTeamDetail()
   await getTeamMember()
+  await getTeamGalleries()
 })
 </script>
 
