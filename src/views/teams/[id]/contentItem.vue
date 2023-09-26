@@ -14,8 +14,8 @@
         <div class="flex flex-row space-x-5">
           <div v-for="(card, index) in galleries" :key="index" class="flex">
             <router-link :to="`/gallery/${card.id}`">
-              <div class="bg-white w-72 p-6">
-                <img :src="card.name" class="mx-auto w-48 h-48" />
+              <div class="bg-white w-72 p-6 rounded-xl">
+                <img :src="profileUrl" class="mx-auto w-48 h-48" />
                 <div class="mt-5">
                   <h2 class="text-xl font-semibold text-gray-800 text-center">
                     {{ card.name }}
@@ -59,6 +59,10 @@ const props = defineProps({
   },
   galleries: {
     type: Object as PropType<Gallery[]>,
+    required: true
+  },
+  profileUrl: {
+    type: String,
     required: true
   }
 })

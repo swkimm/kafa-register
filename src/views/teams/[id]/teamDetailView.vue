@@ -26,7 +26,12 @@
     <div class="w-full mx-auto max-w-screen-xl px-4 py-4 sm:px-20">
       <div v-if="infoVisible && teamDetail">
         <div class="mb-16">
-          <ContentItem v-if="teamDetail" :content="teamDetail" :galleries="galleries" />
+          <ContentItem
+            v-if="teamDetail"
+            :content="teamDetail"
+            :galleries="galleries"
+            :profile-url="teamDetail.profileImgUrl"
+          />
         </div>
         <div>
           <IntroItem v-if="teamDetail" :intro="teamDetail" />
