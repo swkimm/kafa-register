@@ -81,6 +81,24 @@
           <div class="flex justify-center items-center h-full">
             <h3 class="text-lg leading-6 font-medium text-gray-900">로스터 수정</h3>
           </div>
+
+          <div>
+            <label for="type" class="block text-sm font-medium leading-6 text-gray-900">구분</label>
+            <div class="mt-2">
+              <select
+                v-model="updateProfile.type"
+                id="type"
+                name="type"
+                class="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-2"
+              >
+                <option>HeadCoach</option>
+                <option>Coach</option>
+                <option>Athlete</option>
+                <option>Staff</option>
+              </select>
+            </div>
+          </div>
+
           <div>
             <label for="name" class="block text-sm font-medium leading-6 text-gray-900">이름</label>
             <div class="mt-2">
@@ -252,7 +270,6 @@ const closeModal = () => {
 }
 
 const deleteMember = (memberId: number) => {
-  console.log('deleteMember memberId', memberId)
   axiosInstance
     .delete(`/manager/team/member/${memberId}`)
     .then((response) => {
@@ -286,6 +303,7 @@ const updateMember = () => {
     .put(`/manager/team/member/${currentEditingId.value}/profile/contents`, dataToUpdate)
     .then((response) => {
       console.log(response.data)
+      alert('수정되었습니다.')
       closeModal()
       getTeamRoster()
     })

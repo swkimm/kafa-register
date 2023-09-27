@@ -61,6 +61,7 @@
           id="teamColor"
           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-2"
         />
+        <p class="text-xs text-gray-500 mt-1">#000000 형식으로 입력하세요</p>
       </div>
     </div>
 
@@ -76,6 +77,7 @@
           id="teamSubColor"
           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-2"
         />
+        <p class="text-xs text-gray-500 mt-1">#000000 형식으로 입력하세요</p>
       </div>
     </div>
 
@@ -150,6 +152,14 @@ const updateProfile = ref<Team>({} as Team)
 
 const submitProfileUpdate = async () => {
   try {
+    const hexPattern = /^#[0-9a-fA-F]{6}$/
+    if (
+      !hexPattern.test(updateProfile.value.teamColor) ||
+      !hexPattern.test(updateProfile.value.teamSubColor)
+    ) {
+      throw new Error('#000000 형식으로 입력해주세요.')
+    }
+
     await axiosInstance
       .put('/manager/team/profile/contents', updateProfile.value)
       .then(() => {
@@ -157,10 +167,12 @@ const submitProfileUpdate = async () => {
         router.push('/console')
       })
       .catch((error) => {
+        console.log(updateProfile.value)
         alert(error)
       })
   } catch (error: any) {
     console.error('Update Error:', error)
+    alert(error.message)
   }
 }
 

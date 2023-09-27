@@ -348,6 +348,7 @@ const uploadFile = async () => {
       }
     } else {
       alert('등록 성공')
+      router.push('/update/roster')
       refreshInput()
     }
   } else {
