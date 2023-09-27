@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col bg-white">
+  <div class="flex flex-col bg-white w-full h-full">
     <div class="relative flex justify-center w-full h-60%">
       <div class="h-[150px] sm:h-[400px] w-full">
         <img :src="currentImageUrl" alt="description" class="object-cover w-full h-full" />
@@ -19,8 +19,7 @@
         </button>
       </div>
     </div>
-
-    <div class="text-3xl font-extrabold text-center mt-20 max-w-screen-xl px:4 sm:px-20 mx-auto">
+    <div class="text-3xl font-extrabold text-center mt-20 max-w-screen-xl px-4 sm:px-20 mx-auto">
       경기 결과
       <div v-for="game in displayGame" :key="game.id" class="flex justify-center mt-5">
         <div style="max-width: 1500px" class="rounded-2xl w-full shadow-none bg-white py-8">
@@ -30,7 +29,6 @@
                 <img :src="game.homeTeam.profileImgUrl" alt="" class="w-16 sm:w-18 md:w-24" />
               </router-link>
             </div>
-
             <div class="col-span-2 flex items-center justify-start">
               <router-link :to="`/team/${game.homeTeam.id}`" class="flex justify-start text-left">
                 <div class="ml-3" style="width: 150px">
@@ -44,11 +42,9 @@
                 </div>
               </router-link>
             </div>
-
             <div class="col-span-1 flex items-center justify-center">
               <div class="text-lg sm:text-3xl font-black">{{ game.homeTeamScore }}</div>
             </div>
-
             <div class="col-span-1 flex items-center justify-center">
               <FontAwesomeIcon
                 icon="fa-solid fa-caret-left"
@@ -56,12 +52,10 @@
                 v-if="game.homeTeamScore > game.awayTeamScore"
               />
             </div>
-
             <div class="col-span-2 flex flex-col items-center justify-center gap-y-2">
               <div class="text-xs sm:text-lg hidden sm:block">{{ game.name }}</div>
               <div class="text-xs sm:text-lg font-extrabold">RESULT</div>
             </div>
-
             <div class="col-span-1 flex items-center justify-center">
               <FontAwesomeIcon
                 icon="fa-solid fa-caret-right"
@@ -69,11 +63,9 @@
                 v-if="game.homeTeamScore < game.awayTeamScore"
               />
             </div>
-
             <div class="col-span-1 flex items-center justify-end">
               <div class="text-lg sm:text-3xl font-black">{{ game.awayTeamScore }}</div>
             </div>
-
             <div class="col-span-2 flex items-center justify-end">
               <router-link :to="`/team/${game.awayTeam.id}`" class="flex justify-end text-right">
                 <div class="mr-3" style="width: 150px">
@@ -87,7 +79,6 @@
                 </div>
               </router-link>
             </div>
-
             <div class="col-span-1 flex items-center justify-end">
               <router-link :to="`/team/${game.awayTeam.id}`">
                 <img :src="game.awayTeam.profileImgUrl" alt="" class="w-16 sm:w-18 md:w-24" />
@@ -97,9 +88,7 @@
         </div>
       </div>
     </div>
-    <div
-      class="text-3xl font-extrabold text-center mt-16 max-w-screen-xl px:4 sm:px-20 mx-auto w-full"
-    >
+    <div class="text-3xl font-extrabold text-center mt-16 max-w-screen-xl px-4 sm:px-20 mx-auto">
       경기 일정
       <div v-for="game in getDisplayedGames" :key="game.id" class="flex justify-center mt-3 w-full">
         <div class="rounded-2xl w-full shadow-none bg-white py-8">
@@ -109,7 +98,6 @@
                 <img :src="game.homeTeam.profileImgUrl" alt="" class="w-16 sm:w-18 md:w-24" />
               </router-link>
             </div>
-
             <div class="col-span-2 flex items-center justify-start">
               <router-link :to="`/team/${game.homeTeam.id}`" class="flex justify-start text-left">
                 <div class="ml-3" style="width: 150px">
@@ -123,7 +111,6 @@
                 </div>
               </router-link>
             </div>
-
             <div class="col-span-2 flex flex-col items-center justify-center gap-y-2">
               <div class="text-xs sm:text-lg font-semibold sm:font-extrabold">
                 {{ game.name }}
@@ -135,7 +122,6 @@
                 {{ getKSTDate(game.gameday) }}
               </div>
             </div>
-
             <div class="col-span-2 flex items-center justify-end">
               <router-link :to="`/team/${game.awayTeam.id}`" class="flex justify-end text-right">
                 <div class="mr-3" style="width: 150px">
@@ -149,7 +135,6 @@
                 </div>
               </router-link>
             </div>
-
             <div class="col-span-1 flex items-center justify-end">
               <router-link :to="`/team/${game.awayTeam.id}`">
                 <img :src="game.awayTeam.profileImgUrl" alt="" class="w-16 sm:w-18 md:w-24" />
@@ -158,7 +143,7 @@
           </div>
         </div>
       </div>
-      <div class="flex justify-center mt-5" style="max-width: 1500px">
+      <div class="flex justify-center mt-5 mb-16">
         <button
           @click="prevPage"
           :disabled="!canGoPrev"
@@ -170,10 +155,9 @@
           <div class="text-lg">다음</div>
         </button>
       </div>
-
       <div class="text-3xl font-extrabold text-center mt-16 mb-3 hidden">
         NOTICE
-        <div class="bg-white mx-auto" style="max-width: 1500px; width: 100%">
+        <div class="bg-white mx-auto">
           <table class="w-full mx-auto mt-3">
             <thead class="border-b">
               <tr>
@@ -188,94 +172,6 @@
               </tr>
             </tbody>
           </table>
-        </div>
-      </div>
-
-      <div class="flex flex-col bg-white">
-        <div class="py-24">
-          <h1 class="text-3xl font-extrabold mb-14">협회 등록 팀 현황</h1>
-          <div class="mx-auto max-w-screen-xl px-6 lg:px-8" style="max-width: 1500px">
-            <dl class="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
-              <div
-                v-for="stat in stats"
-                :key="stat.id"
-                class="mx-auto flex max-w-xs flex-col gap-y-4"
-              >
-                <dt class="text-base font-bold text-teal-500 leading-7">
-                  {{ stat.name }}
-                </dt>
-                <dd
-                  class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl"
-                >
-                  {{ stat.value }}
-                </dd>
-              </div>
-            </dl>
-          </div>
-        </div>
-      </div>
-      <div class="flex flex-col">
-        <div class="py-24">
-          <h1 class="text-3xl font-extrabold">주관 및 주최</h1>
-          <div class="mx-auto max-w-screen-sm px-20 md:px-4" style="max-width: 1500px">
-            <div
-              class="mx-auto mt-14 grid grid-cols-1 items-center gap-x-2 gap-y-10 sm:gap-x-4 lg:mx-0 lg:grid-cols-2"
-            >
-              <img
-                class="col-span-2 max-h-24 w-full object-contain lg:col-span-1"
-                src="/images/safa.png"
-                alt="SAFA"
-                width="200"
-                height="80"
-              />
-              <img
-                class="col-span-2 max-h-28 w-full object-contain lg:col-span-1"
-                src="/images/ggafa.png"
-                alt="GGAFA"
-                width="200"
-                height="80"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="flex flex-col bg-white">
-        <div class="py-24">
-          <h1 class="text-3xl font-extrabold">후원</h1>
-          <div class="mx-auto max-w-screen-sm px-20 md:px-4" style="max-width: 1500px">
-            <div
-              class="mx-auto mt-14 grid grid-cols-1 items-center gap-x-5 gap-y-10 sm:gap-x-10 lg:mx-0 lg:grid-cols-4"
-            >
-              <img
-                class="col-span-2 max-h-14 w-full object-contain lg:col-span-1"
-                src="/images/hongcheon.jpeg"
-                alt="홍천군"
-                width="300"
-                height="80"
-              />
-              <img
-                class="col-span-2 max-h-16 w-full object-contain lg:col-span-1"
-                src="/images/hongcheonSports.png"
-                alt="홍천군체육회"
-                width="300"
-                height="140"
-              />
-              <img
-                class="col-span-2 max-h-14 w-full object-contain lg:col-span-1"
-                src="/images/logo.jpg"
-                alt="KAFA"
-                width="300"
-                height="80"
-              />
-              <img
-                class="col-span-2 max-h-14 w-full object-contain lg:col-span-1"
-                src="/images/playprove.png"
-                alt="Play Prove"
-                width="300"
-                height="80"
-              />
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -311,7 +207,7 @@ const sortedGameResults = computed(() => {
     if (typeof a.gameday === 'string' && typeof b.gameday === 'string') {
       const dateA = new Date(a.gameday)
       const dateB = new Date(b.gameday)
-      return dateB.getTime() - dateA.getTime() // 내림차순 정렬
+      return dateB.getTime() - dateA.getTime()
     }
     return 0
   })
@@ -345,25 +241,14 @@ const getLeagueGames = () => {
 }
 
 const getKSTDate = (utcDate: string): string => {
-  // 9시간 밀리초로 변환
-
-  // 문자열로 된 날짜를 Date 객체로 변환
   const date = new Date(utcDate)
-
-  // 9시간 더하기
   date.setTime(date.getTime() + 9)
-
-  // 월/일을 가져오기
-  const month = date.getMonth() + 1 // 월은 0에서 시작하기 때문에 1을 더함
+  const month = date.getMonth() + 1
   const day = date.getDate()
-
-  // 요일을 가져오기 (영어로)
   const days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
   const dayName = days[date.getDay()]
-
-  // 시간과 분을 가져오기
   const hours = date.getHours()
-  const minutes = date.getMinutes().toString().padStart(2, '0') // 분이 한 자리 수일 때 0을 앞에 붙여줌
+  const minutes = date.getMinutes().toString().padStart(2, '0')
 
   return `${month}/${day} ${dayName} ${hours}:${minutes}`
 }
@@ -487,13 +372,6 @@ useHead({
     { property: 'og:image:width', content: '800' }
   ]
 })
-
-const stats = [
-  { id: 1, name: '합계', value: '20' },
-  { id: 2, name: '서울 미식축구협회', value: '14' },
-  { id: 3, name: '경기강원 미식축구협회', value: '6' }
-]
-
 onMounted(async () => {
   await getUpcomingGames()
   await getLeagueGames()
