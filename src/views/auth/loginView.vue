@@ -18,7 +18,7 @@
               autocomplete="uesrname"
               v-model="username"
               required
-              class="block w-full ps-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              class="block w-full ps-2 rounded-lg py-1.5 text-gray-900 shadow-sm border placeholder:text-gray-400 focus:border-indigo-600 sm:text-sm sm:leading-6"
             />
           </div>
         </div>
@@ -37,7 +37,7 @@
               autocomplete="current-password"
               v-model="password"
               required
-              class="block w-full ps-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              class="block w-full ps-2 rounded-lg py-1.5 text-gray-900 shadow-sm border placeholder:text-gray-400 focus:border-indigo-600 sm:text-sm sm:leading-6"
             />
           </div>
         </div>
@@ -45,7 +45,7 @@
         <div>
           <button
             type="submit"
-            class="flex w-full mt-10 justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            class="flex w-full mt-10 justify-center rounded-lg bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             Sign in
           </button>
