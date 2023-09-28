@@ -345,23 +345,6 @@ const navigate = (page: number) => {
   currentPage.value = page
 }
 
-const currentImageUrl = computed(() => {
-  switch (currentPage.value) {
-    case 1:
-      return '/images/mainTopImg/mainTop1.png'
-    case 2:
-      return '/images/mainTopImg/mainTop2.jpg'
-    case 3:
-      return '/images/mainTopImg/mainTop3.jpg'
-    case 4:
-      return '/images/mainTopImg/mainTop4.jpg'
-    case 5:
-      return '/images/mainTopImg/mainTop5.jpg'
-    default:
-      return ''
-  }
-})
-
 useHead({
   title: '대한미식축구협회',
   meta: [
