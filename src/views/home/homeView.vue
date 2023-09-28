@@ -186,8 +186,8 @@ let timeoutId: number | null = null
 const currentPage = ref<number>(1)
 const totalPages = 5
 
-const desktopVideoPath = '/videos/desktop.mp4'
-const mobileVideoPath = '/videos/mobile.mp4'
+const desktopVideoPath = 'https://cdn.playprove.one/landing/desktop.mp4'
+const mobileVideoPath = 'https://cdn.playprove.one/landing/mobile.mp4'
 const isMobile = ref(window.innerWidth <= 768)
 
 const videoSource = computed(() => {
