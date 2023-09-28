@@ -292,7 +292,7 @@ const updateMember = () => {
     type: updateProfile.value.type,
     name: updateProfile.value.name,
     backNumber: updateProfile.value.backNumber,
-    registrationYear: updateProfile.value.registrationYear,
+    registrationDate: '' + updateProfile.value.registrationYear + '-01-01',
     weight: updateProfile.value.weight,
     height: updateProfile.value.height,
     position: updateProfile.value.position

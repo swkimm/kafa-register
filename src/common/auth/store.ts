@@ -7,6 +7,12 @@ export const axiosInstance = axios.create({
   // withCredentials: true
 })
 
+const storedToken = useStorage('authToken', null)
+
+if (storedToken.value) {
+  axiosInstance.defaults.headers.common.authorization = storedToken.value
+}
+
 axiosInstance.defaults.baseURL = 'https://dev.playprove.one'
 axiosInstance.interceptors.response.use(
   (response) => {
@@ -43,6 +49,9 @@ export const useAuthStore = defineStore('auth', {
           password
         })
         axiosInstance.defaults.headers.common.authorization = res.headers.authorization
+
+        storedToken.value = res.headers.authorization
+
         this.isLoggedIn = true
         this.setIsLoggedIn(true)
       } catch (error: any) {
@@ -55,6 +64,9 @@ export const useAuthStore = defineStore('auth', {
         const res = await axiosInstance.get('/auth/reissue')
         origin.headers.authorization = res.headers.authorization
         axiosInstance.defaults.headers.common.authorization = res.headers.authorization
+
+        storedToken.value = res.headers.authorization
+
         this.isLoggedIn = true
       } catch (error) {
         this.isLoggedIn = false
@@ -71,9 +83,11 @@ export const useAuthStore = defineStore('auth', {
           router.push('/')
         }
       } catch (e) {
+        throw new Error('Logout failed')
+      } finally {
         delete axiosInstance.defaults.headers.common.authorization
         this.isLoggedIn = false
-        throw new Error('Logout failed')
+        storedToken.value = null
       }
     },
     setIsLoggedIn(status: boolean) {

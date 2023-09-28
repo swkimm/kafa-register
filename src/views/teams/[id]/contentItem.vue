@@ -6,9 +6,7 @@
     >
       팀명 Gallery
     </h1>
-    <h1 v-else class="mb-5 font-extrabold font-mono text-2xl text-left">
-      {{ getRemainingWords(content?.name) }} Gallery
-    </h1>
+    <h1 v-else class="mb-5 font-extrabold font-mono text-2xl text-left">Gallery</h1>
     <div v-if="galleries.length !== 0" class="overflow-hidden">
       <div class="overflow-x-scroll">
         <div class="flex flex-row space-x-5">
@@ -66,11 +64,6 @@ const props = defineProps({
     required: true
   }
 })
-
-const getRemainingWords = (str: string) => {
-  const firstSpaceIndex = str.indexOf(' ')
-  return firstSpaceIndex !== -1 ? str.substring(firstSpaceIndex + 1) : ''
-}
 
 const { content } = toRefs(props)
 </script>

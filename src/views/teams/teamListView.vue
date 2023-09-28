@@ -3,7 +3,7 @@
   <div
     class="text-black py-8 sm:py-10 max-w-screen-xl w-full h-full flex flex-col items-center text-center px-4 md:px-20 mx-auto"
   >
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 w-full">
       <div v-for="team in teamList" :key="team.id">
         <TeamItem :team="team" />
       </div>
