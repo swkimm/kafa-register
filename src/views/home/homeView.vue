@@ -1,22 +1,15 @@
 <template>
   <div class="flex flex-col bg-white w-full h-full">
-    <div class="relative flex justify-center w-full h-60%">
-      <div class="h-[150px] sm:h-[400px] w-full">
-        <img :src="currentImageUrl" alt="description" class="object-cover w-full h-full" />
-      </div>
-      <div class="absolute bottom-3 right-1 transform -translate-x-1/2 z-10 space-x-2">
-        <button
-          v-for="page in totalPages"
-          :key="page"
-          :class="{
-            'text-opacity-100': currentPage === page,
-            'text-opacity-50': currentPage !== page
-          }"
-          class="text-xl sm:text-3xl text-white hover:text-opacity-100 focus:outline-none"
-          @click="navigate(page)"
-        >
-          •
-        </button>
+    <div class="relative flex justify-center w-full h-full">
+      <div class="relative w-full h-screen">
+        <video
+          :src="videoSource"
+          autoplay
+          loop
+          muted
+          playsinline
+          class="object-cover w-full h-full absolute top-50% left-50% transform -translate-y-50% -translate-x-50%"
+        />
       </div>
     </div>
     <div class="text-3xl font-extrabold text-center mt-20 max-w-screen-xl px-4 sm:px-20 mx-auto">
@@ -181,7 +174,7 @@
 <script lang="ts" setup>
 import alertModal from '@/modal/alertModal.vue'
 import { useHead } from '@vueuse/head'
-import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted, onBeforeUnmount } from 'vue'
 import { axiosInstance } from '@/common/auth/store'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { type GetLeagueGames } from './interfaces/getLeagueGames.interface'
@@ -192,6 +185,18 @@ let timeoutId: number | null = null
 
 const currentPage = ref<number>(1)
 const totalPages = 5
+
+const desktopVideoPath = '/videos/desktop.mp4'
+const mobileVideoPath = '/videos/mobile.mp4'
+const isMobile = ref(window.innerWidth <= 768)
+
+const videoSource = computed(() => {
+  return isMobile.value ? mobileVideoPath : desktopVideoPath
+})
+
+const handleResize = () => {
+  isMobile.value = window.innerWidth <= 768
+}
 
 // const containerWidth = ref('1500px')
 
@@ -377,6 +382,11 @@ onMounted(async () => {
   await getLeagueGames()
   await getRemainingGames()
   startTimer()
+  window.addEventListener('resize', handleResize)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', handleResize)
 })
 
 onUnmounted(() => {

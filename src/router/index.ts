@@ -16,6 +16,7 @@ import TeamLogoUpdateView from '@/views/manager/updateTeamLogo.vue'
 import TeamRosterUpdateView from '@/views/manager/updateTeamRoster.vue'
 import TeamRosterRegisterView from '@/views/manager/registerTeamRoster.vue'
 import GalleryView from '@/views/gallery/galleryView.vue'
+import LandingLayout from '@/layouts/landingLayout.vue'
 
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -24,13 +25,19 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      component: DefaultLayout,
+      component: LandingLayout,
       children: [
         {
           path: '/',
           name: 'home',
           component: HomeView
-        },
+        }
+      ]
+    },
+    {
+      path: '/',
+      component: DefaultLayout,
+      children: [
         {
           path: '/notice',
           name: 'notice',

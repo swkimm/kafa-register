@@ -4,7 +4,6 @@
     <div>
       <main class="flex-1">
         <TempBar />
-        <!-- <Sidebar /> -->
         <RouterView />
       </main>
     </div>
@@ -14,7 +13,6 @@
 
 <script lang="ts" setup>
 import { RouterView } from 'vue-router'
-// import Sidebar from '@/components/sideBar.vue'
 import TempBar from '@/components/tempBar.vue'
 import ConsoleNavBar from '@/components/consoleNavBar.vue'
 import Footer from '@/components/footerItem.vue'
