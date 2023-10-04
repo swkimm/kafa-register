@@ -183,8 +183,6 @@ const handleResize = () => {
   isMobile.value = window.innerWidth <= 768
 }
 
-// const containerWidth = ref('1500px')
-
 const getFirstWord = (str: string) => {
   const firstSpaceIndex = str.indexOf(' ')
   return firstSpaceIndex !== -1 ? str.substring(0, firstSpaceIndex) : str
@@ -216,7 +214,7 @@ const startTimer = () => {
 }
 
 const getLeagueGames = () => {
-  for (let gameId = 19; gameId < 24; gameId++) {
+  for (let gameId = 40; gameId < 46; gameId++) {
     axiosInstance
       .get(`/team-game/${gameId}`)
       .then((response) => {
@@ -243,7 +241,6 @@ const getKSTDate = (utcDate: string): string => {
   return `${month}/${day} ${dayName} ${hours}:${minutes}`
 }
 
-const leagueId = ref(1)
 const PAGE_SIZE = 3
 
 const remainingGames = ref<RemainingGames[]>([])
@@ -274,11 +271,12 @@ const prevPage = () => {
     page.value--
   }
 }
+const leagueId = ref(1)
 const getRemainingGames = () => {
   axiosInstance
     .get(`/team-game/leagueId/${leagueId.value}`)
     .then((response) => {
-      remainingGames.value = response.data.filter((game: RemainingGames) => game.id >= 40)
+      remainingGames.value = response.data.filter((game: RemainingGames) => game.id >= 46)
     })
     .catch((error) => {
       if (error) {
