@@ -10,7 +10,7 @@
       <div class="flex lg:flex-1">
         <router-link to="/" class="-m-1.5 p-1.5">
           <span class="sr-only">KAFA</span>
-          <img class="h-12 w-auto" src="/images/logo.jpg" alt="KAFA" />
+          <img class="h-12 w-auto" src="/images/logo.png" alt="KAFA" />
         </router-link>
       </div>
       <div class="flex lg:hidden">
@@ -189,7 +189,7 @@
         <div class="flex items-center justify-between">
           <router-link to="/" class="-m-1.5 p-1.5" @click="mobileMenuOpen = false">
             <span class="sr-only">KAFA</span>
-            <img class="h-12 w-auto" src="/images/logo.jpg" alt="KAFA" />
+            <img class="h-12 w-auto" src="/images/logo.png" alt="KAFA" />
           </router-link>
           <button
             type="button"
