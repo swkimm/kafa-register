@@ -4,11 +4,20 @@
       <div
         class="w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-80 lg:h-80"
       >
-        <img
-          :src="member.profileImgUrl"
-          class="h-full w-full object-cover object-center lg:h-full lg:w-full"
-          @click="toggleDialog(member)"
-        />
+        <div v-if="member.profileImgUrl !== null">
+          <img
+            :src="member.profileImgUrl"
+            class="h-full w-full object-cover object-center lg:h-full lg:w-full"
+            @click="toggleDialog(member)"
+          />
+        </div>
+        <div v-else>
+          <img
+            src="https://cdn.playprove.one/default/people_alt.webp"
+            class="h-full w-full object-cover object-center lg:h-full lg:w-full"
+            @click="toggleDialog(member)"
+          />
+        </div>
       </div>
       <div class="mt-3 flex justify-between">
         <div>
