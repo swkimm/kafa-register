@@ -5,7 +5,12 @@
   >
     <router-link :to="{ name: 'team detail', params: { id: team.id } }">
       <div class="flex flex-col relative items-center justify-center px-10">
-        <img :src="team.profile_img_url" alt="" class="mt-5 h-40" loading="lazy" />
+        <img
+          :src="team.profile_img_url"
+          @error="onNoTeamProfileImage"
+          class="mt-5 h-40"
+          loading="lazy"
+        />
       </div>
     </router-link>
     <form @submit.prevent="openDetail" class="flex-auto p-5 sm:w-56">
@@ -69,4 +74,9 @@ function isWhite(color: string) {
 }
 
 const open = ref(false)
+
+const onNoTeamProfileImage = (event: Event) => {
+  const imgElement = event.target as HTMLImageElement
+  imgElement.src = 'https://cdn.playprove.one/default/logo.webp'
+}
 </script>
