@@ -13,6 +13,7 @@
         <div class="basis-1/3 px-4">
           <img
             :src="banner?.profileImgUrl"
+            @error="onNoTeamProfileImage"
             class="items-center text-center m-auto hidden lg:block sm:hidden lg:w-64 lg:h-64"
           />
         </div>
@@ -130,6 +131,11 @@ const { banner } = toRefs(props)
 
 function isWhite(color: string) {
   return color === '#ffffff' || color === 'white'
+}
+
+const onNoTeamProfileImage = (event: Event) => {
+  const imgElement = event.target as HTMLImageElement
+  imgElement.src = 'https://cdn.playprove.one/default/logo.webp'
 }
 </script>
 <style scoped></style>
