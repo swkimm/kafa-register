@@ -15,142 +15,93 @@
     <div
       class="text-3xl font-extrabold text-center mt-20 max-w-screen-xl px-4 sm:px-20 mx-auto w-full"
     >
-      최근 경기 결과
-      <div v-for="game in displayGame" :key="game.id" class="flex justify-center mt-5">
-        <div class="rounded-2xl w-full shadow-none bg-white py-8">
-          <div class="text-black grid grid-cols-12 items-center mx-auto gap-y-4">
-            <div class="col-span-1 flex items-center">
-              <router-link :to="`/team/${game.homeTeam.id}`">
-                <img :src="game.homeTeam.profileImgUrl" alt="" class="w-16 sm:w-18 md:w-24" />
-              </router-link>
-            </div>
-            <div class="col-span-2 flex items-center justify-start">
-              <router-link :to="`/team/${game.homeTeam.id}`" class="flex justify-start text-left">
-                <div class="ml-3" style="width: 150px">
-                  <p class="text-xs font-bold text-black">HOME</p>
-                  <div class="sm:hidden text-sm font-semibold text-left">
-                    {{ game.homeTeam.initial }}
-                  </div>
-                  <div class="hidden sm:block text-sm font-semibold sm:text-xl">
-                    {{ getFirstWord(game.homeTeam.name) }}
-                  </div>
-                </div>
-              </router-link>
-            </div>
-            <div class="col-span-1 flex items-center justify-center">
-              <div class="text-lg sm:text-3xl font-black">{{ game.homeTeamScore }}</div>
-            </div>
-            <div class="col-span-1 flex items-center justify-center">
-              <FontAwesomeIcon
-                icon="fa-solid fa-caret-left"
-                class="text-3xl"
-                v-if="game.homeTeamScore > game.awayTeamScore"
-              />
-            </div>
-            <div class="col-span-2 flex flex-col items-center justify-center gap-y-2">
-              <div class="text-xs sm:text-lg hidden sm:block">{{ game.name }}</div>
-              <div class="text-xs sm:text-lg font-extrabold">RESULT</div>
-            </div>
-            <div class="col-span-1 flex items-center justify-center">
-              <FontAwesomeIcon
-                icon="fa-solid fa-caret-right"
-                class="text-3xl"
-                v-if="game.homeTeamScore < game.awayTeamScore"
-              />
-            </div>
-            <div class="col-span-1 flex items-center justify-end">
-              <div class="text-lg sm:text-3xl font-black">{{ game.awayTeamScore }}</div>
-            </div>
-            <div class="col-span-2 flex items-center justify-end">
-              <router-link :to="`/team/${game.awayTeam.id}`" class="flex justify-end text-right">
-                <div class="mr-3" style="width: 150px">
-                  <p class="text-xs font-bold text-black">AWAY</p>
-                  <div class="sm:hidden text-sm font-semibold text-right">
-                    {{ game.awayTeam.initial }}
-                  </div>
-                  <div class="hidden sm:block text-sm font-semibold sm:text-xl">
-                    {{ getFirstWord(game.awayTeam.name) }}
-                  </div>
-                </div>
-              </router-link>
-            </div>
-            <div class="col-span-1 flex items-center justify-end">
-              <router-link :to="`/team/${game.awayTeam.id}`">
-                <img :src="game.awayTeam.profileImgUrl" alt="" class="w-16 sm:w-18 md:w-24" />
-              </router-link>
-            </div>
+      타이거볼 진출팀
+      <div class="mt-12 mb-5 text-2xl">서울지역</div>
+      <div class="grid grid-cols-12 mt-5">
+        <div class="col-span-4">
+          <div
+            class="flex flex-col gap-4 justify-center items-center"
+            @click="() => router.push('/team/6')"
+          >
+            <img
+              src="https://cdn.playprove.one/team-profile-img/5b96f591-5d81-41e6-b0ee-1bae295e467e.webp"
+              class="w-28"
+              loading="lazy"
+            />
+            <div class="text-xl">서울대(#1)</div>
+          </div>
+        </div>
+        <div class="col-span-4">
+          <div
+            class="flex flex-col gap-4 justify-center items-center"
+            @click="() => router.push('/team/19')"
+          >
+            <img
+              src="https://cdn.playprove.one/team/19/profile/91ad44ff-2af6-4219-bbc9-38f5c808597f.webp"
+              class="w-28"
+              loading="lazy"
+            />
+            <div class="text-xl">성균관대(#2)</div>
+          </div>
+        </div>
+        <div class="col-span-4">
+          <div
+            class="flex flex-col gap-4 justify-center items-center"
+            @click="() => router.push('/team/7')"
+          >
+            <img
+              src="https://cdn.playprove.one/team-profile-img/292b694b-90f2-4ddf-961e-f0feb57bf981.webp"
+              class="w-28"
+              loading="lazy"
+            />
+            <div class="text-xl">서울시립대(#3)</div>
           </div>
         </div>
       </div>
-    </div>
-    <div
-      class="text-3xl font-extrabold text-center mt-20 max-w-screen-xl px-4 sm:px-20 mx-auto w-full"
-    >
-      다가오는 경기 일정
-      <div v-for="game in getDisplayedGames" :key="game.id" class="flex justify-center mt-3">
-        <div class="rounded-2xl w-full shadow-none bg-white py-8">
-          <div class="text-black grid grid-cols-8 items-center gap-y-4 w-full">
-            <div class="col-span-1 flex items-center">
-              <router-link :to="`/team/${game.homeTeam.id}`">
-                <img :src="game.homeTeam.profileImgUrl" alt="" class="w-16 sm:w-18 md:w-24" />
-              </router-link>
-            </div>
-            <div class="col-span-2 flex items-center justify-start">
-              <router-link :to="`/team/${game.homeTeam.id}`" class="flex justify-start text-left">
-                <div class="ml-3" style="width: 150px">
-                  <p class="text-xs font-bold text-black">HOME</p>
-                  <div class="sm:hidden text-sm font-semibold text-left">
-                    {{ game.homeTeam.initial }}
-                  </div>
-                  <div class="hidden sm:block text-sm font-semibold sm:text-xl">
-                    {{ getFirstWord(game.homeTeam.name) }}
-                  </div>
-                </div>
-              </router-link>
-            </div>
-            <div class="col-span-2 flex flex-col items-center justify-center gap-y-2">
-              <div class="text-xs sm:text-lg font-semibold sm:font-extrabold">
-                {{ game.name }}
-              </div>
-              <div class="text-xs sm:text-lg font-semibold sm:font-extrabold">
-                {{ game.location }}
-              </div>
-              <div class="text-xs sm:text-lg font-semibold sm:font-extrabold">
-                {{ getKSTDate(game.gameday) }}
-              </div>
-            </div>
-            <div class="col-span-2 flex items-center justify-end">
-              <router-link :to="`/team/${game.awayTeam.id}`" class="flex justify-end text-right">
-                <div class="mr-3" style="width: 150px">
-                  <p class="text-xs font-bold text-black">AWAY</p>
-                  <div class="sm:hidden text-sm font-semibold text-right">
-                    {{ game.awayTeam.initial }}
-                  </div>
-                  <div class="hidden sm:block text-sm font-semibold sm:text-xl">
-                    {{ getFirstWord(game.awayTeam.name) }}
-                  </div>
-                </div>
-              </router-link>
-            </div>
-            <div class="col-span-1 flex items-center justify-end">
-              <router-link :to="`/team/${game.awayTeam.id}`">
-                <img :src="game.awayTeam.profileImgUrl" alt="" class="w-16 sm:w-18 md:w-24" />
-              </router-link>
-            </div>
+      <div class="mt-12 mb-5 text-2xl">부산울산경남지역</div>
+      <div class="grid grid-cols-12">
+        <div class="col-span-6">
+          <div
+            class="flex flex-col gap-4 justify-center items-center"
+            @click="router.push('/team/30')"
+          >
+            <img src="https://cdn.playprove.one/default/logo.webp" class="w-28" loading="lazy" />
+            <div class="text-xl">동의대(#1)</div>
+          </div>
+        </div>
+        <div class="col-span-6">
+          <div
+            class="flex flex-col gap-4 justify-center items-center"
+            @click="router.push('/team/29')"
+          >
+            <img src="https://cdn.playprove.one/default/logo.webp" class="w-28" loading="lazy" />
+            <div class="text-xl">동아대(#2)</div>
           </div>
         </div>
       </div>
-      <div class="flex justify-center mt-5 mb-16">
-        <button
-          @click="prevPage"
-          :disabled="!canGoPrev"
-          class="px-2 py-2 bg-gray-300 rounded-md mr-2"
-        >
-          <div class="text-lg">이전</div>
-        </button>
-        <button @click="nextPage" :disabled="!canGoNext" class="px-2 py-2 bg-gray-300 rounded-md">
-          <div class="text-lg">다음</div>
-        </button>
+      <div class="mt-12 mb-5 text-2xl">대구경북지역</div>
+      <div class="grid grid-cols-12">
+        <div class="col-span-6">
+          <div class="flex flex-col gap-4 justify-center items-center">
+            <img src="https://cdn.playprove.one/default/logo.webp" class="w-28" loading="lazy" />
+            <div class="text-xl">TBD</div>
+          </div>
+        </div>
+        <div class="col-span-6">
+          <div class="flex flex-col gap-4 justify-center items-center">
+            <img src="https://cdn.playprove.one/default/logo.webp" class="w-28" loading="lazy" />
+            <div class="text-xl">TBD</div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-12 mb-5 text-2xl">경기강원지역</div>
+      <div class="grid grid-cols-12 mb-20">
+        <div class="col-span-12">
+          <div class="flex flex-col gap-4 justify-center items-center">
+            <img src="https://cdn.playprove.one/default/logo.webp" class="w-28" loading="lazy" />
+            <div class="text-xl">TBD</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -161,12 +112,14 @@ import alertModal from '@/modal/alertModal.vue'
 import { useHead } from '@vueuse/head'
 import { ref, computed, watch, onMounted, onUnmounted, onBeforeUnmount } from 'vue'
 import { axiosInstance } from '@/common/auth/store'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { type GetLeagueGames } from './interfaces/getLeagueGames.interface'
 import { type UpcomingGame } from './interfaces/upcommingGame.interface'
 import { type RemainingGames } from './interfaces/remainingGames.interface'
+import { useRouter } from 'vue-router'
 
 let timeoutId: number | null = null
+
+const router = useRouter()
 
 const currentPage = ref<number>(1)
 const totalPages = 5
@@ -183,11 +136,6 @@ const handleResize = () => {
   isMobile.value = window.innerWidth <= 768
 }
 
-const getFirstWord = (str: string) => {
-  const firstSpaceIndex = str.indexOf(' ')
-  return firstSpaceIndex !== -1 ? str.substring(0, firstSpaceIndex) : str
-}
-
 const gameResults = ref<GetLeagueGames[]>([])
 
 const sortedGameResults = computed(() => {
@@ -202,10 +150,6 @@ const sortedGameResults = computed(() => {
 })
 const currentGameIndex = ref(0)
 let timer: number | null = null
-
-const displayGame = computed(() => {
-  return sortedGameResults.value.length ? [sortedGameResults.value[currentGameIndex.value]] : []
-})
 
 const startTimer = () => {
   timer = window.setInterval(() => {
@@ -228,49 +172,8 @@ const getLeagueGames = () => {
   }
 }
 
-const getKSTDate = (utcDate: string): string => {
-  const date = new Date(utcDate)
-  date.setTime(date.getTime() + 9)
-  const month = date.getMonth() + 1
-  const day = date.getDate()
-  const days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
-  const dayName = days[date.getDay()]
-  const hours = date.getHours()
-  const minutes = date.getMinutes().toString().padStart(2, '0')
-
-  return `${month}/${day} ${dayName} ${hours}:${minutes}`
-}
-
-const PAGE_SIZE = 3
-
 const remainingGames = ref<RemainingGames[]>([])
-const page = ref(1)
 
-const getDisplayedGames = computed(() => {
-  const start = (page.value - 1) * PAGE_SIZE
-  const end = start + PAGE_SIZE
-  return remainingGames.value.slice(start, end)
-})
-
-const canGoNext = computed(() => {
-  return page.value * PAGE_SIZE < remainingGames.value.length
-})
-
-const canGoPrev = computed(() => {
-  return page.value > 1
-})
-
-const nextPage = () => {
-  if (canGoNext.value) {
-    page.value++
-  }
-}
-
-const prevPage = () => {
-  if (canGoPrev.value) {
-    page.value--
-  }
-}
 const leagueId = ref(1)
 const getRemainingGames = () => {
   axiosInstance
@@ -342,6 +245,7 @@ useHead({
     { property: 'og:image:width', content: '800' }
   ]
 })
+
 onMounted(async () => {
   await getUpcomingGames()
   await getLeagueGames()
