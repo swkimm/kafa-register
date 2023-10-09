@@ -47,14 +47,14 @@
         <div class="col-span-4">
           <div
             class="flex flex-col gap-4 justify-center items-center"
-            @click="() => router.push('/team/7')"
+            @click="() => router.push('/team/10')"
           >
             <img
-              src="https://cdn.playprove.one/team-profile-img/292b694b-90f2-4ddf-961e-f0feb57bf981.webp"
+              src="https://cdn.playprove.one/team-profile-img/6dec9af9-04f3-417a-80aa-78a8f1b97b6f.webp"
               class="w-28"
               loading="lazy"
             />
-            <div class="text-xl">서울시립대(#3)</div>
+            <div class="text-xl">한국외대(#3)</div>
           </div>
         </div>
       </div>
