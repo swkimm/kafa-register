@@ -17,8 +17,9 @@ import TeamRosterUpdateView from '@/views/manager/updateTeamRoster.vue'
 import TeamRosterRegisterView from '@/views/manager/registerTeamRoster.vue'
 import GalleryView from '@/views/gallery/galleryView.vue'
 import LandingLayout from '@/layouts/landingLayout.vue'
-
+import TigerBowlView from '@/views/tiger-bowl/TigerBowlView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
+import gBowlView from '@/views/g-bowl/gBowlView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -82,6 +83,16 @@ const router = createRouter({
           path: '/gallery/:id',
           name: 'gallery',
           component: GalleryView
+        },
+        {
+          path: '/tiger-bowl',
+          name: 'tigerbowl',
+          component: TigerBowlView
+        },
+        {
+          path: '/gwanggaeto-bowl',
+          name: 'gwanggaeto-bowl',
+          component: gBowlView
         }
       ]
     },

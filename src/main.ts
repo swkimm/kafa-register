@@ -10,7 +10,7 @@ import { loadFonts } from './plugins/webfontloader'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faInstagram } from '@fortawesome/free-brands-svg-icons'
-import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons'
+import { faCaretLeft, faCaretRight, faTrophy } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { createHead } from '@vueuse/head'
 import VueGtag from 'vue-gtag'
@@ -19,7 +19,7 @@ const app = createApp(App)
 const head = createHead()
 
 // configure font-awesome
-library.add(faInstagram, faCaretLeft, faCaretRight)
+library.add(faInstagram, faCaretLeft, faCaretRight, faTrophy)
 app.component('font-awesome-icon', FontAwesomeIcon)
 
 // configure web font

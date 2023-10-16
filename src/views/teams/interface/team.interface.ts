@@ -9,4 +9,8 @@ export interface Team {
   initial: string
   team_color: string
   team_sub_color: string
+  rank?: number
+  win?: number
+  lose?: number
+  draw?: number
 }

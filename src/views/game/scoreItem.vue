@@ -13,7 +13,12 @@
             <div
               class="flex flex-row items-center justify-start text-start gap-x-3 sm:gap-x-5 md:gap-x-8 my-0"
             >
-              <img :src="gameInfo?.homeTeam.profileImgUrl" alt="" class="w-10 sm:w-18 md:w-24" />
+              <img
+                :src="gameInfo?.homeTeam.profileImgUrl"
+                alt=""
+                class="w-10 sm:w-18 md:w-24"
+                @error="onNoTeamProfileImage"
+              />
               <div class="hidden sm:block">
                 <p
                   class="text-xs font-bold text-black"
@@ -114,7 +119,12 @@
                   {{ gameInfo?.awayTeam.name.split(' ')[0] }}
                 </h1>
               </div>
-              <img :src="gameInfo?.awayTeam.profileImgUrl" alt="" class="w-10 sm:w-18 md:w-24" />
+              <img
+                :src="gameInfo?.awayTeam.profileImgUrl"
+                alt=""
+                class="w-10 sm:w-18 md:w-24"
+                @error="onNoTeamProfileImage"
+              />
             </div>
           </router-link>
         </div>
@@ -194,6 +204,11 @@ onBeforeRouteLeave(() => {
 onMounted(async () => {
   await getGameInfo()
 })
+
+const onNoTeamProfileImage = (event: Event) => {
+  const imgElement = event.target as HTMLImageElement
+  imgElement.src = 'https://cdn.playprove.one/default/logo.webp'
+}
 </script>
 
 <style scoped></style>

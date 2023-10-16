@@ -25,6 +25,7 @@
                 alt=""
                 class="h-4 w-4 mr-6 rounded-full"
                 loading="lazy"
+                @error="onNoTeamProfileImage"
               />
               <p>
                 {{ list.homeTeam.initial }}
@@ -36,6 +37,7 @@
                 alt=""
                 class="h-4 w-4 mr-6 rounded-full"
                 loading="lazy"
+                @error="onNoTeamProfileImage"
               />
               <p>
                 {{ list.awayTeam.initial }}
@@ -96,7 +98,7 @@ const formatGameDay = (gameday: string) => {
 
 const getUpcomingGames = async () => {
   await axiosInstance
-    .get(`team-game/leagueId/1/upcoming`, {
+    .get(`team-game/leagueId/5/upcoming`, {
       params: {
         take: take.value
       }
@@ -140,6 +142,11 @@ const performDrag = (e: MouseEvent) => {
 
 const endDragging = () => {
   isDragging.value = false
+}
+
+const onNoTeamProfileImage = (event: Event) => {
+  const imgElement = event.target as HTMLImageElement
+  imgElement.src = 'https://cdn.playprove.one/default/logo.webp'
 }
 </script>
 <style scoped>
