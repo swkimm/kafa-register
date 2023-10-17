@@ -21,7 +21,13 @@
     class="text-black py-8 sm:py-10 max-w-screen-xl w-full h-full flex flex-col items-center text-center px-4 md:px-20 mx-auto"
   >
     <div class="py-8 text-2xl font-bold">리그 순위</div>
-    <div class="w-full"><RankTable :teams="teams" /></div>
+    <div class="w-full">
+      <RankTable :teams="teams" />
+      <p class="text-xs text-start mt-3 text-slate-600">
+        ※ 인천라이노스 팀의 경우 리그 결과에 관계없이 광개토볼에 참여하지 않으며, 순위는 합계
+        표시됩니다.
+      </p>
+    </div>
   </div>
 </template>
 <script lang="ts" setup>

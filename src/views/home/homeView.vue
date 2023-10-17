@@ -15,7 +15,7 @@
     <section
       class="text-3xl font-extrabold text-center mt-20 max-w-screen-xl px-4 sm:px-20 mx-auto w-full mb-20"
     >
-      <div class="mb-14 text-4xl">
+      <div class="mb-14 text-2xl sm:text-4xl">
         <h1>주요대회 바로가기</h1>
       </div>
       <div class="bg-white">
@@ -28,7 +28,12 @@
               <p class="mt-6 text-lg leading-8 text-gray-300">
                 제 63회 대한미식축구협회 전국대학미식축구 선수권전
               </p>
-              <div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
+              <div class="mt-10 flex flex-row items-center justify-center gap-x-3 lg:justify-start">
+                <a
+                  href="https://forms.gle/vJBxtd1TA7x2HjQS8"
+                  class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                  >출전등록</a
+                >
                 <a
                   href="#"
                   @click="() => router.push('/tiger-bowl')"
