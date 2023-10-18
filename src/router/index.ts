@@ -20,6 +20,7 @@ import LandingLayout from '@/layouts/landingLayout.vue'
 import TigerBowlView from '@/views/tiger-bowl/TigerBowlView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import gBowlView from '@/views/g-bowl/gBowlView.vue'
+import ChallengeBowlView from '@/views/c-bowl/ChallengeBowlView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -88,6 +89,11 @@ const router = createRouter({
           path: '/tiger-bowl',
           name: 'tigerbowl',
           component: TigerBowlView
+        },
+        {
+          path: '/challenge-bowl',
+          name: 'challengebowl',
+          component: ChallengeBowlView
         },
         {
           path: '/gwanggaeto-bowl',
