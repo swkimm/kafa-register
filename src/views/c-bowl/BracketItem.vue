@@ -1,12 +1,7 @@
 <template>
-  <div class="mt-14 grid grid-cols-8 gap-4 min-w-[1120px]">
+  <div class="mt-14 grid grid-cols-8 gap-4 min-w-[800px]">
     <div class="col-span-2 flex flex-col justify-center">
-      <TBDItem
-        :game="{
-          date: '--',
-          name: '4강 1경기'
-        }"
-      />
+      <GameItem :game="games[4]" />
     </div>
     <div class="col-span-4 flex flex-col justify-center font-bold text-xl">
       <div>
@@ -16,22 +11,16 @@
         ></FontAwesomeIcon>
       </div>
       <div>CHALLENGE BOWL</div>
-      <div class="font-normal text-xs">12/02 14:00</div>
+      <div class="font-normal text-xs">12/02 11:00</div>
     </div>
     <div class="col-span-2 flex flex-col justify-center">
-      <TBDItem
-        :game="{
-          date: '--',
-          name: '4강 2경기'
-        }"
-      />
+      <GameItem :game="games[5]" />
     </div>
   </div>
 </template>
 <script lang="ts" setup>
 import { onMounted, ref, type Ref } from 'vue'
 import GameItem from './GameItem.vue'
-import TBDItem from './TBDItem.vue'
 import type { Game } from './interfaces/game.interface'
 import { axiosInstance } from '@/common/auth/store'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'

@@ -111,10 +111,36 @@ const getUpcomingGames = async () => {
         alert('다가오는 일정 불러오기 오류')
       }
     })
+
+  await axiosInstance
+    .get(`team-game/leagueId/2/upcoming`, {
+      params: {
+        take: take.value
+      }
+    })
+    .then((response) => {
+      if (upcomingGameList.value) {
+        upcomingGameList.value.push(...response.data)
+      }
+    })
+    .catch((error) => {
+      if (error) {
+        alert('다가오는 일정 불러오기 오류')
+      }
+    })
+}
+
+const sortGames = () => {
+  if (upcomingGameList.value) {
+    upcomingGameList.value.sort(
+      (a, b) => new Date(a.gameday).getTime() - new Date(b.gameday).getTime()
+    )
+  }
 }
 
 onMounted(async () => {
   await getUpcomingGames()
+  sortGames()
 })
 
 const enable = ref(true)
