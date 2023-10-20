@@ -145,7 +145,7 @@ const uploadFile = async () => {
   formData.append('file', selectedFile.value)
 
   try {
-    await axiosInstance.put(`/manager/team/profile/image`, formData, {
+    await axiosInstance.post(`/manager/team/profile/image`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
@@ -160,6 +160,7 @@ const uploadFile = async () => {
     }
   } catch (error) {
     alert('업로드 실패')
+    console.log(error)
   }
 }
 
