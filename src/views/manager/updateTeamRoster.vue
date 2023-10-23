@@ -83,6 +83,47 @@
           </div>
 
           <div>
+            <label for="cover-photo" class="block text-sm font-medium leading-6 text-gray-900"
+              >프로필 사진 업로드</label
+            >
+            <div
+              class="mt-2 flex justify-center rounded-lg border border-dashed bg-white border-gray-900/25 px-6 py-10"
+              @dragover.prevent
+              @dragenter.prevent="dragEnter"
+              @dragleave.prevent="dragLeave"
+              @drop.prevent="handleDrop"
+              :class="isDragging ? 'border-indigo-600' : ''"
+            >
+              <div class="text-center">
+                <img
+                  v-if="imagePreviewUrl"
+                  :src="imagePreviewUrl"
+                  alt="Uploaded Image"
+                  class="mx-auto w-40"
+                />
+                <PhotoIcon v-else class="mx-auto h-12 w-12 text-gray-300" aria-hidden="true" />
+                <div class="mt-4 flex text-sm leading-6 text-gray-600">
+                  <label
+                    for="file-upload"
+                    class="relative px-2 cursor-pointer rounded-md bg-black font-semibold text-white focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                  >
+                    <span>파일 선택</span>
+                    <input
+                      id="file-upload"
+                      name="file-upload"
+                      type="file"
+                      class="sr-only"
+                      @change="handleImageUpload"
+                    />
+                  </label>
+                  <p class="pl-1">또는 드래그앤 드랍</p>
+                </div>
+                <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
             <label for="type" class="block text-sm font-medium leading-6 text-gray-900">구분</label>
             <div class="mt-2">
               <select
@@ -214,7 +255,10 @@
           </div>
         </div>
         <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-          <button @click="updateMember" class="bg-indigo-600 text-white py-2 px-4 rounded mr-2">
+          <button
+            @click="updateMember(updateProfile.id)"
+            class="bg-indigo-600 text-white py-2 px-4 rounded mr-2"
+          >
             저장
           </button>
           <button @click="closeModal" class="bg-gray-300 text-gray-700 py-2 px-4 rounded">
@@ -243,6 +287,41 @@ export interface TeamMember {
   height: number
   position: string[]
   profileImgUrl: string
+}
+
+const selectedFile = ref()
+const imagePreviewUrl = ref()
+const isDragging = ref(false)
+
+const dragEnter = () => {
+  isDragging.value = true
+}
+
+const dragLeave = () => {
+  isDragging.value = false
+}
+
+const handleImageUpload = (event: any) => {
+  const file = event.target.files[0]
+  selectedFile.value = file
+  previewImage(file)
+}
+
+const handleDrop = (event: any) => {
+  isDragging.value = false
+  const file = event.dataTransfer.files[0]
+  selectedFile.value = file
+  previewImage(file)
+}
+
+const previewImage = (file: any) => {
+  if (file) {
+    const reader = new FileReader()
+    reader.onloadend = () => {
+      imagePreviewUrl.value = reader.result as string
+    }
+    reader.readAsDataURL(file)
+  }
 }
 
 const updateProfile = ref<TeamMember>({} as TeamMember)
@@ -275,7 +354,7 @@ const deleteMember = (memberId: number) => {
     .then((response) => {
       console.log(response.data)
       alert('멤버가 삭제되었습니다.')
-      router.push('/update/roster')
+      getTeamRoster()
     })
     .catch((error) => {
       if (error) {
@@ -285,9 +364,8 @@ const deleteMember = (memberId: number) => {
     })
 }
 
-const updateMember = () => {
+const updateMember = async (id: number) => {
   if (currentEditingId.value === null) return
-
   const dataToUpdate = {
     type: updateProfile.value.type,
     name: updateProfile.value.name,
@@ -299,19 +377,32 @@ const updateMember = () => {
   }
   console.log(dataToUpdate)
 
-  axiosInstance
-    .put(`/manager/team/member/${currentEditingId.value}/profile/contents`, dataToUpdate)
-    .then((response) => {
-      console.log(response.data)
-      alert('수정되었습니다.')
-      closeModal()
-      getTeamRoster()
-    })
-    .catch((error) => {
-      console.error('Error updating member:', error)
-      console.error('Error details:', error.response.data)
-      alert('로스터 수정 중 오류 발생')
-    })
+  try {
+    // 파일이 있으면 먼저 업로드합니다.
+    if (selectedFile.value) {
+      const formData = new FormData()
+      formData.append('file', selectedFile.value)
+
+      await axiosInstance.post(`/manager/team/member/${id}/profile/image`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+    }
+
+    // 프로필 내용 업데이트
+    const response = await axiosInstance.put(
+      `/manager/team/member/${id}/profile/contents`,
+      dataToUpdate
+    )
+
+    console.log(response.data)
+    alert('수정되었습니다.')
+    closeModal()
+    await getTeamRoster()
+  } catch (error) {
+    alert('로스터 수정 중 오류 발생')
+  }
 }
 
 const getProfile = (id: number) => {
