@@ -45,13 +45,21 @@
   <div class="grid grid-cols-12">
     <div class="col-span-6">
       <div class="flex flex-col gap-4 justify-center items-center" @click="router.push('/team/30')">
-        <img src="https://cdn.playprove.one/default/logo.webp" class="w-20" loading="lazy" />
+        <img
+          src="https://cdn.playprove.one/team/30/profile/5228f43a-2a03-4f99-91c3-985e20bb001f.webp"
+          class="w-20"
+          loading="lazy"
+        />
         <div class="text-base">동의대(#1)</div>
       </div>
     </div>
     <div class="col-span-6">
       <div class="flex flex-col gap-4 justify-center items-center" @click="router.push('/team/29')">
-        <img src="https://cdn.playprove.one/default/logo.webp" class="w-20" loading="lazy" />
+        <img
+          src="https://cdn.playprove.one/team/29/profile/1e84a572-7ad6-4b32-b7bb-898ee6c40270.webp"
+          class="w-20"
+          loading="lazy"
+        />
         <div class="text-base">동아대(#2)</div>
       </div>
     </div>
@@ -60,7 +68,11 @@
   <div class="grid grid-cols-12">
     <div class="col-span-6">
       <div class="flex flex-col gap-4 justify-center items-center" @click="router.push('/team/45')">
-        <img src="https://cdn.playprove.one/default/logo.webp" class="w-20" loading="lazy" />
+        <img
+          src="https://cdn.playprove.one/team/45/profile/4301942b-a93d-4ebc-9b1f-50bb169cb8e2.webp"
+          class="w-20"
+          loading="lazy"
+        />
         <div class="text-base">영남대(#1)</div>
       </div>
     </div>
