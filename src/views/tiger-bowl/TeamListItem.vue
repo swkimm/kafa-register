@@ -78,7 +78,11 @@
     </div>
     <div class="col-span-6">
       <div class="flex flex-col gap-4 justify-center items-center" @click="router.push('/team/37')">
-        <img src="https://cdn.playprove.one/default/logo.webp" class="w-20" loading="lazy" />
+        <img
+          src="https://cdn.playprove.one/team/37/profile/105a0401-c8eb-4688-be5e-ef9b4534c445.webp"
+          class="w-20"
+          loading="lazy"
+        />
         <div class="text-base">경북대(#2)</div>
       </div>
     </div>

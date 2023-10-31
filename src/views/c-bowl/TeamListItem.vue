@@ -19,7 +19,11 @@
   <div class="grid grid-cols-12">
     <div class="col-span-12">
       <div class="flex flex-col gap-4 justify-center items-center" @click="router.push('/team/32')">
-        <img src="https://cdn.playprove.one/default/logo.webp" class="w-20" loading="lazy" />
+        <img
+          src="https://cdn.playprove.one/team/32/profile/4bcb9836-261c-47b4-a715-91cad5318628.webp"
+          class="w-20"
+          loading="lazy"
+        />
         <div class="text-base">부산대학교</div>
       </div>
     </div>
