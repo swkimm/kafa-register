@@ -5,12 +5,7 @@
       <GameItem :game="games[1]"></GameItem>
     </div>
     <div class="col-span-2 flex flex-col justify-center">
-      <TBDItem
-        :game="{
-          date: '11/18 14:00',
-          name: '4강 2경기'
-        }"
-      />
+      <GameItem :game="games[5]"></GameItem>
     </div>
     <div class="col-span-2 flex flex-col justify-center font-bold text-xl">
       <div>
@@ -23,12 +18,7 @@
       <div class="font-normal text-xs">12/02 14:00</div>
     </div>
     <div class="col-span-2 flex flex-col justify-center">
-      <TBDItem
-        :game="{
-          date: '11/18 11:00',
-          name: '4강 1경기'
-        }"
-      />
+      <GameItem :game="games[4]"></GameItem>
     </div>
     <div class="col-span-2 flex flex-col gap-6">
       <GameItem :game="games[2]"></GameItem>
@@ -39,7 +29,6 @@
 <script lang="ts" setup>
 import { onMounted, ref, type Ref } from 'vue'
 import GameItem from './GameItem.vue'
-import TBDItem from './TBDItem.vue'
 import type { Game } from './interfaces/game.interface'
 import { axiosInstance } from '@/common/auth/store'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -51,5 +40,7 @@ onMounted(async () => {
     .get('/team-game/leagueId/5')
     .then((result) => result.data)
   games.value = result
+
+  console.log(result)
 })
 </script>
