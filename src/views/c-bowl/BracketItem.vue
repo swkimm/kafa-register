@@ -1,7 +1,7 @@
 <template>
   <div class="mt-14 grid grid-cols-8 gap-4 min-w-[800px]">
     <div class="col-span-2 flex flex-col justify-center">
-      <GameItem :game="games[4]" />
+      <GameItem :game="games[6]" />
     </div>
     <div class="col-span-4 flex flex-col justify-center font-bold text-xl">
       <div>
@@ -14,7 +14,7 @@
       <div class="font-normal text-xs">12/02 11:00</div>
     </div>
     <div class="col-span-2 flex flex-col justify-center">
-      <GameItem :game="games[5]" />
+      <GameItem :game="games[7]" />
     </div>
   </div>
 </template>
