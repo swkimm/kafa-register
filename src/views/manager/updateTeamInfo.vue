@@ -230,7 +230,8 @@ onMounted(async () => {
       teamColor: teamProfile.value.teamColor || '',
       teamSubColor: teamProfile.value.teamSubColor || '',
       profileImgUrl: teamProfile.value.profileImgUrl || '',
-      createdAt: teamProfile.value.createdAt || ''
+      createdAt: teamProfile.value.createdAt || '',
+      instagramUrl: teamProfile.value.instagramUrl || ''
     }
   }
 })
