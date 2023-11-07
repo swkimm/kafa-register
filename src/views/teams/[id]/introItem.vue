@@ -24,6 +24,7 @@ interface TeamDetail {
   profileImgUrl: string
   message: string | null | undefined
   teamColor: string
+  instagramUrl?: string
   workoutId: number
   workout: {
     id: number

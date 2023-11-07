@@ -56,11 +56,11 @@
         class="flex flex-row justify-center py-3"
         :style="{ backgroundColor: darkenColor(banner?.teamColor, 10) }"
       >
-        <div class="flex flex-fow">
-          <a href="#" class="">
+        <div>
+          <a :href="banner.instagramUrl" class="flex flex-fow">
             <i class="fa-brands fa-instagram fa-xl mx-1 align-mid" style="color: #ffffff"></i>
+            <div class="text-white text-sm align-mid">@instagram</div>
           </a>
-          <div class="text-white text-sm align-mid">@insta</div>
         </div>
       </div>
     </div>
@@ -76,6 +76,7 @@ interface TeamDetail {
   initial: string
   message: string | null | undefined
   profileImgUrl: string
+  instagramUrl?: string
   teamColor: string
   teamSubColor: string
   createdAt: string
