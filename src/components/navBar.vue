@@ -323,6 +323,12 @@ const products = [
     description: '사회인리그 일정을 확인할 수 있습니다',
     href: '/schedule/association/6',
     icon: CalendarDaysIcon
+  },
+  {
+    name: '플래그풋볼연맹',
+    description: '플래그풋볼연맹 등록 팀 명단',
+    href: '/schedule/association/7',
+    icon: CalendarDaysIcon
   }
 ]
 
@@ -355,6 +361,12 @@ const associations = [
     name: '사회인연맹',
     description: '사회인연맹 등록 팀 명단',
     href: '/association/6/teams',
+    icon: CalendarDaysIcon
+  },
+  {
+    name: '플래그풋볼연맹',
+    description: '플래그풋볼연맹 등록 팀 명단',
+    href: '/association/7/teams',
     icon: CalendarDaysIcon
   }
 ]
