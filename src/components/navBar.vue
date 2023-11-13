@@ -326,7 +326,7 @@ const products = [
   },
   {
     name: '플래그풋볼연맹',
-    description: '플래그풋볼연맹 등록 팀 명단',
+    description: '플래그풋볼연맹 일정을 확인할 수 있습니다',
     href: '/schedule/association/7',
     icon: CalendarDaysIcon
   }
