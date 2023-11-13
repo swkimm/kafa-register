@@ -32,7 +32,11 @@
   <div class="grid grid-cols-12">
     <div class="col-span-12">
       <div class="flex flex-col gap-4 justify-center items-center" @click="router.push('/team/41')">
-        <img src="https://cdn.playprove.one/default/logo.webp" class="w-20" loading="lazy" />
+        <img
+          src="https://cdn.playprove.one/team/41/profile/5bfd2267-a8e6-41ba-b911-2f68b6aae3ca.webp"
+          class="w-20"
+          loading="lazy"
+        />
         <div class="text-base">대구가톨릭대학교</div>
       </div>
     </div>
