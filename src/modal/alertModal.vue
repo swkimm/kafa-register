@@ -44,13 +44,25 @@
                       공지사항
                     </DialogTitle>
                     <div class="mt-2">
-                      <div class="text-xs sm:text-base text-gray-500">
-                        Playprove(휴먼트러스트 주식회사)는 현재 2023홍천군수배 서울/경기/강원 추계
-                        대학 미식축구대회 운영 및 선수등록 시스템을 후원 차원에서 개발을 시작하였고,
-                        기존의 대한미식축구협회 홈페이지(kafa.org)와 병합할 수 있도록 개발중에
-                        있습니다.
-                        <br /><br />
-                        올해 연말까지는 개발 완료를 목표로 하고있습니다.<br /><br />
+                      <div class="text-xs sm:text-base text-gray-700">
+                        <p class="font-semibold">주요대회 바로가기</p>
+                        <p>
+                          전국 대학리그 1부
+                          <RouterLink to="/tiger-bowl" class="text-blue-600">바로가기</RouterLink>
+                        </p>
+                        <p>
+                          전국 대학리그 2부
+                          <RouterLink to="/challenge-bowl" class="text-blue-600"
+                            >바로가기</RouterLink
+                          >
+                        </p>
+                        <p>
+                          사회인 리그
+                          <RouterLink to="/gwanggaeto-bowl" class="text-blue-600"
+                            >바로가기</RouterLink
+                          >
+                        </p>
+                        <br />
                         <p class="font-semibold">문의사항</p>
                         <p>대한미식축구협회 전무이사 김진국 010-3004-0862</p>
                         <p>대한미식축구협회 미디어 홍보국 팀장 이기호 010-3004-0862</p>
