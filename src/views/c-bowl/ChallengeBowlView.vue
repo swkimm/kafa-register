@@ -35,7 +35,7 @@ import type { GameInfo } from '../schedule/league/interfaces'
 import { axiosInstance } from '@/common/auth/store'
 
 const games: Ref<GameInfo[]> = ref([])
-const validIds = [91, 92]
+const validIds = [91, 92, 96]
 
 onMounted(async () => {
   games.value = await getLeagueGames()

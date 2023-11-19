@@ -35,7 +35,7 @@ import { axiosInstance } from '@/common/auth/store'
 import { onMounted, ref, type Ref } from 'vue'
 
 const games: Ref<GameInfo[]> = ref([])
-const validIds = [87, 88, 89, 90, 93, 94]
+const validIds = [87, 88, 89, 90, 93, 94, 95]
 
 onMounted(async () => {
   games.value = await getLeagueGames()

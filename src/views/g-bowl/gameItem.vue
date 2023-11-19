@@ -6,13 +6,18 @@
           <div
             class="flex flex-row items-center justify-start text-start gap-x-3 sm:gap-x-5 md:gap-x-8 my-0"
           >
-            <img src="" alt="" class="w-10 sm:w-18 md:w-24" @error="onNoTeamProfileImage" />
+            <img
+              src="https://cdn.playprove.one/team/49/profile/dfd53432-ee1e-4c93-b1bb-f584ec49bc70.webp"
+              alt=""
+              class="w-10 sm:w-18 md:w-24"
+              @error="onNoTeamProfileImage"
+            />
             <div class="hidden sm:block">
               <p class="text-xs font-bold text-black">HOME</p>
-              <h1 class="text-sm font-semibold sm:text-xl">TBD(#1)</h1>
+              <h1 class="text-sm font-semibold sm:text-xl">군위피닉스</h1>
             </div>
             <div class="block sm:hidden">
-              <h1 class="text-sm sm:text-xl font-semibold">TBD(#1)</h1>
+              <h1 class="text-sm sm:text-xl font-semibold">PHX</h1>
             </div>
             <div class="text-lg sm:text-5xl font-black"></div>
           </div>
@@ -25,8 +30,8 @@
               class="flex-col items-center text-center justify-center text-xs sm:text-sm text-black"
             >
               <div class="font-semibold text-xs sm:text-base md:text-lg">제 28회 KNFL 광개토볼</div>
-              <div class="mt-2">2023-12-07 11:00 AM</div>
-              <div>군위 종합 운동장</div>
+              <div class="mt-2">2023-12-17 11:00 AM</div>
+              <div>군위 종합운동장</div>
             </div>
           </div>
           <div
@@ -41,13 +46,18 @@
           >
             <div class="text-lg sm:text-5xl font-black"></div>
             <div class="block sm:hidden">
-              <h1 class="text-sm sm:text-xl font-semibold">TBD(#2)</h1>
+              <h1 class="text-sm sm:text-xl font-semibold">BS</h1>
             </div>
             <div class="hidden sm:block">
               <p class="text-xs font-bold text-black">AWAY</p>
-              <h1 class="text-sm sm:text-xl font-semibold">TBD(#2)</h1>
+              <h1 class="text-sm sm:text-xl font-semibold">삼성블루스톰</h1>
             </div>
-            <img src="" alt="" class="w-10 sm:w-18 md:w-24" @error="onNoTeamProfileImage" />
+            <img
+              src="https://cdn.playprove.one/team-profile-img/421df8cf-7130-409e-b8aa-ac0df5382d8a.webp"
+              alt=""
+              class="w-10 sm:w-18 md:w-24"
+              @error="onNoTeamProfileImage"
+            />
           </div>
         </div>
       </div>
