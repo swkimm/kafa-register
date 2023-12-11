@@ -1,14 +1,14 @@
 <template>
   <div
-    class="flex flex-col sm:flex-row font-sans rounded-lg bg-black drop-shadow-xl text-white"
+    class="flex flex-col sm:flex-row font-sans rounded-lg bg-black drop-shadow-xl text-white h-full"
     :style="{ backgroundColor: team.team_color }"
   >
     <router-link :to="{ name: 'team detail', params: { id: team.id } }">
-      <div class="flex flex-col relative items-center justify-center px-10">
+      <div class="flex flex-col relative items-center justify-center px-10 h-full">
         <img
           :src="team.profile_img_url"
           @error="onNoTeamProfileImage"
-          class="mt-5 h-40"
+          class="mt-5 sm:mt-0 h-40 sm:max-h-40 max-w-[160px] object-contain"
           loading="lazy"
         />
       </div>

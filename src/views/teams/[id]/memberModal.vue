@@ -47,7 +47,12 @@
                   <div
                     class="overflow-hidden rounded-lg bg-gray-100 sm:col-span-4 lg:col-span-5 w-40 sm:w-full mx-auto"
                   >
-                    <img :src="member.profileImgUrl" class="object-cover object-center" />
+                    <img
+                      :src="member.profileImgUrl"
+                      alt="프로필 이미지 없음"
+                      class="object-cover object-center w-full h-full"
+                      loading="lazy"
+                    />
                   </div>
                   <div class="sm:col-span-8 lg:col-span-7">
                     <section class="mt-2">
