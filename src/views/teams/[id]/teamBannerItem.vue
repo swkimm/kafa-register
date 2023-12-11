@@ -14,13 +14,13 @@
           <img
             :src="banner?.profileImgUrl"
             @error="onNoTeamProfileImage"
-            class="items-center text-center m-auto hidden lg:block sm:hidden lg:w-64 lg:h-64"
+            class="items-center text-center mx-auto object-contain hidden lg:block sm:hidden lg:w-64 lg:h-64"
           />
         </div>
         <div class="basis-1/3">
           <img
             :src="banner?.profileImgUrl"
-            class="items-center block lg:hidden md:block sm:block sm:w-32 sm:h-32 md:w-32 md:h-32"
+            class="items-center object-contain pr-4 block lg:hidden md:block sm:block sm:w-32 sm:h-32 md:w-32 md:h-32"
           />
         </div>
       </div>
