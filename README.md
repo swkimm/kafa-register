@@ -1,46 +1,49 @@
-# human-trust-landing
+# 🏈 대한미식축구협회 대회 운영 플랫폼
 
-This template should help get you started developing with Vue 3 in Vite.
+대한미식축구협회의 대회 등록부터 운영까지 전 과정을 디지털화한 플랫폼입니다.  
+**Vue 3 + Vite + Tailwind CSS + TypeScript** 기반으로 프론트엔드가 구축되었으며,  
 
-## Recommended IDE Setup
+---
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## 🚀 주요 기능
 
-## Type Support for `.vue` Imports in TS
+- **대회 등록 및 관리**: 대회 정보를 등록하고 일정을 관리합니다.
+- **팀 및 선수 관리**: 참가 팀과 선수 정보를 체계적으로 관리합니다.
+- **심판 배정 및 경기 결과 등록**: 경기별 심판 배정, 결과 기록 기능을 제공합니다.
+- **반응형 UI**: Tailwind CSS를 활용해 다양한 기기에서도 최적화된 화면을 제공합니다.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+---
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+## 🛠 사용 기술
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+| 영역         | 기술 스택                        |
+| ------------ | -------------------------------- |
+| Frontend     | Vue 3, Vite, TypeScript, Pinia   |
+| Styling      | Tailwind CSS                     |
+| Lint & Format| ESLint, Prettier                  |
+| Container    | Docker, Docker Compose            |
 
-## Customize configuration
+---
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## 📁 프로젝트 구조
+<pre>
+kafa-register-main/ 
+    ├── docker-compose.yml # Docker 환경 설정 
+    ├── index.html # 메인 HTML 파일 
+    ├── package.json # 프로젝트 메타 정보 및 의존성 
+    ├── tailwind.config.js # Tailwind CSS 설정 
+    ├── tsconfig.json # TypeScript 설정 
+    ├── vite.config.ts # Vite 설정 
+    ├── src/ # 애플리케이션 소스 코드 
+    │ ├── assets/ # 정적 자산 (이미지, 스타일 등) 
+    │ ├── components/ # Vue 컴포넌트 
+    │ ├── pages/ # 주요 페이지 컴포넌트 
+    │ ├── store/ # 상태 관리 (Pinia) 
+    │ ├── router/ # Vue Router 설정 
+    │ └── main.ts # 애플리케이션 진입점
+</pre>
 
-## Project Setup
-
-```sh
-npm install
+## 프로젝트 시작
 ```
-
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
 ```
